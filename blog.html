@@ -1,0 +1,470 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Blog Massage Sportif — Conseils & Guides | Steven Therapy</title>
+  <meta name="description" content="Conseils de masseur sportif certifié : deep tissue, récupération, mobilité, performance. Steven Therapy, Choisy-le-Roi (94).">
+  <link rel="canonical" href="https://steventherapy.fr/blog">
+
+  <meta property="og:title" content="Blog Steven Therapy — Massage Sportif & Deep Tissue">
+  <meta property="og:description" content="Conseils pratiques sur le massage sportif, la récupération et la performance.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --noir: #0a0a08;
+      --or: #D4AF37;
+      --or-clair: #e8c94a;
+      --blanc: #FDFCF8;
+      --gris: #1a1a18;
+      --gris-texte: #8a8a7a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--noir);
+      color: var(--blanc);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.04em;
+      line-height: 1.1;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--or);
+      margin-bottom: 16px;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 20px 0;
+      background: rgba(10, 10, 8, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+    }
+
+    nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo img {
+      height: 36px;
+      width: auto;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(253,252,248,0.7);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--or); }
+
+    .nav-links a.active {
+      color: var(--or);
+      border-bottom: 2px solid var(--or);
+      padding-bottom: 2px;
+    }
+
+    .nav-cta {
+      background: var(--or);
+      color: var(--noir) !important;
+      padding: 10px 22px;
+      font-weight: 700 !important;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--or-clair) !important; color: var(--noir) !important; }
+
+    .nav-burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .nav-burger span {
+      width: 24px; height: 2px;
+      background: var(--blanc);
+      transition: 0.3s;
+    }
+
+    /* ─── PAGE HERO ─── */
+    .page-hero {
+      padding: 140px 0 40px;
+      border-bottom: 1px solid rgba(212,175,55,0.1);
+    }
+
+    .page-hero-inner {
+      max-width: 680px;
+    }
+
+    .page-hero h1 {
+      font-size: clamp(52px, 7vw, 96px);
+      color: var(--blanc);
+      margin-bottom: 20px;
+    }
+
+    .page-hero h1 span { color: var(--or); }
+
+    .page-hero-desc {
+      font-size: 15px;
+      color: rgba(253,252,248,0.55);
+      line-height: 1.8;
+    }
+
+    /* ─── ARTICLES GRID ─── */
+    .blog-section {
+      padding: 20px 0 120px;
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+    }
+
+    .article-card {
+      background: var(--gris);
+      padding: 48px 40px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: background 0.2s;
+    }
+
+    .article-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 3px;
+      background: var(--or);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    .article-card:hover { background: #202020; }
+    .article-card:hover::before { transform: scaleX(1); }
+
+    .article-cat {
+      display: inline-block;
+      background: rgba(212,175,55,0.1);
+      color: var(--or);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      margin-bottom: 24px;
+    }
+
+    .article-title {
+      font-size: clamp(26px, 2.5vw, 36px);
+      color: var(--blanc);
+      margin-bottom: 16px;
+      flex-grow: 1;
+    }
+
+    .article-excerpt {
+      font-size: 14px;
+      color: rgba(253,252,248,0.55);
+      line-height: 1.8;
+      margin-bottom: 32px;
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 24px;
+      border-top: 1px solid rgba(253,252,248,0.06);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .article-meta-info {
+      font-size: 11px;
+      color: rgba(253,252,248,0.3);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .article-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--or);
+      transition: gap 0.2s;
+    }
+
+    .article-link:hover { gap: 12px; }
+
+    /* ─── CTA BAND ─── */
+    .cta-band {
+      background: var(--gris);
+      border-top: 1px solid rgba(212,175,55,0.1);
+      padding: 64px 0;
+    }
+
+    .cta-band-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .cta-band-text h2 {
+      font-size: clamp(28px, 3.5vw, 44px);
+      color: var(--blanc);
+      margin-bottom: 8px;
+    }
+
+    .cta-band-text h2 span { color: var(--or); }
+
+    .cta-band-text p {
+      font-size: 14px;
+      color: rgba(253,252,248,0.5);
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--or);
+      color: var(--noir);
+      padding: 16px 32px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+
+    .btn-primary:hover { background: var(--or-clair); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #050504;
+      padding: 48px 0;
+      border-top: 1px solid rgba(212,175,55,0.1);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: 0.08em;
+    }
+
+    .footer-logo span { color: var(--or); }
+
+    .footer-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 12px;
+      color: rgba(253,252,248,0.35);
+      letter-spacing: 0.08em;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--or); }
+
+    .footer-copy {
+      font-size: 12px;
+      color: rgba(253,252,248,0.25);
+    }
+
+    /* ─── MOBILE ─── */
+    @media (max-width: 960px) {
+      .nav-links { display: none; }
+      .nav-links.nav-open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%; left: 0; right: 0;
+        background: rgba(10,10,8,0.97);
+        padding: 24px;
+        gap: 20px;
+        border-top: 1px solid rgba(212,175,55,0.15);
+        z-index: 99;
+      }
+      .nav-burger { display: flex; }
+    }
+
+    @media (max-width: 640px) {
+      .blog-grid { grid-template-columns: 1fr; }
+      .article-card { padding: 32px 24px; }
+      .cta-band-inner { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ─── NAV ─── -->
+  <nav>
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <img src="Assets/logo.jpg" alt="Steven Therapy">
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#apropos">À propos</a></li>
+        <li><a href="index.html#prestations">Prestations</a></li>
+        <li><a href="index.html#tarifs">Tarifs</a></li>
+        <li><a href="index.html#avis">Avis</a></li>
+        <li><a href="blog.html" class="active">Blog</a></li>
+        <li><a href="https://wa.me/33612829315?text=Bonjour%20Steven%2C%20je%20souhaite%20prendre%20rendez-vous." target="_blank" class="nav-cta">Prendre RDV</a></li>
+      </ul>
+      <div class="nav-burger" onclick="document.getElementById('navLinks').classList.toggle('nav-open')">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ─── PAGE HERO ─── -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero-inner">
+        <p class="section-label">Conseils & Guides</p>
+        <h1>Blog <span>Massage</span></h1>
+        <p class="page-hero-desc">Récupération, mobilité, performance. Des articles écrits par un praticien certifié, pour t'aider à mieux comprendre ton corps et en tirer le meilleur.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── ARTICLES ─── -->
+  <section class="blog-section">
+    <div class="container">
+      <div class="blog-grid">
+
+        <a href="article-5-signes-deep-tissue.html" class="article-card">
+          <div class="article-cat">Deep Tissue</div>
+          <h2 class="article-title">5 signes que tu as besoin d'un massage deep tissue</h2>
+          <p class="article-excerpt">Douleur dans le dos depuis trois semaines. Épaule qui coince. Mollets qui restent tendus deux jours après la séance. Le corps accumule. Voici les 5 signaux à ne pas ignorer.</p>
+          <div class="article-meta">
+            <div class="article-meta-info">6 juin 2026 · 5 min</div>
+            <div class="article-link">
+              Lire l'article
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+        </a>
+
+        <a href="article-deep-tissue-vs-relaxant.html" class="article-card">
+          <div class="article-cat">Comparaison</div>
+          <h2 class="article-title">Deep tissue vs massage relaxant : les vraies différences</h2>
+          <p class="article-excerpt">On te demande souvent quel type de massage tu veux. Tu réponds un peu au hasard. Les deux techniques n'ont ni le même objectif ni les mêmes effets. Voici comment choisir.</p>
+          <div class="article-meta">
+            <div class="article-meta-info">6 juin 2026 · 5 min</div>
+            <div class="article-link">
+              Lire l'article
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CTA ─── -->
+  <section class="cta-band">
+    <div class="container">
+      <div class="cta-band-inner">
+        <div class="cta-band-text">
+          <h2>Prêt à <span>récupérer</span> ?</h2>
+          <p>Première séance à 49€ au lieu de 80€. Sans engagement.</p>
+        </div>
+        <a href="https://wa.me/33612829315?text=Bonjour%20Steven%2C%20je%20souhaite%20profiter%20de%20l%27offre%20d%C3%A9couverte%20(1h%20%C3%A0%2049%E2%82%AC)." target="_blank" class="btn-primary">
+          Offre découverte — 49€
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">STEVEN <span>THERAPY</span></div>
+        <ul class="footer-links">
+          <li><a href="index.html#apropos">À propos</a></li>
+          <li><a href="index.html#prestations">Prestations</a></li>
+          <li><a href="index.html#tarifs">Tarifs</a></li>
+          <li><a href="index.html#avis">Avis</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+        <p class="footer-copy">© 2026 Steven Therapy · Choisy-le-Roi (94)</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

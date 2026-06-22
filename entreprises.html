@@ -1,0 +1,988 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO -->
+  <title>Massage Sportif en Entreprise & Partenariat Salle de Sport | Steven Therapy</title>
+  <meta name="description" content="Interventions de massage sportif certifié en entreprise et en salle de sport en Val-de-Marne. Clé en main, matériel fourni. Formé par Marius Malarme, champion d'Europe. Devis gratuit.">
+  <meta name="keywords" content="massage entreprise Val-de-Marne, massage sportif salle de sport, bien-être au travail 94, massage événement entreprise">
+  <link rel="canonical" href="https://steventherapy.fr/entreprises">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Steven Therapy — Massage Sportif en Entreprise & Salles de Sport">
+  <meta property="og:description" content="Intégrez le massage sportif professionnel dans votre entreprise ou salle de sport. Clé en main, certifié, Val-de-Marne.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Steven Therapy",
+    "description": "Massage sportif et deep tissue en entreprise et en salle de sport",
+    "url": "https://steventherapy.fr/entreprises",
+    "telephone": "+33612829315",
+    "email": "steven.piscone@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Choisy-le-Roi",
+      "postalCode": "94600",
+      "addressCountry": "FR"
+    },
+    "areaServed": "Val-de-Marne",
+    "openingHours": "Mo-Su 00:00-24:00",
+    "sameAs": ["https://www.instagram.com/steven_therapy"]
+  }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --noir: #0a0a08;
+      --or: #D4AF37;
+      --or-clair: #e8c94a;
+      --blanc: #FDFCF8;
+      --gris: #1a1a18;
+      --gris-clair: #242420;
+      --gris-texte: #8a8a7a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--noir);
+      color: var(--blanc);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.04em;
+      line-height: 1.1;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--or);
+      margin-bottom: 16px;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 20px 0;
+      transition: background 0.3s, padding 0.3s;
+    }
+
+    nav.scrolled {
+      background: rgba(10, 10, 8, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+    }
+
+    nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav-back {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(253,252,248,0.5);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+
+    .nav-back:hover { color: var(--or); }
+
+    .nav-back-arrow {
+      font-size: 14px;
+      line-height: 1;
+    }
+
+    .nav-logo img {
+      height: 36px;
+      width: auto;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(253,252,248,0.7);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--or); }
+
+    .nav-cta {
+      background: var(--or);
+      color: var(--noir) !important;
+      padding: 10px 22px;
+      font-weight: 700 !important;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--or-clair) !important; }
+
+    .nav-burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .nav-burger span {
+      width: 24px; height: 2px;
+      background: var(--blanc);
+      transition: 0.3s;
+    }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 120px 0 80px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 65% 40%, rgba(212,175,55,0.07) 0%, transparent 60%),
+                  radial-gradient(ellipse at 15% 75%, rgba(212,175,55,0.04) 0%, transparent 50%);
+    }
+
+    .hero-line {
+      position: absolute;
+      top: 0; bottom: 0; right: 38%;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, rgba(212,175,55,0.15) 30%, rgba(212,175,55,0.15) 70%, transparent);
+    }
+
+    .hero-content {
+      position: relative;
+      max-width: 680px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(212,175,55,0.1);
+      border: 1px solid rgba(212,175,55,0.3);
+      padding: 8px 16px;
+      margin-bottom: 32px;
+    }
+
+    .hero-badge-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--or);
+    }
+
+    .hero-badge span {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--or);
+    }
+
+    .hero-title {
+      font-size: clamp(48px, 7vw, 88px);
+      color: var(--blanc);
+      margin-bottom: 8px;
+    }
+
+    .hero-title-accent { color: var(--or); display: block; }
+
+    .hero-subtitle {
+      font-size: clamp(15px, 2.2vw, 18px);
+      color: rgba(253,252,248,0.6);
+      font-weight: 300;
+      margin-bottom: 40px;
+      max-width: 500px;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 56px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--or);
+      color: var(--noir);
+      padding: 16px 32px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: background 0.2s, transform 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary:hover { background: var(--or-clair); transform: translateY(-1px); }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: transparent;
+      color: var(--blanc);
+      padding: 16px 32px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: 1px solid rgba(253,252,248,0.2);
+      transition: border-color 0.2s, color 0.2s;
+      cursor: pointer;
+    }
+
+    .btn-secondary:hover { border-color: var(--or); color: var(--or); }
+
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .hero-stat {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero-stat-value {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      color: var(--or);
+      letter-spacing: 0.04em;
+      line-height: 1;
+    }
+
+    .hero-stat-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(253,252,248,0.5);
+      margin-top: 4px;
+    }
+
+    /* ─── SECTIONS COMMUNES ─── */
+    section {
+      padding: 96px 0;
+    }
+
+    .section-title {
+      font-size: clamp(36px, 5vw, 60px);
+      color: var(--blanc);
+      margin-bottom: 16px;
+    }
+
+    .section-subtitle {
+      font-size: 16px;
+      color: rgba(253,252,248,0.55);
+      max-width: 560px;
+      line-height: 1.7;
+      margin-bottom: 56px;
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, rgba(212,175,55,0.3), transparent);
+      margin-bottom: 56px;
+    }
+
+    /* ─── OFFRES ─── */
+    #offres {
+      background: var(--gris);
+    }
+
+    .offres-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+
+    .offre-card {
+      background: var(--noir);
+      padding: 48px 40px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+
+    .offre-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--or);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s;
+    }
+
+    .offre-card:hover::before { transform: scaleX(1); }
+    .offre-card:hover { transform: translateY(-4px); }
+
+    .offre-icon {
+      font-size: 32px;
+      margin-bottom: 24px;
+    }
+
+    .offre-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--or);
+      margin-bottom: 12px;
+    }
+
+    .offre-title {
+      font-size: clamp(26px, 3vw, 38px);
+      color: var(--blanc);
+      margin-bottom: 20px;
+    }
+
+    .offre-desc {
+      font-size: 14px;
+      color: rgba(253,252,248,0.6);
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+
+    .offre-list {
+      list-style: none;
+      margin-bottom: 36px;
+    }
+
+    .offre-list li {
+      font-size: 13px;
+      color: rgba(253,252,248,0.75);
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(253,252,248,0.07);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.5;
+    }
+
+    .offre-list li::before {
+      content: '';
+      width: 16px;
+      height: 1px;
+      background: var(--or);
+      margin-top: 10px;
+      flex-shrink: 0;
+    }
+
+    /* ─── ARGUMENTS ─── */
+    #arguments { background: var(--noir); }
+
+    .arguments-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.05);
+    }
+
+    .argument-item {
+      background: var(--noir);
+      padding: 40px 32px;
+      transition: background 0.2s;
+    }
+
+    .argument-item:hover { background: var(--gris); }
+
+    .argument-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 40px;
+      color: rgba(212,175,55,0.2);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .argument-title {
+      font-size: 18px;
+      color: var(--blanc);
+      margin-bottom: 12px;
+    }
+
+    .argument-desc {
+      font-size: 13px;
+      color: rgba(253,252,248,0.55);
+      line-height: 1.6;
+    }
+
+    /* ─── REFERENCE ─── */
+    #reference {
+      background: var(--gris);
+    }
+
+    .reference-card {
+      border: 1px solid rgba(212,175,55,0.3);
+      padding: 48px;
+      max-width: 680px;
+      position: relative;
+    }
+
+    .reference-card::before {
+      content: '';
+      position: absolute;
+      top: -1px; left: 0;
+      width: 80px;
+      height: 3px;
+      background: var(--or);
+    }
+
+    .reference-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(212,175,55,0.1);
+      border: 1px solid rgba(212,175,55,0.25);
+      padding: 6px 14px;
+      margin-bottom: 24px;
+    }
+
+    .reference-badge span {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--or);
+    }
+
+    .reference-name {
+      font-size: clamp(28px, 4vw, 48px);
+      color: var(--blanc);
+      margin-bottom: 8px;
+    }
+
+    .reference-location {
+      font-size: 13px;
+      color: var(--or);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .reference-text {
+      font-size: 14px;
+      color: rgba(253,252,248,0.6);
+      line-height: 1.7;
+    }
+
+    /* ─── ÉTAPES ─── */
+    #etapes { background: var(--noir); }
+
+    .etapes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      position: relative;
+    }
+
+    .etapes-grid::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: calc(16.66% + 12px);
+      right: calc(16.66% + 12px);
+      height: 1px;
+      background: linear-gradient(to right, var(--or), rgba(212,175,55,0.3), var(--or));
+    }
+
+    .etape-item {
+      position: relative;
+    }
+
+    .etape-num {
+      width: 56px; height: 56px;
+      border: 1px solid rgba(212,175,55,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 24px;
+      color: var(--or);
+      margin-bottom: 24px;
+      background: var(--noir);
+      position: relative;
+      z-index: 1;
+    }
+
+    .etape-title {
+      font-size: 22px;
+      color: var(--blanc);
+      margin-bottom: 12px;
+    }
+
+    .etape-desc {
+      font-size: 14px;
+      color: rgba(253,252,248,0.55);
+      line-height: 1.6;
+    }
+
+    /* ─── CTA FINAL ─── */
+    #contact {
+      background: var(--gris);
+      text-align: center;
+    }
+
+    .contact-inner {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .contact-title {
+      font-size: clamp(40px, 6vw, 72px);
+      color: var(--blanc);
+      margin-bottom: 20px;
+    }
+
+    .contact-title span { color: var(--or); }
+
+    .contact-text {
+      font-size: 15px;
+      color: rgba(253,252,248,0.55);
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+
+    .contact-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .contact-note {
+      font-size: 12px;
+      color: rgba(253,252,248,0.35);
+      letter-spacing: 0.08em;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--noir);
+      border-top: 1px solid rgba(253,252,248,0.06);
+      padding: 40px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      letter-spacing: 0.08em;
+    }
+
+    .footer-logo span { color: var(--or); }
+
+    .footer-copy {
+      font-size: 12px;
+      color: rgba(253,252,248,0.3);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(253,252,248,0.4);
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--or); }
+
+    /* ─── MOBILE ─── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        inset: 0;
+        background: var(--noir);
+        align-items: center;
+        justify-content: center;
+        gap: 32px;
+        z-index: 99;
+      }
+
+      .nav-links.open a { font-size: 14px; }
+      .nav-burger { display: flex; }
+
+      .hero-title { font-size: 52px; }
+      .hero-stats { gap: 24px; }
+
+      .offres-grid { grid-template-columns: 1fr; }
+      .arguments-grid { grid-template-columns: 1fr 1fr; }
+
+      .etapes-grid { grid-template-columns: 1fr; }
+      .etapes-grid::before { display: none; }
+
+      .reference-card { padding: 32px 24px; }
+      .footer-inner { flex-direction: column; text-align: center; }
+    }
+
+    @media (max-width: 480px) {
+      .arguments-grid { grid-template-columns: 1fr; }
+      .contact-actions { flex-direction: column; align-items: stretch; }
+      .contact-actions a { text-align: center; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── NAV ─── -->
+  <nav id="nav">
+    <div class="container">
+      <div class="nav-left">
+        <a href="index.html" class="nav-back">
+          <span class="nav-back-arrow">&#8592;</span> Retour au site
+        </a>
+        <a href="index.html" class="nav-logo"><img src="logo.jpg" alt="Steven Therapy"></a>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#offres">Offres</a></li>
+        <li><a href="#arguments">Pourquoi nous</a></li>
+        <li><a href="#etapes">Comment ça marche</a></li>
+        <li><a href="https://wa.me/33612829315?text=Bonjour%20Steven%2C%20je%20souhaite%20avoir%20un%20devis%20pour%20une%20intervention%20professionnelle." class="nav-cta">Devis gratuit</a></li>
+      </ul>
+      <div class="nav-burger" id="burger" onclick="toggleNav()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ─── HERO ─── -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-line"></div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <div class="hero-badge-dot"></div>
+          <span>Offre professionnelle B2B</span>
+        </div>
+        <h1 class="hero-title">
+          LE BIEN-ÊTRE
+          <span class="hero-title-accent">AU SERVICE<br>DE VOS ÉQUIPES</span>
+        </h1>
+        <p class="hero-subtitle">
+          Intégrez le massage sportif professionnel dans votre entreprise ou votre salle de sport.
+          Une prestation certifiée, clé en main.
+        </p>
+        <div class="hero-actions">
+          <a href="https://wa.me/33612829315?text=Bonjour%20Steven%2C%20je%20souhaite%20un%20devis%20pour%20une%20intervention%20en%20entreprise." class="btn-primary">
+            Demander un devis
+          </a>
+          <a href="#offres" class="btn-secondary">
+            En savoir plus
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span class="hero-stat-value">34</span>
+            <span class="hero-stat-label">Avis 5 étoiles</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-value">Certifié</span>
+            <span class="hero-stat-label">Formation 2025</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-value">Champion</span>
+            <span class="hero-stat-label">Formé par un champion d'Europe</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── OFFRES ─── -->
+  <section id="offres">
+    <div class="container">
+      <p class="section-label">Deux offres professionnelles</p>
+      <h2 class="section-title">Choisissez votre format</h2>
+      <p class="section-subtitle">
+        Entreprise ou salle de sport, chaque offre est adaptée à vos contraintes et à vos objectifs.
+        Je m'occupe de tout, vous n'avez rien à prévoir.
+      </p>
+    </div>
+    <div class="offres-grid">
+      <div class="offre-card">
+        <div class="offre-icon">&#127970;</div>
+        <p class="offre-label">Offre 1</p>
+        <h3 class="offre-title">INTERVENTIONS EN ENTREPRISE</h3>
+        <p class="offre-desc">
+          Proposez à vos équipes des séances de massage sportif sur leur lieu de travail.
+          Idéal pour les journées bien-être, les événements RH ou les séminaires.
+        </p>
+        <ul class="offre-list">
+          <li>Massage sur chaise (habillé, sans huile) ou sur table</li>
+          <li>Steven apporte tout le matériel</li>
+          <li>Créneaux de 15 à 90 min par collaborateur</li>
+          <li>Adapté à tous les profils : sédentaires, sportifs, cadres</li>
+        </ul>
+        <a href="https://wa.me/33612829315?text=Bonjour%20Steven%2C%20je%20souhaite%20un%20devis%20pour%20une%20intervention%20en%20entreprise." class="btn-primary">
+          Demander un devis entreprise
+        </a>
+      </div>
+
+      <div class="offre-card">
+        <div class="offre-icon">&#127947;</div>
+        <p class="offre-label">Offre 2</p>
+        <h3 class="offre-title">PARTENARIATS SALLES DE SPORT</h3>
+        <p class="offre-desc">
+          Proposez à vos adhérents une prestation de massage sportif certifiée.
+          Steven intervient régulièrement dans votre salle selon un planning défini ensemble.
+        </p>
+        <ul class="offre-list">
+          <li>Créneaux réservables par les adhérents (30 à 90 min)</li>
+          <li>Format événementiel ou présence régulière</li>
+          <li>Communication partagée : posts Instagram, affichage salle</li>
+          <li>Steven apporte tout le matériel</li>
+        </ul>
+        <a href="https://wa.me/33612829315?text=Bonjour%20Steven%2C%20je%20souhaite%20discuter%20d%27un%20partenariat%20pour%20ma%20salle%20de%20sport." class="btn-primary">
+          Proposer un partenariat
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── ARGUMENTS ─── -->
+  <section id="arguments">
+    <div class="container">
+      <p class="section-label">Pourquoi Steven Therapy</p>
+      <h2 class="section-title">Ce qui fait la différence</h2>
+      <div class="divider"></div>
+      <div class="arguments-grid">
+        <div class="argument-item">
+          <div class="argument-num">01</div>
+          <h3 class="argument-title">CERTIFICATION PROFESSIONNELLE</h3>
+          <p class="argument-desc">
+            Formé par Marius Malarme, champion d'Europe de massage 2022 et 2025.
+            Une formation de référence, pas un stage de weekend.
+          </p>
+        </div>
+        <div class="argument-item">
+          <div class="argument-num">02</div>
+          <h3 class="argument-title">CLÉ EN MAIN</h3>
+          <p class="argument-desc">
+            Steven apporte tout le matériel. Aucune logistique de votre côté,
+            aucune organisation à prévoir. Vous choisissez la date, il s'occupe du reste.
+          </p>
+        </div>
+        <div class="argument-item">
+          <div class="argument-num">03</div>
+          <h3 class="argument-title">FLEXIBILITÉ TOTALE</h3>
+          <p class="argument-desc">
+            Disponible 7j/7, il s'adapte à vos contraintes, votre planning et
+            votre espace. Salle de réunion, open space, salle de sport : peu importe.
+          </p>
+        </div>
+        <div class="argument-item">
+          <div class="argument-num">04</div>
+          <h3 class="argument-title">RÉSULTATS PROUVÉS</h3>
+          <p class="argument-desc">
+            34 avis 5 étoiles Google. Déjà partenaire de la salle On Air à La Ville-du-Bois.
+            Ce n'est pas une promesse, c'est un historique.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── REFERENCE ─── -->
+  <section id="reference">
+    <div class="container">
+      <p class="section-label">Référence existante</p>
+      <h2 class="section-title">Déjà sur le terrain</h2>
+      <p class="section-subtitle">
+        Steven Therapy est déjà actif dans le cadre de partenariats réguliers.
+      </p>
+      <div class="reference-card">
+        <div class="reference-badge">
+          <span>Partenaire actif</span>
+        </div>
+        <h3 class="reference-name">ON AIR</h3>
+        <p class="reference-location">La Ville-du-Bois &mdash; 91</p>
+        <p class="reference-text">
+          Partenaire régulier depuis avril 2026. Événements bi-mensuels organisés directement dans la salle.
+          Créneaux de 18h à 21h, ouverts aux adhérents sur réservation.
+          Format éprouvé, adhérents satisfaits, reconduction naturelle.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── ÉTAPES ─── -->
+  <section id="etapes">
+    <div class="container">
+      <p class="section-label">Comment ça marche</p>
+      <h2 class="section-title">Simple. Rapide. Efficace.</h2>
+      <p class="section-subtitle">
+        Trois étapes pour passer de la discussion à la première séance.
+      </p>
+      <div class="etapes-grid">
+        <div class="etape-item">
+          <div class="etape-num">1</div>
+          <h3 class="etape-title">ON DISCUTE</h3>
+          <p class="etape-desc">
+            Tu m'envoies un message, on échange sur tes besoins, ta structure
+            et ce que tu veux proposer à tes équipes ou adhérents.
+          </p>
+        </div>
+        <div class="etape-item">
+          <div class="etape-num">2</div>
+          <h3 class="etape-title">JE TE FAIS UNE PROPOSITION</h3>
+          <p class="etape-desc">
+            Un format adapté, un planning, une organisation clé en main.
+            Tu valides, on cale les détails ensemble.
+          </p>
+        </div>
+        <div class="etape-item">
+          <div class="etape-num">3</div>
+          <h3 class="etape-title">ON SE LANCE</h3>
+          <p class="etape-desc">
+            Je me déplace avec tout le matériel. Tes équipes ou adhérents
+            profitent d'une prestation professionnelle de qualité.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CTA FINAL ─── -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-inner">
+        <p class="section-label">Parlons de votre projet</p>
+        <h2 class="contact-title">Prêt à vous<br><span>lancer ?</span></h2>
+        <p class="contact-text">
+          Que ce soit pour une journée bien-être, un partenariat régulier ou un événement ponctuel,
+          je m'adapte à vos besoins. Contactez-moi pour qu'on en discute.
+        </p>
+        <div class="contact-actions">
+          <a href="https://wa.me/33612829315?text=Bonjour%20Steven%2C%20je%20souhaite%20un%20devis%20pour%20une%20intervention%20professionnelle." class="btn-primary">
+            &#128172; WhatsApp &mdash; 06 12 82 93 15
+          </a>
+          <a href="mailto:steven.piscone@gmail.com?subject=Demande%20de%20devis%20B2B%20Steven%20Therapy" class="btn-secondary">
+            Envoyer un email
+          </a>
+        </div>
+        <p class="contact-note">Réponse sous 24h &nbsp;·&nbsp; Devis gratuit et sans engagement</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">STEVEN<span>THERAPY</span></div>
+        <p class="footer-copy">© 2026 Steven Therapy &mdash; Choisy-le-Roi (94)</p>
+        <ul class="footer-links">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="https://www.instagram.com/steven_therapy" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://wa.me/33612829315" target="_blank" rel="noopener">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    function toggleNav() {
+      const links = document.getElementById('navLinks');
+      const burger = document.getElementById('burger');
+      links.classList.toggle('open');
+      burger.classList.toggle('open');
+    }
+  </script>
+</body>
+</html>
