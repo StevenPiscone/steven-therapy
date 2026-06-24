@@ -94,12 +94,18 @@
     nav .container {
       display: flex;
       align-items: center;
-      justify-content: space-between;
     }
 
     .nav-logo img { height: 36px; width: auto; display: block; }
 
-    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-logo .logo-pc { display: none; }
+
+    @media (max-width: 640px) {
+      .nav-logo .logo-desktop { display: none; }
+      .nav-logo .logo-pc { display: block; height: 56px; width: 56px; }
+    }
+
+    .nav-links { display: flex; gap: 36px; list-style: none; margin-left: auto; }
 
     .nav-links a {
       font-size: 12px;
@@ -113,15 +119,61 @@
     .nav-links a:hover { color: var(--or); }
     .nav-links a.active { color: var(--or); border-bottom: 2px solid var(--or); padding-bottom: 2px; }
 
+    @keyframes cta-shimmer {
+      0%   { left: -100%; }
+      30%  { left: 140%; }
+      100% { left: 140%; }
+    }
+
     .nav-cta {
       background: var(--or);
       color: var(--noir) !important;
       padding: 10px 22px;
       font-weight: 700 !important;
+      margin-left: 36px;
       transition: background 0.2s !important;
+      position: relative;
+      overflow: hidden;
     }
 
-    .nav-cta:hover { background: var(--or-clair) !important; }
+    .nav-cta::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 60%; height: 100%;
+      background: linear-gradient(105deg, transparent 20%, rgba(255,255,255,0.45) 50%, transparent 80%);
+      animation: cta-shimmer 4s ease-in-out infinite 1.5s;
+    }
+
+    .nav-cta:hover { background: var(--or-clair) !important; color: var(--noir) !important; }
+    .nav-cta:hover::after { animation: none; }
+
+    .nav-mobile-cta {
+      display: none;
+      background: var(--or);
+      color: var(--noir) !important;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 9px 16px;
+      white-space: nowrap;
+      transition: background 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-mobile-cta::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 60%; height: 100%;
+      background: linear-gradient(105deg, transparent 20%, rgba(255,255,255,0.45) 50%, transparent 80%);
+      animation: cta-shimmer 4s ease-in-out infinite 1.5s;
+    }
+
+    .nav-mobile-cta:hover { background: var(--or-clair); }
+    .nav-mobile-cta:hover::after { animation: none; }
 
     .nav-burger {
       display: none;
@@ -437,6 +489,7 @@
     /* ─── MOBILE ─── */
     @media (max-width: 960px) {
       .nav-links { display: none; }
+      .nav-cta { display: none; }
       .nav-links.nav-open {
         display: flex;
         flex-direction: column;
@@ -449,6 +502,7 @@
         z-index: 99;
       }
       .nav-burger { display: flex; }
+      .nav-mobile-cta { display: block; margin-left: auto; margin-right: 16px; }
     }
 
     @media (max-width: 860px) {
@@ -470,7 +524,8 @@
   <nav id="navbar">
     <div class="container">
       <a href="index.html" class="nav-logo">
-        <img src="Assets/logo.jpg" alt="Steven Therapy">
+        <img class="logo-desktop" src="Assets/logo.jpg" alt="Steven Therapy">
+        <img class="logo-pc" src="Assets/logo-split.png" alt="Steven Therapy">
       </a>
       <ul class="nav-links">
         <li><a href="index.html#apropos">À propos</a></li>
@@ -478,8 +533,9 @@
         <li><a href="index.html#tarifs">Tarifs</a></li>
         <li><a href="index.html#avis">Avis</a></li>
         <li><a href="blog.html" class="active">Blog</a></li>
-        <li><a href="https://wa.me/33612829315?text=Bonjour%20Steven%2C%20je%20souhaite%20prendre%20rendez-vous." target="_blank" class="nav-cta">Prendre RDV</a></li>
       </ul>
+      <a href="https://wa.me/33612829315?text=Bonjour%20Steven%2C%20je%20souhaite%20prendre%20rendez-vous." target="_blank" class="nav-cta">Prendre RDV</a>
+      <a href="https://wa.me/33612829315?text=Bonjour%20Steven%2C%20je%20souhaite%20prendre%20rendez-vous." target="_blank" class="nav-mobile-cta">Réserver</a>
       <div class="nav-burger" onclick="toggleMenu()">
         <span></span><span></span><span></span>
       </div>

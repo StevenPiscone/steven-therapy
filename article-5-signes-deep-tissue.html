@@ -12,6 +12,9 @@
   <meta property="og:description" content="Douleurs persistantes, mobilité réduite, fatigue musculaire... Ton corps t'envoie des signaux. Voici lesquels.">
   <meta property="og:type" content="article">
   <meta property="og:locale" content="fr_FR">
+  <meta property="og:url" content="https://steventherapy.fr/5-signes-massage-deep-tissue">
+  <meta property="og:image" content="https://steventherapy.fr/Assets/masseur-sportif-deep-tissue-choisy-le-roi.jpg">
+  <meta property="og:image:alt" content="Massage deep tissue — Steven Therapy">
 
   <script type="application/ld+json">
   {
@@ -19,10 +22,10 @@
     "@type": "Article",
     "headline": "5 signes que tu as besoin d'un massage deep tissue",
     "description": "Douleurs persistantes, mobilité réduite, fatigue musculaire... Découvre les 5 signes qui montrent que ton corps réclame un massage deep tissue.",
-    "datePublished": "2026-06-06",
+    "datePublished": "2026-06-24",
     "author": {
       "@type": "Person",
-      "name": "Steven Piscone",
+      "name": "Steven",
       "url": "https://steventherapy.fr"
     },
     "publisher": {
@@ -94,7 +97,6 @@
     nav .container {
       display: flex;
       align-items: center;
-      justify-content: space-between;
     }
 
     .nav-logo img {
@@ -103,10 +105,18 @@
       display: block;
     }
 
+    .nav-logo .logo-pc { display: none; }
+
+    @media (max-width: 640px) {
+      .nav-logo .logo-desktop { display: none; }
+      .nav-logo .logo-pc { display: block; height: 56px; width: 56px; }
+    }
+
     .nav-links {
       display: flex;
       gap: 36px;
       list-style: none;
+      margin-left: auto;
     }
 
     .nav-links a {
@@ -122,15 +132,61 @@
 
     .nav-links a.active { color: var(--or); border-bottom: 2px solid var(--or); padding-bottom: 2px; }
 
+    @keyframes cta-shimmer {
+      0%   { left: -100%; }
+      30%  { left: 140%; }
+      100% { left: 140%; }
+    }
+
     .nav-cta {
       background: var(--or);
       color: var(--noir) !important;
       padding: 10px 22px;
       font-weight: 700 !important;
+      margin-left: 36px;
       transition: background 0.2s !important;
+      position: relative;
+      overflow: hidden;
     }
 
-    .nav-cta:hover { background: var(--or-clair) !important; }
+    .nav-cta::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 60%; height: 100%;
+      background: linear-gradient(105deg, transparent 20%, rgba(255,255,255,0.45) 50%, transparent 80%);
+      animation: cta-shimmer 4s ease-in-out infinite 1.5s;
+    }
+
+    .nav-cta:hover { background: var(--or-clair) !important; color: var(--noir) !important; }
+    .nav-cta:hover::after { animation: none; }
+
+    .nav-mobile-cta {
+      display: none;
+      background: var(--or);
+      color: var(--noir) !important;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 9px 16px;
+      white-space: nowrap;
+      transition: background 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-mobile-cta::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 60%; height: 100%;
+      background: linear-gradient(105deg, transparent 20%, rgba(255,255,255,0.45) 50%, transparent 80%);
+      animation: cta-shimmer 4s ease-in-out infinite 1.5s;
+    }
+
+    .nav-mobile-cta:hover { background: var(--or-clair); }
+    .nav-mobile-cta:hover::after { animation: none; }
 
     .nav-burger {
       display: none;
@@ -380,6 +436,7 @@
     /* ─── MOBILE ─── */
     @media (max-width: 960px) {
       .nav-links { display: none; }
+      .nav-cta { display: none; }
       .nav-links.nav-open {
         display: flex;
         flex-direction: column;
@@ -392,6 +449,7 @@
         z-index: 99;
       }
       .nav-burger { display: flex; }
+      .nav-mobile-cta { display: block; margin-left: auto; margin-right: 16px; }
     }
 
     @media (max-width: 860px) {
@@ -412,7 +470,8 @@
   <nav id="navbar">
     <div class="container">
       <a href="index.html" class="nav-logo">
-        <img src="Assets/logo.jpg" alt="Steven Therapy">
+        <img class="logo-desktop" src="Assets/logo.jpg" alt="Steven Therapy">
+        <img class="logo-pc" src="Assets/logo-split.png" alt="Steven Therapy">
       </a>
       <ul class="nav-links">
         <li><a href="index.html#apropos">À propos</a></li>
@@ -420,8 +479,9 @@
         <li><a href="index.html#tarifs">Tarifs</a></li>
         <li><a href="index.html#avis">Avis</a></li>
         <li><a href="blog.html" class="active">Blog</a></li>
-        <li><a href="https://wa.me/33612829315?text=Bonjour%20Steven%2C%20je%20souhaite%20prendre%20rendez-vous." target="_blank" class="nav-cta">Prendre RDV</a></li>
       </ul>
+      <a href="https://wa.me/33612829315?text=Bonjour%20Steven%2C%20je%20souhaite%20prendre%20rendez-vous." target="_blank" class="nav-cta">Prendre RDV</a>
+      <a href="https://wa.me/33612829315?text=Bonjour%20Steven%2C%20je%20souhaite%20prendre%20rendez-vous." target="_blank" class="nav-mobile-cta">Réserver</a>
       <div class="nav-burger" onclick="toggleMenu()">
         <span></span><span></span><span></span>
       </div>
@@ -442,7 +502,7 @@
         <div class="article-cat">Deep Tissue</div>
         <h1>5 signes que tu as besoin d'un massage deep tissue</h1>
         <div class="article-hero-meta">
-          <span>6 juin 2026</span>
+          <span>24 juin 2026</span>
           <div class="article-hero-meta-sep"></div>
           <span>5 min de lecture</span>
           <div class="article-hero-meta-sep"></div>
@@ -541,10 +601,6 @@
         <p>Si tu t'es reconnu dans un ou plusieurs de ces signes, ton corps t'envoie un message clair.</p>
 
         <p>Le deep tissue n'est pas réservé aux sportifs de haut niveau. Il s'adresse à tous ceux qui ont un corps actif, des tensions chroniques, une mobilité qui rétrécit, une récupération qui flanche.</p>
-
-        <p>Je suis Steven, masseur sportif certifié à Choisy-le-Roi, formé par Marius Malarme, champion d'Europe de massage 2022 et 2025. Je travaille à domicile et en cabinet dans tout le Val-de-Marne, 7j/7.</p>
-
-        <p>34 avis 5 étoiles Google. Des résultats concrets dès la première séance.</p>
 
         <div class="article-cta-inline">
           <p>Envie de voir ce que ça donne en vrai ? Réserve ta séance découverte à <strong style="color: var(--or)">49€ au lieu de 80€</strong>.</p>
