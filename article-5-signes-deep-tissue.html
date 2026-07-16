@@ -131,7 +131,7 @@
 
     @media (max-width: 640px) {
       .nav-logo .logo-desktop { display: none; }
-      .nav-logo .logo-pc { display: block; height: 56px; width: 56px; }
+      .nav-logo .logo-pc { display: block; height: 40px; width: 40px; }
     }
 
     .nav-links {
@@ -348,10 +348,10 @@
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      transition: background 0.2s;
+      transition: background 0.2s, transform 0.2s;
     }
 
-    .btn-primary:hover { background: var(--or-clair); }
+    .btn-primary:hover { background: var(--or-clair); transform: translateY(-1px); }
 
     /* ─── SIDEBAR ─── */
     .article-sidebar {
@@ -400,10 +400,10 @@
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      transition: background 0.2s;
+      transition: background 0.2s, transform 0.2s;
     }
 
-    .sidebar-btn-primary:hover { background: var(--or-clair); }
+    .sidebar-btn-primary:hover { background: var(--or-clair); transform: translateY(-1px); }
 
     .sidebar-other-article {
       display: block;
@@ -477,6 +477,7 @@
     @media (max-width: 860px) {
       .article-layout { grid-template-columns: 1fr; gap: 48px; }
       .article-sidebar { position: static; }
+      .sidebar-card { display: none; }
     }
 
     @media (max-width: 640px) {
@@ -501,6 +502,7 @@
         <li><a href="index.html#tarifs">Tarifs</a></li>
         <li><a href="index.html#avis">Avis</a></li>
         <li><a href="blog.html" class="active">Blog</a></li>
+        <li><a href="faq.html">FAQ</a></li>
       </ul>
       <a href="https://wa.me/33612829315?text=Bonjour%20Steven%2C%20je%20souhaite%20prendre%20rendez-vous." target="_blank" class="nav-cta">Prendre RDV</a>
       <a href="https://wa.me/33612829315?text=Bonjour%20Steven%2C%20je%20souhaite%20prendre%20rendez-vous." target="_blank" class="nav-mobile-cta">Réserver</a>
@@ -528,7 +530,7 @@
           <div class="article-hero-meta-sep"></div>
           <span>5 min de lecture</span>
           <div class="article-hero-meta-sep"></div>
-          <span>Steven Piscone</span>
+          <span>Steven Therapy</span>
         </div>
       </div>
     </div>
@@ -554,7 +556,7 @@
 
         <p>Le deep tissue, ce n'est pas un massage "plus fort" qu'un massage classique. C'est une technique précise, axée sur le relâchement des tissus profonds du muscle et des fascias qui les entourent.</p>
 
-        <p>Contrairement au massage suédois ou bien-être qui travaille en surface, le deep tissue cible les couches musculaires profondes avec des pressions soutenues et des mouvements lents et intentionnels. L'objectif : libérer les tensions chroniques, casser les adhérences, restaurer la mobilité.</p>
+        <p>Contrairement au massage californien ou bien-être qui travaille en surface, le deep tissue cible les couches musculaires profondes avec des pressions soutenues et des mouvements lents et intentionnels. L'objectif : libérer les tensions chroniques, casser les adhérences, restaurer la mobilité.</p>
 
         <p>C'est une technique de fond. Les résultats se sentent, et ils durent.</p>
 
@@ -639,7 +641,7 @@
 
         <div class="sidebar-card">
           <div class="sidebar-card-title">Offre découverte</div>
-          <p>Première séance deep tissue ou sportif à 49€ au lieu de 80€. Sans engagement.</p>
+          <p>Première séance deep tissue ou sportif à 49€ au lieu de 80€.</p>
           <div class="sidebar-cta">
             <a href="https://wa.me/33612829315?text=Bonjour%20Steven%2C%20je%20souhaite%20profiter%20de%20l%27offre%20d%C3%A9couverte." target="_blank" class="sidebar-btn-primary">
               Réserver — 49€
@@ -668,8 +670,9 @@
           <li><a href="index.html#tarifs">Tarifs</a></li>
           <li><a href="index.html#avis">Avis</a></li>
           <li><a href="blog.html">Blog</a></li>
+          <li><a href="faq.html">FAQ</a></li>
         </ul>
-        <p class="footer-copy">© 2026 Steven Therapy · Choisy-le-Roi (94)</p>
+        <p class="footer-copy">© 2026 Steven Therapy · Paris & Île-de-France</p>
       </div>
     </div>
   </footer>
@@ -687,6 +690,23 @@
         document.querySelector('.nav-links').classList.remove('nav-open');
       }
     });
+
+    // Bouton magnétique
+    (function() {
+      document.querySelectorAll('.btn-primary, .sidebar-btn-primary').forEach(btn => {
+        btn.addEventListener('mousemove', e => {
+          const r = btn.getBoundingClientRect();
+          const x = (e.clientX - r.left - r.width  / 2) * 0.3;
+          const y = (e.clientY - r.top  - r.height / 2) * 0.3;
+          btn.style.transform = `translate(${x}px, ${y}px)`;
+        });
+        btn.addEventListener('mouseleave', () => {
+          btn.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+          btn.style.transform = '';
+          setTimeout(() => btn.style.transition = '', 500);
+        });
+      });
+    })();
   </script>
 
 </body>

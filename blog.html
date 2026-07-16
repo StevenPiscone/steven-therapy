@@ -27,7 +27,7 @@
   </script>
 
   <title>Blog Massage Sportif — Conseils & Guides | Steven Therapy</title>
-  <meta name="description" content="Conseils de masseur sportif certifié : deep tissue, récupération, mobilité, performance. Steven Therapy, Choisy-le-Roi (94).">
+  <meta name="description" content="Conseils de masseur sportif certifié : deep tissue, récupération, mobilité, performance. Steven Therapy, Paris & Île-de-France.">
   <link rel="canonical" href="https://steventherapy.fr/blog">
 
   <meta property="og:title" content="Blog Steven Therapy — Massage Sportif & Deep Tissue">
@@ -113,7 +113,7 @@
 
     @media (max-width: 640px) {
       .nav-logo .logo-desktop { display: none; }
-      .nav-logo .logo-pc { display: block; height: 56px; width: 56px; }
+      .nav-logo .logo-pc { display: block; height: 40px; width: 40px; }
     }
 
     .nav-links {
@@ -366,11 +366,11 @@
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      transition: background 0.2s;
+      transition: background 0.2s, transform 0.2s;
       white-space: nowrap;
     }
 
-    .btn-primary:hover { background: var(--or-clair); }
+    .btn-primary:hover { background: var(--or-clair); transform: translateY(-1px); }
 
     /* ─── FOOTER ─── */
     footer {
@@ -457,6 +457,7 @@
         <li><a href="index.html#tarifs">Tarifs</a></li>
         <li><a href="index.html#avis">Avis</a></li>
         <li><a href="blog.html" class="active">Blog</a></li>
+        <li><a href="faq.html">FAQ</a></li>
       </ul>
       <a href="https://wa.me/33612829315?text=Bonjour%20Steven%2C%20je%20souhaite%20prendre%20rendez-vous." target="_blank" class="nav-cta">Prendre RDV</a>
       <a href="https://wa.me/33612829315?text=Bonjour%20Steven%2C%20je%20souhaite%20prendre%20rendez-vous." target="_blank" class="nav-mobile-cta">Réserver</a>
@@ -495,6 +496,18 @@
           </div>
         </a>
 
+        <a href="article-deep-tissue-vs-relaxant.html" class="article-card">
+          <div class="article-cat">Comparaison</div>
+          <h2 class="article-title">Deep tissue vs massage relaxant : les vraies différences</h2>
+          <p class="article-excerpt">On te demande souvent quel type de massage tu veux. Tu réponds un peu au hasard. Ou tu choisis "relaxant" parce que c'est le mot que tu connais. Voici une comparaison claire pour savoir quoi demander la prochaine fois.</p>
+          <div class="article-meta">
+            <div class="article-meta-info">16 juillet 2026 · 5 min</div>
+            <div class="article-link">
+              Lire l'article
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+        </a>
 
       </div>
     </div>
@@ -506,7 +519,7 @@
       <div class="cta-band-inner">
         <div class="cta-band-text">
           <h2>Prêt à <span>récupérer</span> ?</h2>
-          <p>Première séance à 49€ au lieu de 80€. Sans engagement.</p>
+          <p>Première séance à 49€ au lieu de 80€.</p>
         </div>
         <a href="https://wa.me/33612829315?text=Bonjour%20Steven%2C%20je%20souhaite%20profiter%20de%20l%27offre%20d%C3%A9couverte%20(1h%20%C3%A0%2049%E2%82%AC)." target="_blank" class="btn-primary">
           Offre découverte — 49€
@@ -527,11 +540,31 @@
           <li><a href="index.html#tarifs">Tarifs</a></li>
           <li><a href="index.html#avis">Avis</a></li>
           <li><a href="blog.html">Blog</a></li>
+          <li><a href="faq.html">FAQ</a></li>
         </ul>
-        <p class="footer-copy">© 2026 Steven Therapy · Choisy-le-Roi (94)</p>
+        <p class="footer-copy">© 2026 Steven Therapy · Paris & Île-de-France</p>
       </div>
     </div>
   </footer>
+
+  <script>
+    // Bouton magnétique
+    (function() {
+      document.querySelectorAll('.btn-primary').forEach(btn => {
+        btn.addEventListener('mousemove', e => {
+          const r = btn.getBoundingClientRect();
+          const x = (e.clientX - r.left - r.width  / 2) * 0.3;
+          const y = (e.clientY - r.top  - r.height / 2) * 0.3;
+          btn.style.transform = `translate(${x}px, ${y}px)`;
+        });
+        btn.addEventListener('mouseleave', () => {
+          btn.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+          btn.style.transform = '';
+          setTimeout(() => btn.style.transition = '', 500);
+        });
+      });
+    })();
+  </script>
 
 </body>
 </html>
