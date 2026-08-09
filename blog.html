@@ -4,27 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Meta Pixel -->
-  <script>
-    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-    document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '982520081453666');
-    fbq('track', 'PageView');
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=982520081453666&ev=PageView&noscript=1"/></noscript>
-
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5BYWHV033K"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-5BYWHV033K');
-  </script>
+  <!-- GA4 + Meta Pixel : charges apres consentement, voir Assets/cookie-consent.js -->
+  <link rel="stylesheet" href="Assets/legal.css">
 
   <title>Blog Massage Sportif — Conseils & Guides | Steven Therapy</title>
   <meta name="description" content="Conseils de masseur sportif certifié : deep tissue, récupération, mobilité, performance. Steven Therapy, Paris & Île-de-France.">
@@ -544,6 +525,12 @@
         </ul>
         <p class="footer-copy">© 2026 Steven Therapy · Paris & Île-de-France</p>
       </div>
+      <div class="footer-legal">
+        <a href="mentions-legales.html">Mentions légales</a>
+        <a href="cgv.html">CGV</a>
+        <a href="confidentialite.html">Confidentialité</a>
+        <button type="button" onclick="window.steventherapyResetCookieConsent && window.steventherapyResetCookieConsent()">Gérer les cookies</button>
+      </div>
     </div>
   </footer>
 
@@ -566,5 +553,6 @@
     })();
   </script>
 
+  <script src="Assets/cookie-consent.js" defer></script>
 </body>
 </html>

@@ -43,6 +43,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+  <!-- GA4 + Meta Pixel (si consentement) : voir Assets/cookie-consent.js -->
+  <link rel="stylesheet" href="Assets/legal.css">
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -968,6 +971,12 @@
           <li><a href="https://wa.me/33612829315" target="_blank" rel="noopener">WhatsApp</a></li>
         </ul>
       </div>
+      <div class="footer-legal">
+        <a href="mentions-legales.html">Mentions légales</a>
+        <a href="cgv.html">CGV</a>
+        <a href="confidentialite.html">Confidentialité</a>
+        <button type="button" onclick="window.steventherapyResetCookieConsent && window.steventherapyResetCookieConsent()">Gérer les cookies</button>
+      </div>
     </div>
   </footer>
 
@@ -1001,5 +1010,7 @@
       });
     })();
   </script>
+
+  <script src="Assets/cookie-consent.js" defer></script>
 </body>
 </html>

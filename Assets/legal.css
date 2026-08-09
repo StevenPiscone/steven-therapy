@@ -1,0 +1,117 @@
+/* Bandeau de consentement cookies + ligne de liens legaux en footer.
+   Partage entre toutes les pages du site, s'appuie sur les variables
+   --noir/--or/--blanc definies dans le <style> de chaque page. */
+
+#cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  background: rgba(10, 10, 8, 0.97);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(212, 175, 55, 0.3);
+  padding: 20px 24px;
+}
+
+.cookie-banner-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.cookie-banner-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  color: rgba(253, 252, 248, 0.75);
+  line-height: 1.6;
+  flex: 1;
+  min-width: 240px;
+}
+
+.cookie-banner-text a {
+  color: var(--or, #D4AF37);
+  text-decoration: underline;
+}
+
+.cookie-banner-actions {
+  display: flex;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.cookie-btn {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 12px 24px;
+  cursor: pointer;
+  border: none;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.cookie-btn-primary {
+  background: var(--or, #D4AF37);
+  color: var(--noir, #0a0a08);
+}
+
+.cookie-btn-primary:hover {
+  background: var(--or-clair, #e8c94a);
+}
+
+.cookie-btn-secondary {
+  background: transparent;
+  color: var(--blanc, #FDFCF8);
+  border: 1px solid rgba(253, 252, 248, 0.25);
+}
+
+.cookie-btn-secondary:hover {
+  border-color: var(--or, #D4AF37);
+  color: var(--or, #D4AF37);
+}
+
+@media (max-width: 600px) {
+  .cookie-banner-inner {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+  .cookie-banner-actions {
+    justify-content: center;
+  }
+}
+
+/* ─── Ligne de liens legaux en footer ─── */
+.footer-legal {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(253, 252, 248, 0.06);
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.footer-legal a,
+.footer-legal button {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: rgba(253, 252, 248, 0.3);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.footer-legal a:hover,
+.footer-legal button:hover {
+  color: var(--or, #D4AF37);
+}

@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Politique de confidentialité | Steven Therapy</title>
+  <meta name="description" content="Politique de confidentialité du site steventherapy.fr : données collectées, cookies, durées de conservation, droits RGPD.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://steventherapy.fr/confidentialite">
+
+  <link rel="stylesheet" href="Assets/legal.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --noir: #0a0a08;
+      --or: #D4AF37;
+      --or-clair: #e8c94a;
+      --blanc: #FDFCF8;
+      --gris: #1a1a18;
+      --gris-texte: #8a8a7a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--noir);
+      color: var(--blanc);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 20px 0;
+      background: rgba(10, 10, 8, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+    }
+
+    nav .container {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-logo img {
+      height: 36px;
+      width: auto;
+      display: block;
+    }
+
+    .nav-logo .logo-pc { display: none; }
+
+    @media (max-width: 640px) {
+      .nav-logo .logo-desktop { display: none; }
+      .nav-logo .logo-pc { display: block; height: 40px; width: 40px; }
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      margin-left: auto;
+    }
+
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(253,252,248,0.7);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--or); }
+
+    @keyframes cta-shimmer {
+      0%   { left: -100%; }
+      30%  { left: 140%; }
+      100% { left: 140%; }
+    }
+
+    .nav-cta {
+      background: var(--or);
+      color: var(--noir) !important;
+      padding: 10px 22px;
+      font-weight: 700 !important;
+      margin-left: 32px;
+      transition: background 0.2s !important;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-cta::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 60%; height: 100%;
+      background: linear-gradient(105deg, transparent 20%, rgba(255,255,255,0.45) 50%, transparent 80%);
+      animation: cta-shimmer 4s ease-in-out infinite 1.5s;
+    }
+
+    .nav-cta:hover { background: var(--or-clair) !important; color: var(--noir) !important; }
+    .nav-cta:hover::after { animation: none; }
+
+    .nav-mobile-cta {
+      display: none;
+      background: var(--or);
+      color: var(--noir) !important;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 9px 16px;
+      white-space: nowrap;
+      transition: background 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-mobile-cta::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 60%; height: 100%;
+      background: linear-gradient(105deg, transparent 20%, rgba(255,255,255,0.45) 50%, transparent 80%);
+      animation: cta-shimmer 4s ease-in-out infinite 1.5s;
+    }
+
+    .nav-mobile-cta:hover { background: var(--or-clair); }
+    .nav-mobile-cta:hover::after { animation: none; }
+
+    .nav-burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .nav-burger span {
+      width: 24px; height: 2px;
+      background: var(--blanc);
+      transition: 0.3s;
+    }
+
+    @media (max-width: 960px) {
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .nav-links.nav-open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%; left: 0; right: 0;
+        background: rgba(10,10,8,0.97);
+        padding: 24px;
+        gap: 20px;
+        border-top: 1px solid rgba(212,175,55,0.15);
+        z-index: 99;
+      }
+      .nav-burger { display: flex; }
+      .nav-mobile-cta { display: block; margin-left: auto; margin-right: 16px; }
+    }
+
+    /* ─── CONTENU LÉGAL ─── */
+    .legal-content {
+      padding: 160px 0 96px;
+    }
+
+    .legal-content-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .legal-content h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.04em;
+      font-size: clamp(40px, 6vw, 64px);
+      color: var(--blanc);
+      margin-bottom: 8px;
+    }
+
+    .legal-updated {
+      font-size: 12px;
+      color: rgba(253,252,248,0.35);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 40px;
+    }
+
+    .legal-content h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.04em;
+      font-size: clamp(20px, 3vw, 26px);
+      color: var(--or);
+      margin-top: 48px;
+      margin-bottom: 16px;
+    }
+
+    .legal-content h2:first-of-type { margin-top: 0; }
+
+    .legal-content p {
+      font-size: 15px;
+      color: rgba(253,252,248,0.7);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .legal-content ul {
+      margin: 0 0 16px 0;
+      padding-left: 20px;
+      color: rgba(253,252,248,0.7);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .legal-content li { margin-bottom: 6px; }
+    .legal-content a { color: var(--or); text-decoration: underline; }
+    .legal-content strong { color: var(--blanc); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--noir);
+      border-top: 1px solid rgba(253,252,248,0.06);
+      padding: 40px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      letter-spacing: 0.08em;
+    }
+
+    .footer-logo span { color: var(--or); }
+
+    .footer-copy {
+      font-size: 12px;
+      color: rgba(253,252,248,0.3);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(253,252,248,0.4);
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--or); }
+
+    @media (max-width: 768px) {
+      .footer-inner { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── NAV ─── -->
+  <nav>
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <img class="logo-desktop" src="Assets/logo.png" alt="Steven Therapy">
+        <img class="logo-pc" src="Assets/logo-split.png" alt="Steven Therapy">
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#apropos">À propos</a></li>
+        <li><a href="index.html#prestations">Prestations</a></li>
+        <li><a href="index.html#tarifs">Tarifs</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+      <a href="https://wa.me/33612829315?text=Bonjour%20Steven%2C%20je%20souhaite%20prendre%20rendez-vous." target="_blank" class="nav-cta">Prendre RDV</a>
+      <a href="https://wa.me/33612829315?text=Bonjour%20Steven%2C%20je%20souhaite%20prendre%20rendez-vous." target="_blank" class="nav-mobile-cta">Réserver</a>
+      <div class="nav-burger" onclick="document.getElementById('navLinks').classList.toggle('nav-open')">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ─── CONTENU ─── -->
+  <section class="legal-content">
+    <div class="container">
+      <div class="legal-content-wrap">
+        <h1>Politique de confidentialité</h1>
+        <p class="legal-updated">Dernière mise à jour : août 2026</p>
+
+        <p>Le site steventherapy.fr est édité par Steven Piscone, exerçant sous le nom commercial Steven Therapy, entrepreneur individuel (micro-entreprise). Contact : <a href="mailto:contact@steventherapy.fr">contact@steventherapy.fr</a>.</p>
+        <p>Cette page explique quelles données sont collectées sur ce site, pourquoi, et comment les faire retirer.</p>
+
+        <h2>Quelles données sont collectées</h2>
+        <p><strong>Données transmises directement par toi.</strong> Quand tu utilises le formulaire de contact ou l'assistant de réservation (chatbot) du site : nom, moyen de contact (téléphone ou email), et le contenu de ta demande. Ces informations servent uniquement à te répondre et organiser ta séance.</p>
+        <p><strong>Données de navigation (mesure d'audience).</strong> Le site utilise Google Analytics (GA4) pour comprendre comment le site est utilisé (pages consultées, provenance du trafic, appareil). Ces données sont anonymisées autant que possible et ne servent pas à t'identifier personnellement.</p>
+        <p><strong>Données publicitaires.</strong> Le site utilise le Pixel Meta (Facebook/Instagram) pour mesurer l'efficacité des publicités et proposer des publicités pertinentes sur Facebook et Instagram à des personnes ayant déjà visité le site.</p>
+
+        <h2>Cookies</h2>
+        <p>La navigation sur ce site peut déposer des cookies liés à Google Analytics et au Pixel Meta. Ces cookies ne sont pas indispensables au fonctionnement du site : ils ne sont déposés qu'après ton consentement, donné via le bandeau affiché à ta première visite. Tu peux retirer ton consentement à tout moment via le lien "Gérer les cookies" en bas de page.</p>
+
+        <h2>Durée de conservation</h2>
+        <ul>
+          <li>Données de contact et de réservation : conservées 3 ans à compter de notre dernier échange, sauf obligation légale de conservation plus longue (documents de facturation notamment)</li>
+          <li>Cookies de mesure d'audience (GA4) : 13 mois maximum, conformément aux recommandations de la CNIL</li>
+          <li>Cookies publicitaires (Pixel Meta) : durée définie par Meta, généralement jusqu'à 180 jours</li>
+        </ul>
+
+        <h2>Qui reçoit ces données</h2>
+        <p>Google LLC (Google Analytics) et Meta Platforms Ireland Ltd (Pixel Meta), dans le cadre de leurs services respectifs. Ces sociétés peuvent traiter des données en dehors de l'Union européenne, sur la base de leurs clauses contractuelles types approuvées par la Commission européenne. Aucune donnée n'est vendue à des tiers.</p>
+
+        <h2>Tes droits</h2>
+        <p>Conformément au RGPD, tu disposes d'un droit d'accès, de rectification, d'effacement, d'opposition et de portabilité sur tes données. Pour exercer ces droits, écris-nous à <a href="mailto:contact@steventherapy.fr">contact@steventherapy.fr</a>. Tu peux aussi déposer une réclamation auprès de la <a href="https://www.cnil.fr" target="_blank" rel="noopener">CNIL</a> si tu estimes que tes droits ne sont pas respectés.</p>
+
+        <h2>Sécurité</h2>
+        <p>Des mesures raisonnables sont prises pour protéger tes données contre l'accès non autorisé, la perte ou la divulgation.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">STEVEN <span>THERAPY</span></div>
+        <ul class="footer-links">
+          <li><a href="index.html#apropos">À propos</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+        <p class="footer-copy">© 2026 Steven Therapy · Paris & Île-de-France</p>
+      </div>
+      <div class="footer-legal">
+        <a href="mentions-legales.html">Mentions légales</a>
+        <a href="cgv.html">CGV</a>
+        <a href="confidentialite.html">Confidentialité</a>
+        <button type="button" onclick="window.steventherapyResetCookieConsent && window.steventherapyResetCookieConsent()">Gérer les cookies</button>
+      </div>
+    </div>
+  </footer>
+
+  <script src="Assets/cookie-consent.js" defer></script>
+</body>
+</html>
