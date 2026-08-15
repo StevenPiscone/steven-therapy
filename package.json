@@ -1,0 +1,11 @@
+{
+  "name": "steven-therapy-site-functions",
+  "private": true,
+  "description": "Fonctions serverless Netlify pour le bot du site (FAQ IA + disponibilites agenda). Le site lui-meme reste statique.",
+  "dependencies": {
+    "@anthropic-ai/sdk": "latest",
+    "@netlify/blobs": "latest",
+    "googleapis": "latest",
+    "luxon": "latest"
+  }
+}

@@ -10,6 +10,7 @@
   <link rel="canonical" href="https://steventherapy.fr/confidentialite">
 
   <link rel="stylesheet" href="Assets/legal.css">
+  <link rel="stylesheet" href="Assets/chatbot.css">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -304,8 +305,8 @@
         <li><a href="blog.html">Blog</a></li>
         <li><a href="faq.html">FAQ</a></li>
       </ul>
-      <a href="https://wa.me/33612829315?text=Bonjour%20Steven%2C%20je%20souhaite%20prendre%20rendez-vous." target="_blank" class="nav-cta">Prendre RDV</a>
-      <a href="https://wa.me/33612829315?text=Bonjour%20Steven%2C%20je%20souhaite%20prendre%20rendez-vous." target="_blank" class="nav-mobile-cta">Réserver</a>
+      <a href="#" class="nav-cta" onclick="openBookingChat(); return false;">Prendre RDV</a>
+      <a href="#" class="nav-mobile-cta" onclick="openBookingChat(); return false;">Réserver</a>
       <div class="nav-burger" onclick="document.getElementById('navLinks').classList.toggle('nav-open')">
         <span></span><span></span><span></span>
       </div>
@@ -369,6 +370,32 @@
       </div>
     </div>
   </footer>
+
+  <!-- ─── CHATBOT ─── -->
+  <button id="chatbot-btn" onclick="toggleChat()" aria-label="Réserver une séance">
+    <svg width="26" height="26" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+    </svg>
+    <div class="chatbot-notif" id="chatNotif"></div>
+  </button>
+
+  <div id="chatbot-window">
+    <div class="chatbot-header">
+      <div class="chatbot-avatar">ST</div>
+      <div class="chatbot-header-info">
+        <div class="chatbot-header-name">Steven Therapy</div>
+        <div class="chatbot-header-status">Répond en moins d'1h ⚡</div>
+      </div>
+      <button class="chatbot-close" onclick="toggleChat()">✕</button>
+    </div>
+    <div class="chatbot-body" id="chatBody">
+      <div class="chatbot-messages" id="chatMessages"></div>
+      <div class="chatbot-choices" id="chatChoices"></div>
+    </div>
+  </div>
+
+  <script src="Assets/chatbot.js"></script>
+  <!-- ─── FIN CHATBOT ─── -->
 
   <script src="Assets/cookie-consent.js" defer></script>
 </body>

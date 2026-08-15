@@ -6,6 +6,7 @@
 
   <!-- GA4 + Meta Pixel : charges apres consentement, voir Assets/cookie-consent.js -->
   <link rel="stylesheet" href="Assets/legal.css">
+  <link rel="stylesheet" href="Assets/chatbot.css">
 
   <title>Deep tissue vs massage relaxant : les vraies différences | Steven Therapy</title>
   <meta name="description" content="Deep tissue ou massage relaxant : lequel choisir selon ton profil et tes objectifs ? On compare les deux sans langue de bois.">
@@ -546,8 +547,8 @@
         <li><a href="blog.html" class="active">Blog</a></li>
         <li><a href="faq.html">FAQ</a></li>
       </ul>
-      <a href="https://wa.me/33612829315?text=Bonjour%20Steven%2C%20je%20souhaite%20prendre%20rendez-vous." target="_blank" class="nav-cta">Prendre RDV</a>
-      <a href="https://wa.me/33612829315?text=Bonjour%20Steven%2C%20je%20souhaite%20prendre%20rendez-vous." target="_blank" class="nav-mobile-cta">Réserver</a>
+      <a href="#" class="nav-cta" onclick="openBookingChat(); return false;">Prendre RDV</a>
+      <a href="#" class="nav-mobile-cta" onclick="openBookingChat(); return false;">Réserver</a>
       <div class="nav-burger" onclick="toggleMenu()">
         <span></span><span></span><span></span>
       </div>
@@ -712,7 +713,7 @@
 
         <div class="article-cta-inline">
           <p>Tu sais maintenant que c'est le deep tissue dont tu as besoin ? Réserve ta première séance à <span style="color: var(--or); font-weight: 600;">49€ au lieu de <span style="text-decoration: line-through;">80€</span></span>.</p>
-          <a href="https://wa.me/33612829315?text=Bonjour%20Steven%2C%20je%20souhaite%20r%C3%A9server%20une%20s%C3%A9ance%20d%C3%A9couverte%20deep%20tissue." target="_blank" class="btn-primary">
+          <a href="#" class="btn-primary" onclick="openBookingChat('decouverte'); return false;">
             Prendre rendez-vous
             <svg width="14" height="14" viewbox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
@@ -726,7 +727,7 @@
         <div class="sidebar-card">
           <div class="sidebar-card-title">Offre découverte</div>
           <p>Première séance deep tissue ou sportif à 49€ au lieu de 80€.</p>
-          <a href="https://wa.me/33612829315?text=Bonjour%20Steven%2C%20je%20souhaite%20profiter%20de%20l%27offre%20d%C3%A9couverte." target="_blank" class="sidebar-btn-primary">
+          <a href="#" class="sidebar-btn-primary" onclick="openBookingChat('decouverte'); return false;">
             Réserver — 49€
           </a>
         </div>
@@ -796,6 +797,32 @@
       });
     })();
   </script>
+
+  <!-- ─── CHATBOT ─── -->
+  <button id="chatbot-btn" onclick="toggleChat()" aria-label="Réserver une séance">
+    <svg width="26" height="26" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+    </svg>
+    <div class="chatbot-notif" id="chatNotif"></div>
+  </button>
+
+  <div id="chatbot-window">
+    <div class="chatbot-header">
+      <div class="chatbot-avatar">ST</div>
+      <div class="chatbot-header-info">
+        <div class="chatbot-header-name">Steven Therapy</div>
+        <div class="chatbot-header-status">Répond en moins d'1h ⚡</div>
+      </div>
+      <button class="chatbot-close" onclick="toggleChat()">✕</button>
+    </div>
+    <div class="chatbot-body" id="chatBody">
+      <div class="chatbot-messages" id="chatMessages"></div>
+      <div class="chatbot-choices" id="chatChoices"></div>
+    </div>
+  </div>
+
+  <script src="Assets/chatbot.js"></script>
+  <!-- ─── FIN CHATBOT ─── -->
 
   <script src="Assets/cookie-consent.js" defer></script>
 </body>

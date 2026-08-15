@@ -1,0 +1,214 @@
+/* ─── CHATBOT ───
+   Style partage sur toutes les pages du site (voir aussi Assets/chatbot.js
+   et le fragment HTML #chatbot-btn/#chatbot-window duplique en fin de <body>). */
+
+#chatbot-btn {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--or);
+  color: var(--noir);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 300;
+  box-shadow: 0 4px 24px rgba(212,175,55,0.45);
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: none;
+}
+#chatbot-btn:hover { transform: scale(1.08); box-shadow: 0 6px 32px rgba(212,175,55,0.65); }
+#chatbot-btn.shake { animation: chatShake 0.65s ease; }
+@keyframes chatShake {
+  0%,100% { transform: rotate(0deg) scale(1); }
+  15% { transform: rotate(-14deg) scale(1.05); }
+  30% { transform: rotate(14deg) scale(1.05); }
+  45% { transform: rotate(-9deg) scale(1.02); }
+  60% { transform: rotate(9deg) scale(1.02); }
+  75% { transform: rotate(-4deg); }
+  90% { transform: rotate(4deg); }
+}
+.chatbot-notif {
+  position: absolute;
+  top: 3px; right: 3px;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: #e53e3e;
+  border: 2px solid var(--noir);
+}
+#chatbot-window {
+  position: fixed;
+  bottom: 100px;
+  right: 28px;
+  width: 340px;
+  max-height: min(530px, calc(100vh - 120px));
+  background: var(--gris);
+  border: 1px solid rgba(212,175,55,0.2);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  z-index: 299;
+  box-shadow: 0 12px 48px rgba(0,0,0,0.6);
+  overflow: hidden;
+  transform: scale(0.85) translateY(16px);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  transform-origin: bottom right;
+}
+#chatbot-window.open {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+  pointer-events: all;
+}
+.chatbot-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  background: rgba(212,175,55,0.07);
+  border-bottom: 1px solid rgba(212,175,55,0.15);
+  flex-shrink: 0;
+}
+.chatbot-avatar {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--or);
+  color: var(--noir);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 15px;
+  letter-spacing: 0.05em;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.chatbot-header-info { flex: 1; }
+.chatbot-header-name { font-size: 13px; font-weight: 700; color: var(--blanc); }
+.chatbot-header-status { font-size: 11px; color: var(--gris-texte); margin-top: 2px; }
+.chatbot-close {
+  background: none; border: none;
+  color: var(--gris-texte); cursor: pointer;
+  font-size: 18px; padding: 4px; line-height: 1;
+  transition: color 0.2s;
+}
+.chatbot-close:hover { color: var(--blanc); }
+.chatbot-body {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(212,175,55,0.2) transparent;
+}
+.chatbot-messages {
+  padding: 18px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.msg-bot, .msg-user {
+  max-width: 88%;
+  font-size: 13px;
+  line-height: 1.5;
+  padding: 10px 14px;
+  white-space: pre-line;
+}
+.msg-bot {
+  background: rgba(255,255,255,0.06);
+  color: var(--blanc);
+  border-radius: 4px 12px 12px 12px;
+  align-self: flex-start;
+}
+.msg-user {
+  background: rgba(212,175,55,0.13);
+  color: var(--or);
+  border: 1px solid rgba(212,175,55,0.22);
+  border-radius: 12px 4px 12px 12px;
+  align-self: flex-end;
+  font-weight: 600;
+}
+.chatbot-choices {
+  padding: 12px 14px 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  border-top: 1px solid rgba(212,175,55,0.1);
+}
+.chat-btn {
+  background: transparent;
+  border: 1px solid rgba(212,175,55,0.4);
+  color: var(--or);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.chat-btn:hover { background: var(--or); color: var(--noir); }
+.chat-input-row {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+.chat-input {
+  flex: 1;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(212,175,55,0.3);
+  border-radius: 20px;
+  color: var(--blanc);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  padding: 8px 14px;
+  outline: none;
+  min-width: 0;
+}
+.chat-input:focus { border-color: var(--or); }
+.chat-input::placeholder { color: var(--gris-texte); }
+/* L'icone calendrier native est noire par defaut (invisible sur fond sombre).
+   Chrome ne permet pas de la colorer via color/fill, seulement via filter. */
+.chat-input::-webkit-calendar-picker-indicator {
+  filter: invert(59%) sepia(46%) saturate(505%) hue-rotate(358deg) brightness(94%) contrast(101%);
+  cursor: pointer;
+}
+.chat-send-btn {
+  background: var(--or);
+  border: none;
+  color: var(--noir);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+.chat-send-btn:hover { background: var(--or-clair); }
+.chat-send-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.chat-wa-btn {
+  width: 100%;
+  background: #25d366;
+  border: none;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.chat-wa-btn:hover { background: #1ebe5d; }
+@media (max-width: 480px) {
+  #chatbot-window { right: 12px; left: 12px; width: auto; bottom: 88px; max-height: min(530px, calc(100vh - 108px)); }
+  #chatbot-btn { bottom: 20px; right: 20px; }
+}
