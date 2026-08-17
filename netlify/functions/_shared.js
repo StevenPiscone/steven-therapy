@@ -56,38 +56,44 @@ function todayKey() {
 // Retourne { allowed: true } ou { allowed: false, reason: "ip_limit" | "daily_cap" }.
 // Best-effort : pas de verrou atomique (Netlify Blobs n'en fournit pas), un leger
 // depassement en cas de requetes simultanees est acceptable pour cet usage.
+// Fail-open : si Netlify Blobs n'est pas disponible (config manquante, panne...),
+// on laisse passer plutot que de faire planter toute la fonction. Un rate-limiter
+// best-effort ne doit jamais devenir un point de panne pour la fonctionnalite
+// qu'il est cense proteger.
 async function checkRateLimit(store_name, ip) {
-  // Netlify Blobs a besoin que le projet local soit lie a un vrai site Netlify
-  // (`netlify link`) pour fonctionner. En dev non lie, on laisse tout passer -
-  // le rate-limiting reste pleinement actif une fois deploye en production.
   if (process.env.NETLIFY_DEV === 'true') {
     return { allowed: true };
   }
 
-  const store = getStore(store_name);
+  try {
+    const store = getStore(store_name);
 
-  const dayKey = `day:${todayKey()}`;
-  const dayCount = (await store.get(dayKey, { type: 'json' })) || 0;
-  if (dayCount >= DAILY_CAP) {
-    return { allowed: false, reason: 'daily_cap' };
+    const dayKey = `day:${todayKey()}`;
+    const dayCount = (await store.get(dayKey, { type: 'json' })) || 0;
+    if (dayCount >= DAILY_CAP) {
+      return { allowed: false, reason: 'daily_cap' };
+    }
+
+    const ipKey = `ip:${ip}`;
+    const now = Date.now();
+    const ipState = (await store.get(ipKey, { type: 'json' })) || { count: 0, windowStart: now };
+    const windowExpired = now - ipState.windowStart > IP_WINDOW_MS;
+    const count = windowExpired ? 0 : ipState.count;
+
+    if (count >= IP_LIMIT) {
+      return { allowed: false, reason: 'ip_limit' };
+    }
+
+    await Promise.all([
+      store.setJSON(dayKey, dayCount + 1),
+      store.setJSON(ipKey, { count: count + 1, windowStart: windowExpired ? now : ipState.windowStart }),
+    ]);
+
+    return { allowed: true };
+  } catch (err) {
+    console.error('checkRateLimit error (fail-open):', err);
+    return { allowed: true };
   }
-
-  const ipKey = `ip:${ip}`;
-  const now = Date.now();
-  const ipState = (await store.get(ipKey, { type: 'json' })) || { count: 0, windowStart: now };
-  const windowExpired = now - ipState.windowStart > IP_WINDOW_MS;
-  const count = windowExpired ? 0 : ipState.count;
-
-  if (count >= IP_LIMIT) {
-    return { allowed: false, reason: 'ip_limit' };
-  }
-
-  await Promise.all([
-    store.setJSON(dayKey, dayCount + 1),
-    store.setJSON(ipKey, { count: count + 1, windowStart: windowExpired ? now : ipState.windowStart }),
-  ]);
-
-  return { allowed: true };
 }
 
 module.exports = { isAllowedOrigin, jsonResponse, getClientIp, checkRateLimit };
