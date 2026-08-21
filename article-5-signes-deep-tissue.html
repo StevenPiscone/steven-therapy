@@ -151,6 +151,10 @@
       transition: background 0.2s !important;
       position: relative;
       overflow: hidden;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: inherit;
     }
 
     .nav-cta::after {
@@ -178,6 +182,9 @@
       transition: background 0.2s;
       position: relative;
       overflow: hidden;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
     }
 
     .nav-mobile-cta::after {
@@ -218,14 +225,14 @@
       gap: 10px;
       margin-bottom: 32px;
       font-size: 12px;
-      color: rgba(253,252,248,0.35);
+      color: rgba(253,252,248,0.55);
       letter-spacing: 0.1em;
       text-transform: uppercase;
     }
 
     .article-breadcrumb a { transition: color 0.2s; }
     .article-breadcrumb a:hover { color: var(--or); }
-    .article-breadcrumb span { color: rgba(253,252,248,0.2); }
+    .article-breadcrumb span { color: rgba(253,252,248,0.55); }
 
     .article-cat {
       display: inline-block;
@@ -250,7 +257,7 @@
       align-items: center;
       gap: 24px;
       font-size: 12px;
-      color: rgba(253,252,248,0.35);
+      color: rgba(253,252,248,0.55);
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
@@ -382,6 +389,8 @@
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
+      border: none;
+      cursor: pointer;
       transition: background 0.2s, transform 0.2s;
     }
 
@@ -432,10 +441,10 @@
     .footer-logo span { color: var(--or); }
 
     .footer-links { display: flex; gap: 28px; list-style: none; }
-    .footer-links a { font-size: 12px; color: rgba(253,252,248,0.35); letter-spacing: 0.08em; transition: color 0.2s; }
+    .footer-links a { font-size: 12px; color: rgba(253,252,248,0.55); letter-spacing: 0.08em; transition: color 0.2s; }
     .footer-links a:hover { color: var(--or); }
 
-    .footer-copy { font-size: 12px; color: rgba(253,252,248,0.25); }
+    .footer-copy { font-size: 12px; color: rgba(253,252,248,0.55); }
 
     /* ─── MOBILE ─── */
     @media (max-width: 960px) {
@@ -486,8 +495,8 @@
         <li><a href="blog.html" class="active">Blog</a></li>
         <li><a href="faq.html">FAQ</a></li>
       </ul>
-      <a href="#" class="nav-cta" onclick="openBookingChat(); return false;">Prendre RDV</a>
-      <a href="#" class="nav-mobile-cta" onclick="openBookingChat(); return false;">Réserver</a>
+      <button type="button" class="nav-cta" onclick="openBookingChat();">Prendre RDV</button>
+      <button type="button" class="nav-mobile-cta" onclick="openBookingChat();">Réserver</button>
       <div class="nav-burger" onclick="toggleMenu()">
         <span></span><span></span><span></span>
       </div>
@@ -610,10 +619,10 @@
 
         <div class="article-cta-inline">
           <p>Envie de voir ce que ça donne en vrai ? Réserve ta séance découverte à <strong style="color: var(--or)">49€ au lieu de 80€</strong>.</p>
-          <a href="#" class="btn-primary" onclick="openBookingChat('decouverte'); return false;">
+          <button type="button" class="btn-primary" onclick="openBookingChat('decouverte');">
             Prendre rendez-vous
             <svg width="14" height="14" viewbox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
+          </button>
         </div>
 
       </article>
@@ -625,9 +634,9 @@
           <div class="sidebar-card-title">Offre découverte</div>
           <p>Première séance deep tissue ou sportif à 49€ au lieu de 80€.</p>
           <div class="sidebar-cta">
-            <a href="#" class="sidebar-btn-primary" onclick="openBookingChat('decouverte'); return false;">
+            <button type="button" class="sidebar-btn-primary" onclick="openBookingChat('decouverte');">
               Réserver — 49€
-            </a>
+            </button>
           </div>
         </div>
 

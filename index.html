@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- Preload hero image (LCP) -->
+  <link rel="preload" as="image" href="Assets/steven-masseur-sportif-deep-tissue-paris-idf-heroes.webp" fetchpriority="high">
+
   <!-- GA4 + Meta Pixel : charges apres consentement, voir Assets/cookie-consent.js -->
   <link rel="stylesheet" href="Assets/legal.css">
   <link rel="stylesheet" href="Assets/chatbot.css">
@@ -20,7 +23,7 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="fr_FR">
   <meta property="og:url" content="https://steventherapy.fr/">
-  <meta property="og:image" content="https://steventherapy.fr/Assets/masseur-sportif-deep-tissue-choisy-le-roi.jpg">
+  <meta property="og:image" content="https://steventherapy.fr/Assets/steven-masseur-sportif-deep-tissue-paris-idf-heroes.webp">
   <meta property="og:image:alt" content="Massage sportif deep tissue — Steven Therapy, Paris & Île-de-France">
 
   <!-- Schema.org LocalBusiness -->
@@ -175,12 +178,16 @@
       transition: background 0.2s !important;
       position: relative;
       overflow: hidden;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: inherit;
     }
 
     .nav-cta::after {
       content: '';
       position: absolute;
-      top: 0; left: -100%;
+      top: 0; left: 0;
       width: 60%; height: 100%;
       background: linear-gradient(105deg, transparent 20%, rgba(255,255,255,0.45) 50%, transparent 80%);
       animation: cta-shimmer 4s ease-in-out infinite 1.5s;
@@ -204,9 +211,9 @@
     }
 
     @keyframes cta-shimmer {
-      0%   { left: -100%; }
-      30%  { left: 140%; }
-      100% { left: 140%; }
+      0%   { transform: translateX(-167%); }
+      30%  { transform: translateX(233%); }
+      100% { transform: translateX(233%); }
     }
 
     .nav-mobile-cta {
@@ -222,12 +229,15 @@
       transition: background 0.2s;
       position: relative;
       overflow: hidden;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
     }
 
     .nav-mobile-cta::after {
       content: '';
       position: absolute;
-      top: 0; left: -100%;
+      top: 0; left: 0;
       width: 60%; height: 100%;
       background: linear-gradient(105deg, transparent 20%, rgba(255,255,255,0.45) 50%, transparent 80%);
       animation: cta-shimmer 4s ease-in-out infinite 1.5s;
@@ -268,6 +278,7 @@
       object-fit: cover;
       object-position: top center;
       display: block;
+      transform: scale(1.02); /* marge de securite anti-arrondi sous-pixel (cover + object-position) */
     }
 
     .hero-visual::before {
@@ -349,7 +360,7 @@
 
     .hero-subtitle-light {
       font-size: clamp(11px, 1.1vw, 14px);
-      color: rgba(253,252,248,0.45);
+      color: rgba(253,252,248,0.55);
       font-weight: 500;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -441,7 +452,7 @@
       font-weight: 500;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: rgba(253,252,248,0.45);
+      color: rgba(253,252,248,0.55);
       margin-top: 4px;
     }
 
@@ -733,7 +744,7 @@
 
     .format-desc {
       font-size: 12px;
-      color: rgba(253,252,248,0.45);
+      color: rgba(253,252,248,0.55);
       line-height: 1.6;
     }
 
@@ -764,7 +775,7 @@
 
     .tarif-block-subtitle {
       font-size: 12px;
-      color: rgba(253,252,248,0.4);
+      color: rgba(253,252,248,0.55);
       letter-spacing: 0.1em;
       text-transform: uppercase;
       margin-bottom: 32px;
@@ -791,7 +802,7 @@
 
     .tarif-prestation {
       font-size: 11px;
-      color: rgba(253,252,248,0.35);
+      color: rgba(253,252,248,0.55);
       margin-top: 2px;
     }
 
@@ -836,7 +847,7 @@
 
     .tarif-offre-ancien {
       font-size: 14px;
-      color: rgba(253,252,248,0.3);
+      color: rgba(253,252,248,0.55);
       text-decoration: line-through;
       text-align: right;
     }
@@ -844,7 +855,7 @@
     .deplacement-note {
       margin-top: 24px;
       font-size: 12px;
-      color: rgba(253,252,248,0.35);
+      color: rgba(253,252,248,0.55);
       line-height: 1.6;
     }
 
@@ -1029,7 +1040,7 @@
 
     .avis-count {
       font-size: 13px;
-      color: rgba(253,252,248,0.45);
+      color: rgba(253,252,248,0.55);
       margin-top: 4px;
     }
 
@@ -1357,7 +1368,7 @@
     .contact-cta-note {
       margin-top: 20px;
       font-size: 11px;
-      color: rgba(253,252,248,0.3);
+      color: rgba(253,252,248,0.55);
       text-align: center;
       line-height: 1.6;
     }
@@ -1393,7 +1404,7 @@
 
     .footer-links a {
       font-size: 12px;
-      color: rgba(253,252,248,0.35);
+      color: rgba(253,252,248,0.55);
       letter-spacing: 0.08em;
       transition: color 0.2s;
     }
@@ -1402,7 +1413,7 @@
 
     .footer-copy {
       font-size: 12px;
-      color: rgba(253,252,248,0.25);
+      color: rgba(253,252,248,0.55);
     }
 
     /* ─── FAQ TEASER ─── */
@@ -1610,8 +1621,8 @@
       .nav-logo .logo-pc { display: block; height: 40px; width: 40px; }
 
       /* Hero mobile */
-      .hero-visual img { object-position: 50% 35%; }
-      .hero-visual::before { background: linear-gradient(to top, rgba(10,10,8,0.72) 12%, rgba(10,10,8,0.2) 48%, rgba(10,10,8,0.02) 100%); }
+      .hero-visual img { object-position: 22% 35%; }
+      .hero-visual::before { background: linear-gradient(to top, rgba(10,10,8,0.72) 12%, rgba(10,10,8,0.5) 48%, rgba(10,10,8,0.45) 100%); }
       .hero-left { padding: 80px 20px 48px; }
       .hero-badge span { font-size: 10px; letter-spacing: 0.1em; }
       .hero-cred { font-size: 12px; letter-spacing: 0.08em; padding: 8px 14px; }
@@ -1683,8 +1694,8 @@
   <nav id="navbar">
     <div class="container">
       <a href="#hero" class="nav-logo">
-        <img class="logo-pc" src="Assets/logo-split.png" alt="Steven Therapy">
-        <img class="logo-desktop" src="Assets/logo.png" alt="Steven Therapy">
+        <img class="logo-pc" src="Assets/logo-split.png" width="140" height="140" alt="Steven Therapy">
+        <img class="logo-desktop" src="Assets/logo.png" width="410" height="75" alt="Steven Therapy">
       </a>
       <ul class="nav-links">
         <li><a href="#apropos">À propos</a></li>
@@ -1694,8 +1705,8 @@
         <li><a href="blog.html">Blog</a></li>
         <li><a href="faq.html">FAQ</a></li>
       </ul>
-      <a href="#" class="nav-cta" onclick="openBookingChat(); return false;">Prendre RDV</a>
-      <a href="#" class="nav-mobile-cta" onclick="openBookingChat(); return false;">Réserver</a>
+      <button type="button" class="nav-cta" onclick="openBookingChat();">Prendre RDV</button>
+      <button type="button" class="nav-mobile-cta" onclick="openBookingChat();">Réserver</button>
       <div class="nav-burger" onclick="toggleMenu()">
         <span></span><span></span><span></span>
       </div>
@@ -1726,17 +1737,17 @@
         </div>
         <br>
         <div class="hero-actions">
-          <a href="#" class="btn-primary" onclick="openBookingChat(); return false;">
+          <button type="button" class="btn-primary" onclick="openBookingChat();">
             Prendre rendez-vous
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
+          </button>
           <a href="#prestations" class="btn-secondary">Découvrir les prestations</a>
         </div>
         
       </div>
     </div>
     <div class="hero-visual">
-      <img src="Assets/masseur-sportif-deep-tissue-choisy-le-roi.jpg" alt="Steven Therapy — Massage sportif deep tissue Paris & Île-de-France">
+      <img src="Assets/steven-masseur-sportif-deep-tissue-paris-idf-heroes.webp" width="1333" height="2000" alt="Steven Therapy — Massage sportif deep tissue Paris & Île-de-France" fetchpriority="high">
     </div>
   </section>
 
@@ -1748,7 +1759,7 @@
         <h2 class="apropos-title">Steven</h2>
         <div class="apropos-layout">
           <div class="apropos-b-photo">
-            <img src="Assets/steven-masseur-sportif-choisy-le-roi.JPG" alt="Steven, masseur sportif à Paris & Île-de-France" style="width:100%;height:100%;object-fit:cover;object-position:65% 25%;display:block;filter:brightness(0.92) contrast(1.05);transform:scale(1.1);transform-origin:55% 15%;">
+            <img src="Assets/steven-masseur-sportif-deep-tissue-QuiSuisJe-Paris-idf.webp" width="933" height="1400" alt="Steven, masseur sportif à Paris & Île-de-France" style="width:100%;height:100%;object-fit:cover;object-position:65% 25%;display:block;filter:brightness(0.92) contrast(1.05);transform:scale(1.1);transform-origin:55% 15%;" loading="lazy">
           </div>
           <div class="apropos-text-col">
             <p class="apropos-text">Les meilleurs moments de ma vie, c'était avec un ballon rond. Imiter la roulette de Zizou à l'entraînement, sentir la pression monter avant un match, les tournois entre potes. <br>Des souvenirs gravés à jamais dans ma mémoire.</p>
@@ -1784,7 +1795,7 @@
       <div class="sports-grid sports-grid-3">
 
         <div class="sport-card">
-          <img class="sport-card-img" src="Assets/Hyrox.jpg" alt="Performance" style="object-position: 20% 50%;">
+          <img class="sport-card-img" src="Assets/Hyrox.webp" width="1200" height="675" alt="Performance" style="object-position: 20% 50%;" loading="lazy">
           <div class="sport-card-overlay"></div>
           <div class="sport-card-content">
             <div class="sport-name">Sportifs en quête de performance</div>
@@ -1793,7 +1804,7 @@
         </div>
 
         <div class="sport-card">
-          <img class="sport-card-img" src="Assets/sportif-douleur.jpg" alt="Bloqués par la douleur" style="object-position: 80% 35%;">
+          <img class="sport-card-img" src="Assets/sportif-douleur.webp" width="2400" height="1600" alt="Bloqués par la douleur" style="object-position: 80% 35%;" loading="lazy">
           <div class="sport-card-overlay"></div>
           <div class="sport-card-content">
             <div class="sport-name">Bloqués par la douleur</div>
@@ -1802,7 +1813,7 @@
         </div>
 
         <div class="sport-card">
-          <img class="sport-card-img" src="Assets/homme-bureau.jpg" alt="Actifs de bureau" style="object-position: 50% 5%;">
+          <img class="sport-card-img" src="Assets/homme-bureau.webp" width="2400" height="1600" alt="Actifs de bureau" style="object-position: 50% 5%;" loading="lazy">
           <div class="sport-card-overlay"></div>
           <div class="sport-card-content">
             <div class="sport-name">Actifs de bureau</div>
@@ -1869,7 +1880,7 @@
 
       <div class="prestations-grid">
         <div class="prestation-card">
-          <img src="Assets/massage-deep-tissue-dos.jpg" alt="" aria-hidden="true" style="position:absolute;right:0;top:0;width:45%;height:100%;object-fit:cover;object-position:center;opacity:0.45;transform:scale(1.15);transform-origin:center;pointer-events:none;">
+          <img src="Assets/massage-deep-tissue-dos.webp" width="1200" height="1800" alt="" aria-hidden="true" style="position:absolute;right:0;top:0;width:45%;height:100%;object-fit:cover;object-position:center;opacity:0.45;transform:scale(1.15);transform-origin:center;pointer-events:none;" loading="lazy">
           <div style="position:relative;">
             <div class="prestation-tag">Signature</div>
             <h3 class="prestation-title">DEEP TISSUE</h3>
@@ -1882,7 +1893,7 @@
           </div>
         </div>
         <div class="prestation-card">
-          <img src="Assets/etirement-massage-sportif.jpg" alt="" aria-hidden="true" style="position:absolute;right:0;top:0;width:45%;height:100%;object-fit:cover;object-position:center top;opacity:0.45;pointer-events:none;">
+          <img src="Assets/etirement-massage-sportif.webp" width="1200" height="1568" alt="" aria-hidden="true" style="position:absolute;right:0;top:0;width:45%;height:100%;object-fit:cover;object-position:center top;opacity:0.45;pointer-events:none;" loading="lazy">
           <div style="position:relative;">
             <div class="prestation-tag">Performance</div>
             <h3 class="prestation-title">MASSAGE SPORTIF</h3>
@@ -1934,7 +1945,7 @@
           <ul class="tarif-list">
             <li class="tarif-item">
               <div>
-                <div class="tarif-duree">30 minutes <span style="font-size:10px;color:rgba(253,252,248,0.35);margin-left:6px;">Cabinet uniquement</span></div>
+                <div class="tarif-duree">30 minutes <span style="font-size:10px;color:rgba(253,252,248,0.55);margin-left:6px;">Cabinet uniquement</span></div>
                 <div class="tarif-prestation">Deep tissue ciblé — une zone du corps</div>
               </div>
               <div class="tarif-prix">40€</div>
@@ -2224,13 +2235,13 @@
           <p class="contact-cta-desc">
             Profite de l'offre découverte : 1 heure de massage deep tissue ou sportif à 49€ au lieu de 80€.
           </p>
-          <a href="#" class="btn-primary" onclick="openBookingChat('decouverte'); return false;">
+          <button type="button" class="btn-primary" onclick="openBookingChat('decouverte');">
             Offre découverte — 49€
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-          <a href="#" class="btn-secondary" onclick="openBookingChat(); return false;">
+          </button>
+          <button type="button" class="btn-secondary" onclick="openBookingChat();">
             Prendre RDV classique
-          </a>
+          </button>
           <p class="contact-cta-note">
             Disponible 7j/7 · Réponse sous quelques heures
           </p>
@@ -2267,7 +2278,7 @@
     // Nav scroll
     window.addEventListener('scroll', () => {
       document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
-    });
+    }, { passive: true });
 
 
 
@@ -2306,12 +2317,19 @@
     const sportsGrid = document.querySelector('.sports-grid');
     const dots = document.querySelectorAll('#sportsDots span');
     if (sportsGrid && dots.length) {
+      let sportsTicking = false;
       sportsGrid.addEventListener('scroll', () => {
-        const card = sportsGrid.querySelector('.sport-card');
-        if (!card) return;
-        const cardWidth = card.offsetWidth + 12;
-        const active = Math.min(Math.round(sportsGrid.scrollLeft / cardWidth), dots.length - 1);
-        dots.forEach((d, i) => d.classList.toggle('active', i === active));
+        if (sportsTicking) return;
+        sportsTicking = true;
+        requestAnimationFrame(() => {
+          const card = sportsGrid.querySelector('.sport-card');
+          if (card) {
+            const cardWidth = card.offsetWidth + 12;
+            const active = Math.min(Math.round(sportsGrid.scrollLeft / cardWidth), dots.length - 1);
+            dots.forEach((d, i) => d.classList.toggle('active', i === active));
+          }
+          sportsTicking = false;
+        });
       }, { passive: true });
     }
 
@@ -2319,12 +2337,19 @@
     const beneficesGrid = document.querySelector('.benefices-grid');
     const beneficesDots = document.querySelectorAll('#beneficesDots span');
     if (beneficesGrid && beneficesDots.length) {
+      let beneficesTicking = false;
       beneficesGrid.addEventListener('scroll', () => {
-        const item = beneficesGrid.querySelector('.benefice-item');
-        if (!item) return;
-        const itemWidth = item.offsetWidth + 12;
-        const active = Math.min(Math.round(beneficesGrid.scrollLeft / itemWidth), beneficesDots.length - 1);
-        beneficesDots.forEach((d, i) => d.classList.toggle('active', i === active));
+        if (beneficesTicking) return;
+        beneficesTicking = true;
+        requestAnimationFrame(() => {
+          const item = beneficesGrid.querySelector('.benefice-item');
+          if (item) {
+            const itemWidth = item.offsetWidth + 12;
+            const active = Math.min(Math.round(beneficesGrid.scrollLeft / itemWidth), beneficesDots.length - 1);
+            beneficesDots.forEach((d, i) => d.classList.toggle('active', i === active));
+          }
+          beneficesTicking = false;
+        });
       }, { passive: true });
     }
 
@@ -2332,12 +2357,19 @@
     const prestationsGrid = document.querySelector('.prestations-grid');
     const prestationsDots = document.querySelectorAll('#prestationsDots span');
     if (prestationsGrid && prestationsDots.length) {
+      let prestationsTicking = false;
       prestationsGrid.addEventListener('scroll', () => {
-        const card = prestationsGrid.querySelector('.prestation-card');
-        if (!card) return;
-        const cardWidth = card.offsetWidth + 12;
-        const active = Math.min(Math.round(prestationsGrid.scrollLeft / cardWidth), prestationsDots.length - 1);
-        prestationsDots.forEach((d, i) => d.classList.toggle('active', i === active));
+        if (prestationsTicking) return;
+        prestationsTicking = true;
+        requestAnimationFrame(() => {
+          const card = prestationsGrid.querySelector('.prestation-card');
+          if (card) {
+            const cardWidth = card.offsetWidth + 12;
+            const active = Math.min(Math.round(prestationsGrid.scrollLeft / cardWidth), prestationsDots.length - 1);
+            prestationsDots.forEach((d, i) => d.classList.toggle('active', i === active));
+          }
+          prestationsTicking = false;
+        });
       }, { passive: true });
     }
 
@@ -2345,12 +2377,19 @@
     const blogGrid = document.querySelector('.blog-grid');
     const blogDots = document.querySelectorAll('#blogDots span');
     if (blogGrid && blogDots.length) {
+      let blogTicking = false;
       blogGrid.addEventListener('scroll', () => {
-        const card = blogGrid.querySelector('.article-card');
-        if (!card) return;
-        const cardWidth = card.offsetWidth + 12;
-        const active = Math.min(Math.round(blogGrid.scrollLeft / cardWidth), blogDots.length - 1);
-        blogDots.forEach((d, i) => d.classList.toggle('active', i === active));
+        if (blogTicking) return;
+        blogTicking = true;
+        requestAnimationFrame(() => {
+          const card = blogGrid.querySelector('.article-card');
+          if (card) {
+            const cardWidth = card.offsetWidth + 12;
+            const active = Math.min(Math.round(blogGrid.scrollLeft / cardWidth), blogDots.length - 1);
+            blogDots.forEach((d, i) => d.classList.toggle('active', i === active));
+          }
+          blogTicking = false;
+        });
       }, { passive: true });
     }
 
@@ -2358,12 +2397,19 @@
     const avisSlider = document.getElementById('avisSlider');
     const avisDots = document.querySelectorAll('#avisDots span');
     if (avisSlider && avisDots.length) {
+      let avisTicking = false;
       avisSlider.addEventListener('scroll', () => {
-        const maxScroll = avisSlider.scrollWidth - avisSlider.offsetWidth;
-        if (maxScroll <= 0) return;
-        const progress = avisSlider.scrollLeft / maxScroll;
-        const active = Math.round(progress * (avisDots.length - 1));
-        avisDots.forEach((d, i) => d.classList.toggle('active', i === active));
+        if (avisTicking) return;
+        avisTicking = true;
+        requestAnimationFrame(() => {
+          const maxScroll = avisSlider.scrollWidth - avisSlider.offsetWidth;
+          if (maxScroll > 0) {
+            const progress = avisSlider.scrollLeft / maxScroll;
+            const active = Math.round(progress * (avisDots.length - 1));
+            avisDots.forEach((d, i) => d.classList.toggle('active', i === active));
+          }
+          avisTicking = false;
+        });
       }, { passive: true });
     }
 

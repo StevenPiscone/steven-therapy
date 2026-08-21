@@ -7,5 +7,8 @@
     "@netlify/blobs": "latest",
     "googleapis": "latest",
     "luxon": "latest"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.3"
   }
 }

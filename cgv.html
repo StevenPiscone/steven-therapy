@@ -110,6 +110,10 @@
       transition: background 0.2s !important;
       position: relative;
       overflow: hidden;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: inherit;
     }
 
     .nav-cta::after {
@@ -203,7 +207,7 @@
 
     .legal-updated {
       font-size: 12px;
-      color: rgba(253,252,248,0.35);
+      color: rgba(253,252,248,0.55);
       letter-spacing: 0.08em;
       text-transform: uppercase;
       margin-bottom: 40px;
@@ -264,7 +268,7 @@
 
     .footer-copy {
       font-size: 12px;
-      color: rgba(253,252,248,0.3);
+      color: rgba(253,252,248,0.55);
     }
 
     .footer-links {
@@ -278,7 +282,7 @@
       font-weight: 500;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: rgba(253,252,248,0.4);
+      color: rgba(253,252,248,0.55);
       transition: color 0.2s;
     }
 
@@ -305,8 +309,8 @@
         <li><a href="blog.html">Blog</a></li>
         <li><a href="faq.html">FAQ</a></li>
       </ul>
-      <a href="#" class="nav-cta" onclick="openBookingChat(); return false;">Prendre RDV</a>
-      <a href="#" class="nav-mobile-cta" onclick="openBookingChat(); return false;">Réserver</a>
+      <button type="button" class="nav-cta" onclick="openBookingChat();">Prendre RDV</button>
+      <button type="button" class="nav-mobile-cta" onclick="openBookingChat();">Réserver</button>
       <div class="nav-burger" onclick="document.getElementById('navLinks').classList.toggle('nav-open')">
         <span></span><span></span><span></span>
       </div>
