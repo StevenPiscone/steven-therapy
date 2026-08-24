@@ -9,8 +9,34 @@
   <meta name="robots" content="noindex, follow">
   <link rel="canonical" href="https://steventherapy.fr/cgv">
 
-  <link rel="stylesheet" href="Assets/legal.css">
-  <link rel="stylesheet" href="Assets/chatbot.css">
+  <!-- CSS critique du bouton chat (evite un flash non stylise le temps que chatbot.css charge en async) -->
+  <style>
+    #chatbot-btn {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #D4AF37;
+      color: #0a0a08;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 300;
+      box-shadow: 0 4px 24px rgba(212,175,55,0.45);
+      border: none;
+    }
+  </style>
+
+  <!-- legal.css/chatbot.css en chargement async (preload + swap) : non critiques pour le rendu au-dessus de la ligne de flottaison -->
+  <link rel="preload" href="Assets/legal.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="Assets/chatbot.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="Assets/legal.css">
+    <link rel="stylesheet" href="Assets/chatbot.css">
+  </noscript>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -303,11 +329,11 @@
         <img class="logo-pc" src="Assets/logo-split.png" alt="Steven Therapy">
       </a>
       <ul class="nav-links" id="navLinks">
-        <li><a href="index.html#apropos">À propos</a></li>
         <li><a href="index.html#prestations">Prestations</a></li>
+        <li><a href="index.html#apropos">À propos</a></li>
         <li><a href="index.html#tarifs">Tarifs</a></li>
-        <li><a href="blog.html">Blog</a></li>
         <li><a href="faq.html">FAQ</a></li>
+        <li><a href="blog.html">Blog</a></li>
       </ul>
       <button type="button" class="nav-cta" onclick="openBookingChat();">Prendre RDV</button>
       <button type="button" class="nav-mobile-cta" onclick="openBookingChat();">Réserver</button>
@@ -372,8 +398,8 @@
         <div class="footer-logo">STEVEN <span>THERAPY</span></div>
         <ul class="footer-links">
           <li><a href="index.html#apropos">À propos</a></li>
-          <li><a href="blog.html">Blog</a></li>
           <li><a href="faq.html">FAQ</a></li>
+          <li><a href="blog.html">Blog</a></li>
         </ul>
         <p class="footer-copy">© 2026 Steven Therapy · Paris & Île-de-France</p>
       </div>

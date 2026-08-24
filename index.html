@@ -7,9 +7,35 @@
   <!-- Preload hero image (LCP) -->
   <link rel="preload" as="image" href="Assets/steven-masseur-sportif-deep-tissue-paris-idf-heroes.webp" fetchpriority="high">
 
+  <!-- CSS critique du bouton chat (evite un flash non stylise le temps que chatbot.css charge en async) -->
+  <style>
+    #chatbot-btn {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #D4AF37;
+      color: #0a0a08;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 300;
+      box-shadow: 0 4px 24px rgba(212,175,55,0.45);
+      border: none;
+    }
+  </style>
+
   <!-- GA4 + Meta Pixel : charges apres consentement, voir Assets/cookie-consent.js -->
-  <link rel="stylesheet" href="Assets/legal.css">
-  <link rel="stylesheet" href="Assets/chatbot.css">
+  <!-- legal.css/chatbot.css en chargement async (preload + swap) : non critiques pour le rendu au-dessus de la ligne de flottaison -->
+  <link rel="preload" href="Assets/legal.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="Assets/chatbot.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="Assets/legal.css">
+    <link rel="stylesheet" href="Assets/chatbot.css">
+  </noscript>
 
   <!-- SEO -->
   <title>Massage Sportif & Deep Tissue | Steven Therapy | Paris & Île-de-France</title>
@@ -88,6 +114,7 @@
       font-family: 'Montserrat', sans-serif;
       font-size: 16px;
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
     h1, h2, h3, h4 {
@@ -751,7 +778,6 @@
     /* ─── TARIFS ─── */
     #tarifs {
       padding: 60px 0;
-      background: var(--gris);
     }
 
     .tarifs-grid {
@@ -864,6 +890,7 @@
     /* ─── À PROPOS ─── */
     #apropos {
       padding: 60px 0 30px;
+      background: var(--gris);
     }
 
     .apropos-grid {
@@ -1000,14 +1027,13 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at 50% 45%, transparent 45%, rgba(10,10,8,0.7) 80%, rgba(10,10,8,0.95) 100%);
+      background: radial-gradient(ellipse at 50% 45%, transparent 45%, rgba(10,10,8,0.4) 80%, rgba(10,10,8,0.6) 100%);
       pointer-events: none;
     }
 
     /* ─── AVIS ─── */
     #avis {
       padding: 60px 0;
-      background: var(--gris);
     }
 
     .avis-header {
@@ -1130,12 +1156,10 @@
     /* ─── BLOG PREVIEW ─── */
     #blog-preview {
       padding: 80px 0;
-      background: var(--noir);
     }
 
     #faq-teaser {
       padding: 80px 0;
-      background: var(--gris);
     }
 
     .blog-dots {
@@ -1524,6 +1548,8 @@
       .sports-grid {
         display: flex;
         overflow-x: auto;
+        overflow-y: hidden;
+        touch-action: pan-y;
         scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
         gap: 12px;
@@ -1548,6 +1574,8 @@
       .prestations-grid {
         display: flex;
         overflow-x: auto;
+        overflow-y: hidden;
+        touch-action: pan-y;
         scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
         gap: 12px;
@@ -1566,6 +1594,8 @@
       .blog-grid {
         display: flex;
         overflow-x: auto;
+        overflow-y: hidden;
+        touch-action: pan-y;
         scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
         gap: 12px;
@@ -1593,6 +1623,19 @@
       .apropos-layout { flex-direction: column; }
       .apropos-b-photo { width: 100%; height: 380px; margin-top: 24px; }
       .apropos-credentials { flex-direction: column; }
+      .apropos-text-scroll {
+        max-height: 300px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        touch-action: pan-y;
+        -webkit-overflow-scrolling: touch;
+        padding-right: 12px;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(212,175,55,0.4) transparent;
+      }
+      .apropos-text-scroll::-webkit-scrollbar { width: 4px; }
+      .apropos-text-scroll::-webkit-scrollbar-track { background: transparent; }
+      .apropos-text-scroll::-webkit-scrollbar-thumb { background: rgba(212,175,55,0.4); border-radius: 2px; }
       .avis-card { flex: 0 0 85vw; }
       .contact-grid { grid-template-columns: 1fr; gap: 40px; }
       .contact-cta-block { position: static; }
@@ -1620,9 +1663,15 @@
       .nav-logo .logo-desktop { display: none; }
       .nav-logo .logo-pc { display: block; height: 40px; width: 40px; }
 
+      /* Footer mobile */
+      .footer-inner { flex-direction: column; text-align: center; }
+      .footer-logo { width: 100%; text-align: center; }
+      .footer-links { flex-wrap: wrap; justify-content: center; gap: 12px 24px; }
+      .footer-links a { white-space: nowrap; }
+
       /* Hero mobile */
       .hero-visual img { object-position: 22% 35%; }
-      .hero-visual::before { background: linear-gradient(to top, rgba(10,10,8,0.72) 12%, rgba(10,10,8,0.5) 48%, rgba(10,10,8,0.45) 100%); }
+      .hero-visual::before { background: linear-gradient(to top, rgba(10,10,8,0.70) 12%, rgba(10,10,8,0.48) 48%, rgba(10,10,8,0.43) 100%); }
       .hero-left { padding: 80px 20px 48px; }
       .hero-badge span { font-size: 10px; letter-spacing: 0.1em; }
       .hero-cred { font-size: 12px; letter-spacing: 0.08em; padding: 8px 14px; }
@@ -1638,6 +1687,8 @@
       .benefices-grid {
         display: flex;
         overflow-x: auto;
+        overflow-y: hidden;
+        touch-action: pan-y;
         scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
         gap: 12px;
@@ -1685,6 +1736,46 @@
     .fade-up.d2 { transition-delay: 0.30s; }
     .fade-up.d3 { transition-delay: 0.45s; }
 
+    /* ─── ALTERNANCE DES SECTIONS (noir / noir clair / or attenue), cycle recalcule sur le nouvel ordre ─── */
+    #faq-teaser {
+      background: var(--noir);
+    }
+
+    #prestations, #apropos, #tarifs {
+      background: var(--gris);
+    }
+
+    #pour-qui, #avis, #blog-preview, #benefices {
+      background: linear-gradient(rgba(255,255,255,0.95), rgba(255,255,255,0.95)), #D4AF37;
+    }
+
+    #pour-qui .section-label,
+    #avis .section-label,
+    #blog-preview .section-label,
+    #benefices .section-label { color: #8a6a1f; }
+
+    #pour-qui .section-title,
+    #avis .section-title,
+    #blog-preview .section-title,
+    #benefices .section-title { color: #1a1512; }
+
+    #pour-qui .section-title span,
+    #blog-preview .section-title span,
+    #benefices .section-title span { color: #8a6a1f; }
+
+    #pour-qui .section-desc,
+    #blog-preview .section-desc,
+    #benefices .section-desc { color: rgba(26,21,18,0.68); }
+
+    #avis .avis-score-value,
+    #avis .avis-stars { color: #8a6a1f; }
+    #avis .avis-count { color: rgba(26,21,18,0.68); }
+
+    #blog-preview .btn-secondary,
+    #avis .btn-secondary { color: #8a6a1f; border-color: rgba(138,106,31,0.4); }
+    #blog-preview .btn-secondary:hover,
+    #avis .btn-secondary:hover { border-color: #8a6a1f; color: #6b4e12; }
+
   </style>
 </head>
 
@@ -1698,12 +1789,12 @@
         <img class="logo-desktop" src="Assets/logo.png" width="410" height="75" alt="Steven Therapy">
       </a>
       <ul class="nav-links">
-        <li><a href="#apropos">À propos</a></li>
         <li><a href="#prestations">Prestations</a></li>
-        <li><a href="#tarifs">Tarifs</a></li>
+        <li><a href="#apropos">À propos</a></li>
         <li><a href="#avis">Avis</a></li>
-        <li><a href="blog.html">Blog</a></li>
+        <li><a href="#tarifs">Tarifs</a></li>
         <li><a href="faq.html">FAQ</a></li>
+        <li><a href="blog.html">Blog</a></li>
       </ul>
       <button type="button" class="nav-cta" onclick="openBookingChat();">Prendre RDV</button>
       <button type="button" class="nav-mobile-cta" onclick="openBookingChat();">Réserver</button>
@@ -1747,38 +1838,67 @@
       </div>
     </div>
     <div class="hero-visual">
-      <img src="Assets/steven-masseur-sportif-deep-tissue-paris-idf-heroes.webp" width="1333" height="2000" alt="Steven Therapy — Massage sportif deep tissue Paris & Île-de-France" fetchpriority="high">
+      <img src="Assets/steven-masseur-sportif-deep-tissue-paris-idf-heroes.webp" width="842" height="1264" alt="Steven Therapy — Massage sportif deep tissue Paris & Île-de-France" fetchpriority="high">
     </div>
   </section>
 
-  <!-- ─── À PROPOS ─── -->
-  <section id="apropos">
+  <!-- ─── PRESTATIONS ─── -->
+  <section id="prestations">
     <div class="container">
-      <div class="apropos-b-clearfix">
-        <div class="section-label">Qui je suis</div>
-        <h2 class="apropos-title">Steven</h2>
-        <div class="apropos-layout">
-          <div class="apropos-b-photo">
-            <img src="Assets/steven-masseur-sportif-deep-tissue-QuiSuisJe-Paris-idf.webp" width="933" height="1400" alt="Steven, masseur sportif à Paris & Île-de-France" style="width:100%;height:100%;object-fit:cover;object-position:65% 25%;display:block;filter:brightness(0.92) contrast(1.05);transform:scale(1.1);transform-origin:55% 15%;" loading="lazy">
+      <div class="section-header">
+        <div class="section-label">Ce que je propose</div>
+        <h2 class="section-title">Mes <span>prestations</span></h2>
+        <p class="section-desc">Deux techniques complémentaires, adaptées à ton profil et tes objectifs.</br> Ici, on travaille en profondeur dans les muscles afin que tu puisses repartir au meilleur de ta forme.</p>
+      </div>
+
+      <div class="prestations-grid">
+        <div class="prestation-card">
+          <img src="Assets/massage-deep-tissue-dos.webp" width="1200" height="1800" alt="" aria-hidden="true" style="position:absolute;right:0;top:0;width:45%;height:100%;object-fit:cover;object-position:center;opacity:0.45;transform:scale(1.15);transform-origin:center;pointer-events:none;" loading="lazy">
+          <div style="position:relative;">
+            <div class="prestation-tag">Signature</div>
+            <h3 class="prestation-title">DEEP TISSUE</h3>
+            <p class="prestation-desc">Travail en profondeur sur les tensions musculaires chroniques. Pression soutenue sur les couches profondes du muscle pour libérer les noeuds et les adhérences.</p>
+            <ul class="prestation-details">
+              <li>Tensions chroniques et douleurs musculaires</li>
+              <li>Nuque, dos, lombaires, épaules, molet, cuisse, fessiers</li>
+              <li>Résultats garantis dès la première séance</li>
+            </ul>
           </div>
-          <div class="apropos-text-col">
-            <p class="apropos-text">Les meilleurs moments de ma vie, c'était avec un ballon rond. Imiter la roulette de Zizou à l'entraînement, sentir la pression monter avant un match, les tournois entre potes. <br>Des souvenirs gravés à jamais dans ma mémoire.</p>
-            <p class="apropos-text">Ensuite j'ai découvert un autre ballon, le streetball, et j'ai passé mon temps avec un ami à copier les moves de Hot Sauce. Et qu'est-ce qu'on était bons !</p>
-            <p class="apropos-text">Et puis l'hiver j'avais la chance de partir en colo pour faire du snow, glisser à toute vitesse sur les pistes, ce sentiment de liberté incroyable.</p>
-            <p class="apropos-text">Le sport c'était tout pour moi, du pur plaisir, je m'en lassais jamais.</p>
-            <p class="apropos-text">Et puis j'ai pris de l'âge et j'ai découvert les blessures. À 30 ans, j'ai dû tout stoppé. Du jour au lendemain, plus de sport. Cette période a été longue et difficile à accepter. C'est la mobilité qui m'a sorti de ce calvaire. Et ce jour-là, j'ai compris ce qui compte vraiment pour moi.</p>
-            <p class="apropos-text">Prendre soin de son corps pour continuer à faire ce qu'on aime. C'est pour ça que j'ai choisi ce métier. Pour que toi tu puisses continuer à t'épanouir et performer dans ton sport de prédilection, le plus longtemps possible.</p>
-            <div class="apropos-credentials">
-              <div class="credential">
-                <div class="credential-icon">🏅</div>
-                <div class="credential-text"><strong>Formé par Marius Malarme</strong><br>Champion d'Europe de massage 2022 &amp; 2025</div>
-              </div>
-              <div class="credential">
-                <div class="credential-icon">⭐</div>
-                <div class="credential-text"><strong>42 avis 5 étoiles</strong><br>Sur Google Business</div>
-              </div>
-            </div>
+        </div>
+        <div class="prestation-card">
+          <img src="Assets/etirement-massage-sportif.webp" width="1200" height="1568" alt="" aria-hidden="true" style="position:absolute;right:0;top:0;width:45%;height:100%;object-fit:cover;object-position:center top;opacity:0.45;pointer-events:none;" loading="lazy">
+          <div style="position:relative;">
+            <div class="prestation-tag">Performance</div>
+            <h3 class="prestation-title">MASSAGE SPORTIF</h3>
+            <p class="prestation-desc">Combinaison deep tissue et mobilisation articulaire. Conçu pour les athlètes qui veulent récupérer plus vite et performer plus longtemps.</p>
+            <ul class="prestation-details">
+              <li>Avant ou après une compétition ou un entrainement intensif</li>
+              <li>Toutes les zones sollicitées par ton entraînement</li>
+              <li>Adapté à tous les sports : running, muscu, cross, combat, foot, basket</li>
+            </ul>
           </div>
+        </div>
+      </div>
+      <div class="prestations-dots" id="prestationsDots">
+        <span class="active"></span>
+        <span></span>
+      </div>
+
+      <div class="formats-row">
+        <div class="format-card">
+          <div class="format-icon">🏠</div>
+          <div class="format-name">À DOMICILE</div>
+          <p class="format-desc">Je me déplace chez toi avec tout le matériel.</p>
+        </div>
+        <div class="format-card">
+          <div class="format-icon">🛋️</div>
+          <div class="format-name">EN CABINET</div>
+          <p class="format-desc">Dans mon salon en région parisienne.</p>
+        </div>
+        <div class="format-card">
+          <div class="format-icon">🏋️</div>
+          <div class="format-name">EN SALLE</div>
+          <p class="format-desc">Événements chez On Air et Keepcool.</p>
         </div>
       </div>
     </div>
@@ -1804,7 +1924,7 @@
         </div>
 
         <div class="sport-card">
-          <img class="sport-card-img" src="Assets/sportif-douleur.webp" width="2400" height="1600" alt="Bloqués par la douleur" style="object-position: 80% 35%;" loading="lazy">
+          <img class="sport-card-img" src="Assets/sportif-douleur.webp" srcset="Assets/sportif-douleur-mobile.webp 1300w, Assets/sportif-douleur.webp 2400w" sizes="(max-width: 640px) 80vw, (max-width: 1024px) 45vw, 280px" width="2400" height="1600" alt="Bloqués par la douleur" style="object-position: 80% 35%;" loading="lazy">
           <div class="sport-card-overlay"></div>
           <div class="sport-card-content">
             <div class="sport-name">Bloqués par la douleur</div>
@@ -1813,7 +1933,7 @@
         </div>
 
         <div class="sport-card">
-          <img class="sport-card-img" src="Assets/homme-bureau.webp" width="2400" height="1600" alt="Actifs de bureau" style="object-position: 50% 5%;" loading="lazy">
+          <img class="sport-card-img" src="Assets/homme-bureau.webp" srcset="Assets/homme-bureau-mobile.webp 1300w, Assets/homme-bureau.webp 2400w" sizes="(max-width: 640px) 80vw, (max-width: 1024px) 45vw, 280px" width="2400" height="1600" alt="Actifs de bureau" style="object-position: 50% 5%;" loading="lazy">
           <div class="sport-card-overlay"></div>
           <div class="sport-card-content">
             <div class="sport-name">Actifs de bureau</div>
@@ -1869,132 +1989,38 @@
     </div>
   </section>
 
-  <!-- ─── PRESTATIONS ─── -->
-  <section id="prestations">
+  <!-- ─── À PROPOS ─── -->
+  <section id="apropos">
     <div class="container">
-      <div class="section-header">
-        <div class="section-label">Ce que je propose</div>
-        <h2 class="section-title">Mes <span>prestations</span></h2>
-        <p class="section-desc">Deux techniques complémentaires, adaptées à ton profil et tes objectifs.</br> Ici, on travaille en profondeur dans les muscles afin que tu puisses repartir au meilleur de ta forme.</p>
-      </div>
-
-      <div class="prestations-grid">
-        <div class="prestation-card">
-          <img src="Assets/massage-deep-tissue-dos.webp" width="1200" height="1800" alt="" aria-hidden="true" style="position:absolute;right:0;top:0;width:45%;height:100%;object-fit:cover;object-position:center;opacity:0.45;transform:scale(1.15);transform-origin:center;pointer-events:none;" loading="lazy">
-          <div style="position:relative;">
-            <div class="prestation-tag">Signature</div>
-            <h3 class="prestation-title">DEEP TISSUE</h3>
-            <p class="prestation-desc">Travail en profondeur sur les tensions musculaires chroniques. Pression soutenue sur les couches profondes du muscle pour libérer les noeuds et les adhérences.</p>
-            <ul class="prestation-details">
-              <li>Tensions chroniques et douleurs musculaires</li>
-              <li>Nuque, dos, lombaires, épaules, molet, cuisse, fessiers</li>
-              <li>Résultats garantis dès la première séance</li>
-            </ul>
+      <div class="apropos-b-clearfix">
+        <div class="section-label">Qui je suis</div>
+        <h2 class="apropos-title">Steven</h2>
+        <div class="apropos-layout">
+          <div class="apropos-b-photo">
+            <img src="Assets/steven-masseur-sportif-deep-tissue-QuiSuisJe-Paris-idf.webp" width="933" height="1400" alt="Steven, masseur sportif à Paris & Île-de-France" style="width:100%;height:100%;object-fit:cover;object-position:65% 25%;display:block;filter:brightness(0.92) contrast(1.05);transform:scale(1.1);transform-origin:55% 15%;" loading="lazy">
           </div>
-        </div>
-        <div class="prestation-card">
-          <img src="Assets/etirement-massage-sportif.webp" width="1200" height="1568" alt="" aria-hidden="true" style="position:absolute;right:0;top:0;width:45%;height:100%;object-fit:cover;object-position:center top;opacity:0.45;pointer-events:none;" loading="lazy">
-          <div style="position:relative;">
-            <div class="prestation-tag">Performance</div>
-            <h3 class="prestation-title">MASSAGE SPORTIF</h3>
-            <p class="prestation-desc">Combinaison deep tissue et mobilisation articulaire. Conçu pour les athlètes qui veulent récupérer plus vite et performer plus longtemps.</p>
-            <ul class="prestation-details">
-              <li>Avant ou après une compétition ou un entrainement intensif</li>
-              <li>Toutes les zones sollicitées par ton entraînement</li>
-              <li>Adapté à tous les sports : running, muscu, cross, combat, foot, basket</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="prestations-dots" id="prestationsDots">
-        <span class="active"></span>
-        <span></span>
-      </div>
-
-      <div class="formats-row">
-        <div class="format-card">
-          <div class="format-icon">🏠</div>
-          <div class="format-name">À DOMICILE</div>
-          <p class="format-desc">Je me déplace chez toi avec tout le matériel.</p>
-        </div>
-        <div class="format-card">
-          <div class="format-icon">🛋️</div>
-          <div class="format-name">EN CABINET</div>
-          <p class="format-desc">Dans mon salon en région parisienne. Cadre calme et professionnel.</p>
-        </div>
-        <div class="format-card">
-          <div class="format-icon">🏋️</div>
-          <div class="format-name">EN SALLE</div>
-          <p class="format-desc">Événements chez On Air et Keepcool, à prix préférentiel pour les adhérents.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── TARIFS ─── -->
-  <section id="tarifs">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-label">Investissement</div>
-        <h2 class="section-title">Tarifs</h2>
-      </div>
-
-      <div class="tarifs-grid">
-        <div class="tarif-block">
-          <h3 class="tarif-block-title">Cabinet &amp; Domicile</h3>
-          <ul class="tarif-list">
-            <li class="tarif-item">
-              <div>
-                <div class="tarif-duree">30 minutes <span style="font-size:10px;color:rgba(253,252,248,0.55);margin-left:6px;">Cabinet uniquement</span></div>
-                <div class="tarif-prestation">Deep tissue ciblé — une zone du corps</div>
-              </div>
-              <div class="tarif-prix">40€</div>
-            </li>
-            <li class="tarif-item">
-              <div>
-                <div class="tarif-duree">45 minutes</div>
-                <div class="tarif-prestation">Deep tissue ciblé — une zone du corps</div>
-              </div>
-              <div class="tarif-prix">60€</div>
-            </li>
-            <li class="tarif-item">
-              <div>
-                <div class="tarif-duree">1 heure</div>
-                <div class="tarif-prestation">Deep tissue ou sportif</div>
-              </div>
-              <div class="tarif-prix">80€</div>
-            </li>
-            <li class="tarif-item">
-              <div>
-                <div class="tarif-duree">1h30</div>
-                <div class="tarif-prestation">Deep tissue ou sportif</div>
-              </div>
-              <div class="tarif-prix">120€</div>
-            </li>
-            <li class="tarif-item">
-              <div>
-                <div class="tarif-duree">2 heures</div>
-                <div class="tarif-prestation">Deep tissue ou sportif corps entier</div>
-              </div>
-              <div class="tarif-prix">150€</div>
-            </li>
-          </ul>
-          <div class="tarif-offre">
-            <div>
-              <div class="tarif-offre-label">Offre découverte</div>
-              <div class="tarif-offre-desc">1h, première séance uniquement</div>
+          <div class="apropos-text-col">
+            <div class="apropos-text-scroll">
+              <p class="apropos-text">Les meilleurs moments de ma vie, c'était avec un ballon rond. Imiter la roulette de Zizou à l'entraînement, sentir la pression monter avant un match, les tournois entre potes. <br>Des souvenirs gravés à jamais dans ma mémoire.</p>
+              <p class="apropos-text">Ensuite j'ai découvert un autre ballon, le streetball, et j'ai passé mon temps avec un ami à copier les moves de Hot Sauce. Et qu'est-ce qu'on était bons !</p>
+              <p class="apropos-text">Et puis l'hiver j'avais la chance de partir en colo pour faire du snow, glisser à toute vitesse sur les pistes, ce sentiment de liberté incroyable.</p>
+              <p class="apropos-text">Le sport c'était tout pour moi, du pur plaisir, je m'en lassais jamais.</p>
+              <p class="apropos-text">Et puis j'ai pris de l'âge et j'ai découvert les blessures. À 30 ans, j'ai dû tout stoppé. Du jour au lendemain, plus de sport. Cette période a été longue et difficile à accepter.</p>
+              <p class="apropos-text">C'est la mobilité qui m'a sorti de ce calvaire. Et ce jour-là, j'ai compris ce qui compte vraiment pour moi.</p>
+              <p class="apropos-text">Prendre soin de son corps pour continuer à faire ce qu'on aime. C'est pour ça que j'ai choisi ce métier. Pour que toi tu puisses continuer à t'épanouir et performer dans ton sport de prédilection, le plus longtemps possible.</p>
             </div>
-            <div>
-              <div class="tarif-offre-prix">49€</div>
-              <div class="tarif-offre-ancien">80€</div>
+            <div class="apropos-credentials">
+              <div class="credential">
+                <div class="credential-icon">🏅</div>
+                <div class="credential-text"><strong>Formé par Marius Malarme</strong><br>Champion d'Europe de massage 2022 &amp; 2025</div>
+              </div>
+              <div class="credential">
+                <div class="credential-icon">⭐</div>
+                <div class="credential-text"><strong>42 avis 5 étoiles</strong><br>Sur Google Business</div>
+              </div>
             </div>
           </div>
-          <p class="tarif-block-subtitle" style="margin-top: 24px;">Hors frais de déplacement + stationnement facturé au réel</p>
-          <p class="deplacement-note">
-            <strong>Frais de déplacement :</strong> +5€ (&lt;10km) · +10€ (&lt;25km) · +20€ (&lt;50km) · +30€ (&lt;75km) · +40€ (&lt;100km)
-          </p>
         </div>
-
       </div>
     </div>
   </section>
@@ -2122,36 +2148,70 @@
     </div>
   </section>
 
-  <!-- ─── BLOG PREVIEW ─── -->
-  <section id="blog-preview">
+  <!-- ─── TARIFS ─── -->
+  <section id="tarifs">
     <div class="container">
       <div class="section-header">
-        <p class="section-label">Conseils & Guides</p>
-        <h2 class="section-title">Blog <span>massage</span></h2>
-        <p class="section-desc">Des articles écrits par un praticien certifié, pour mieux comprendre ton corps.</p>
+        <div class="section-label">Investissement</div>
+        <h2 class="section-title">Tarifs</h2>
       </div>
-      <div class="blog-grid">
-        <a href="article-5-signes-deep-tissue.html" class="article-card">
-          <div class="article-cat">Deep Tissue</div>
-          <h3 class="article-title">5 signes que tu as besoin d'un massage deep tissue</h3>
-          <p class="article-excerpt">Douleur dans le dos depuis trois semaines. Épaule qui coince. Mollets qui restent tendus deux jours après la séance. Le corps accumule. Voici les 5 signaux à ne pas ignorer.</p>
-          <div class="article-meta">
-            <div class="article-meta-info">24 juin 2026 · 5 min</div>
-            <div class="article-link">Lire l'article <svg width="14" height="14" viewbox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+
+      <div class="tarifs-grid">
+        <div class="tarif-block">
+          <h3 class="tarif-block-title">Cabinet &amp; Domicile</h3>
+          <ul class="tarif-list">
+            <li class="tarif-item">
+              <div>
+                <div class="tarif-duree">30 minutes <span style="font-size:10px;color:rgba(253,252,248,0.55);margin-left:6px;">Cabinet uniquement</span></div>
+                <div class="tarif-prestation">Deep tissue ciblé — une zone du corps</div>
+              </div>
+              <div class="tarif-prix">40€</div>
+            </li>
+            <li class="tarif-item">
+              <div>
+                <div class="tarif-duree">45 minutes</div>
+                <div class="tarif-prestation">Deep tissue ciblé — une zone du corps</div>
+              </div>
+              <div class="tarif-prix">60€</div>
+            </li>
+            <li class="tarif-item">
+              <div>
+                <div class="tarif-duree">1 heure</div>
+                <div class="tarif-prestation">Deep tissue ou sportif</div>
+              </div>
+              <div class="tarif-prix">80€</div>
+            </li>
+            <li class="tarif-item">
+              <div>
+                <div class="tarif-duree">1h30</div>
+                <div class="tarif-prestation">Deep tissue ou sportif</div>
+              </div>
+              <div class="tarif-prix">120€</div>
+            </li>
+            <li class="tarif-item">
+              <div>
+                <div class="tarif-duree">2 heures</div>
+                <div class="tarif-prestation">Deep tissue ou sportif corps entier</div>
+              </div>
+              <div class="tarif-prix">150€</div>
+            </li>
+          </ul>
+          <div class="tarif-offre">
+            <div>
+              <div class="tarif-offre-label">Offre découverte</div>
+              <div class="tarif-offre-desc">1h, première séance uniquement</div>
+            </div>
+            <div>
+              <div class="tarif-offre-prix">49€</div>
+              <div class="tarif-offre-ancien">80€</div>
+            </div>
           </div>
-        </a>
-        <a href="article-deep-tissue-vs-relaxant.html" class="article-card">
-          <div class="article-cat">Comparaison</div>
-          <h3 class="article-title">Deep tissue vs massage relaxant : les vraies différences</h3>
-          <p class="article-excerpt">On te demande souvent quel type de massage tu veux. Tu réponds un peu au hasard. Voici une comparaison claire pour savoir quoi demander la prochaine fois.</p>
-          <div class="article-meta">
-            <div class="article-meta-info">16 juillet 2026 · 5 min</div>
-            <div class="article-link">Lire l'article <svg width="14" height="14" viewbox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          </div>
-        </a>
-      </div>
-      <div style="text-align:center; margin-top: 40px;">
-        <a href="blog.html" class="btn-secondary">Voir tous les articles</a>
+          <p class="tarif-block-subtitle" style="margin-top: 24px;">Hors frais de déplacement + stationnement facturé au réel</p>
+          <p class="deplacement-note">
+            <strong>Frais de déplacement :</strong> +5€ (&lt;10km) · +10€ (&lt;25km) · +20€ (&lt;50km) · +30€ (&lt;75km) · +40€ (&lt;100km)
+          </p>
+        </div>
+
       </div>
     </div>
   </section>
@@ -2188,6 +2248,44 @@
       </div>
       <div style="text-align:center; margin-top: 40px;">
         <a href="faq.html" class="btn-secondary">Voir toutes les questions</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── BLOG PREVIEW ─── -->
+  <section id="blog-preview">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Conseils & Guides</p>
+        <h2 class="section-title">Blog <span>massage</span></h2>
+        <p class="section-desc">Des articles écrits par un praticien certifié, pour mieux comprendre ton corps.</p>
+      </div>
+      <div class="blog-grid">
+        <a href="article-5-signes-deep-tissue.html" class="article-card">
+          <div class="article-cat">Deep Tissue</div>
+          <h3 class="article-title">5 signes que tu as besoin d'un massage deep tissue</h3>
+          <p class="article-excerpt">Douleur dans le dos depuis trois semaines. Épaule qui coince. Mollets qui restent tendus deux jours après la séance. Le corps accumule. Voici les 5 signaux à ne pas ignorer.</p>
+          <div class="article-meta">
+            <div class="article-meta-info">24 juin 2026 · 5 min</div>
+            <div class="article-link">Lire l'article <svg width="14" height="14" viewbox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          </div>
+        </a>
+        <a href="article-deep-tissue-vs-relaxant.html" class="article-card">
+          <div class="article-cat">Comparaison</div>
+          <h3 class="article-title">Deep tissue vs massage relaxant : les vraies différences</h3>
+          <p class="article-excerpt">On te demande souvent quel type de massage tu veux. Tu réponds un peu au hasard. Voici une comparaison claire pour savoir quoi demander la prochaine fois.</p>
+          <div class="article-meta">
+            <div class="article-meta-info">16 juillet 2026 · 5 min</div>
+            <div class="article-link">Lire l'article <svg width="14" height="14" viewbox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          </div>
+        </a>
+      </div>
+      <div class="blog-dots" id="blogDots">
+        <span class="active"></span>
+        <span></span>
+      </div>
+      <div style="text-align:center; margin-top: 40px;">
+        <a href="blog.html" class="btn-secondary">Voir tous les articles</a>
       </div>
     </div>
   </section>
@@ -2256,12 +2354,12 @@
       <div class="footer-inner">
         <div class="footer-logo">STEVEN <span>THERAPY</span></div>
         <ul class="footer-links">
-          <li><a href="#apropos">À propos</a></li>
           <li><a href="#prestations">Prestations</a></li>
-          <li><a href="#tarifs">Tarifs</a></li>
+          <li><a href="#apropos">À propos</a></li>
           <li><a href="#avis">Avis</a></li>
-          <li><a href="blog.html">Blog</a></li>
+          <li><a href="#tarifs">Tarifs</a></li>
           <li><a href="faq.html">FAQ</a></li>
+          <li><a href="blog.html">Blog</a></li>
         </ul>
         <p class="footer-copy">© 2026 Steven Therapy · Paris & Île-de-France</p>
       </div>
@@ -2285,12 +2383,14 @@
     // Nav active section
     const navLinks = document.querySelectorAll('.nav-links a:not(.nav-cta)');
     const sectionNavMap = {
-      'apropos':    '#apropos',
-      'pour-qui':   '#apropos',
-      'benefices':  '#apropos',
       'prestations':'#prestations',
-      'tarifs':     '#tarifs',
+      'pour-qui':   '#prestations',
+      'benefices':  '#prestations',
+      'apropos':    '#apropos',
       'avis':       '#avis',
+      'tarifs':     '#tarifs',
+      'faq-teaser': 'faq.html',
+      'blog-preview':'blog.html',
     };
     const sectionObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -2317,15 +2417,20 @@
     const sportsGrid = document.querySelector('.sports-grid');
     const dots = document.querySelectorAll('#sportsDots span');
     if (sportsGrid && dots.length) {
+      let sportsCardWidth = 0;
+      const updateSportsCardWidth = () => {
+        const card = sportsGrid.querySelector('.sport-card');
+        if (card) sportsCardWidth = card.offsetWidth + 12;
+      };
+      updateSportsCardWidth();
+      window.addEventListener('resize', updateSportsCardWidth, { passive: true });
       let sportsTicking = false;
       sportsGrid.addEventListener('scroll', () => {
         if (sportsTicking) return;
         sportsTicking = true;
         requestAnimationFrame(() => {
-          const card = sportsGrid.querySelector('.sport-card');
-          if (card) {
-            const cardWidth = card.offsetWidth + 12;
-            const active = Math.min(Math.round(sportsGrid.scrollLeft / cardWidth), dots.length - 1);
+          if (sportsCardWidth) {
+            const active = Math.min(Math.round(sportsGrid.scrollLeft / sportsCardWidth), dots.length - 1);
             dots.forEach((d, i) => d.classList.toggle('active', i === active));
           }
           sportsTicking = false;
@@ -2337,15 +2442,20 @@
     const beneficesGrid = document.querySelector('.benefices-grid');
     const beneficesDots = document.querySelectorAll('#beneficesDots span');
     if (beneficesGrid && beneficesDots.length) {
+      let beneficesItemWidth = 0;
+      const updateBeneficesItemWidth = () => {
+        const item = beneficesGrid.querySelector('.benefice-item');
+        if (item) beneficesItemWidth = item.offsetWidth + 12;
+      };
+      updateBeneficesItemWidth();
+      window.addEventListener('resize', updateBeneficesItemWidth, { passive: true });
       let beneficesTicking = false;
       beneficesGrid.addEventListener('scroll', () => {
         if (beneficesTicking) return;
         beneficesTicking = true;
         requestAnimationFrame(() => {
-          const item = beneficesGrid.querySelector('.benefice-item');
-          if (item) {
-            const itemWidth = item.offsetWidth + 12;
-            const active = Math.min(Math.round(beneficesGrid.scrollLeft / itemWidth), beneficesDots.length - 1);
+          if (beneficesItemWidth) {
+            const active = Math.min(Math.round(beneficesGrid.scrollLeft / beneficesItemWidth), beneficesDots.length - 1);
             beneficesDots.forEach((d, i) => d.classList.toggle('active', i === active));
           }
           beneficesTicking = false;
@@ -2357,15 +2467,20 @@
     const prestationsGrid = document.querySelector('.prestations-grid');
     const prestationsDots = document.querySelectorAll('#prestationsDots span');
     if (prestationsGrid && prestationsDots.length) {
+      let prestationsCardWidth = 0;
+      const updatePrestationsCardWidth = () => {
+        const card = prestationsGrid.querySelector('.prestation-card');
+        if (card) prestationsCardWidth = card.offsetWidth + 12;
+      };
+      updatePrestationsCardWidth();
+      window.addEventListener('resize', updatePrestationsCardWidth, { passive: true });
       let prestationsTicking = false;
       prestationsGrid.addEventListener('scroll', () => {
         if (prestationsTicking) return;
         prestationsTicking = true;
         requestAnimationFrame(() => {
-          const card = prestationsGrid.querySelector('.prestation-card');
-          if (card) {
-            const cardWidth = card.offsetWidth + 12;
-            const active = Math.min(Math.round(prestationsGrid.scrollLeft / cardWidth), prestationsDots.length - 1);
+          if (prestationsCardWidth) {
+            const active = Math.min(Math.round(prestationsGrid.scrollLeft / prestationsCardWidth), prestationsDots.length - 1);
             prestationsDots.forEach((d, i) => d.classList.toggle('active', i === active));
           }
           prestationsTicking = false;
@@ -2377,15 +2492,20 @@
     const blogGrid = document.querySelector('.blog-grid');
     const blogDots = document.querySelectorAll('#blogDots span');
     if (blogGrid && blogDots.length) {
+      let blogCardWidth = 0;
+      const updateBlogCardWidth = () => {
+        const card = blogGrid.querySelector('.article-card');
+        if (card) blogCardWidth = card.offsetWidth + 12;
+      };
+      updateBlogCardWidth();
+      window.addEventListener('resize', updateBlogCardWidth, { passive: true });
       let blogTicking = false;
       blogGrid.addEventListener('scroll', () => {
         if (blogTicking) return;
         blogTicking = true;
         requestAnimationFrame(() => {
-          const card = blogGrid.querySelector('.article-card');
-          if (card) {
-            const cardWidth = card.offsetWidth + 12;
-            const active = Math.min(Math.round(blogGrid.scrollLeft / cardWidth), blogDots.length - 1);
+          if (blogCardWidth) {
+            const active = Math.min(Math.round(blogGrid.scrollLeft / blogCardWidth), blogDots.length - 1);
             blogDots.forEach((d, i) => d.classList.toggle('active', i === active));
           }
           blogTicking = false;
@@ -2397,14 +2517,19 @@
     const avisSlider = document.getElementById('avisSlider');
     const avisDots = document.querySelectorAll('#avisDots span');
     if (avisSlider && avisDots.length) {
+      let avisMaxScroll = 0;
+      const updateAvisMaxScroll = () => {
+        avisMaxScroll = avisSlider.scrollWidth - avisSlider.offsetWidth;
+      };
+      updateAvisMaxScroll();
+      window.addEventListener('resize', updateAvisMaxScroll, { passive: true });
       let avisTicking = false;
       avisSlider.addEventListener('scroll', () => {
         if (avisTicking) return;
         avisTicking = true;
         requestAnimationFrame(() => {
-          const maxScroll = avisSlider.scrollWidth - avisSlider.offsetWidth;
-          if (maxScroll > 0) {
-            const progress = avisSlider.scrollLeft / maxScroll;
+          if (avisMaxScroll > 0) {
+            const progress = avisSlider.scrollLeft / avisMaxScroll;
             const active = Math.round(progress * (avisDots.length - 1));
             avisDots.forEach((d, i) => d.classList.toggle('active', i === active));
           }
