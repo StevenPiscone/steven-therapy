@@ -1,3 +1,15 @@
 node_modules/
 .env
 .netlify/
+
+# Outils de dev et fichiers générés
+.claude/
+deno.lock
+
+# Brouillons, démos et archives datées
+demo-*.html
+_brouillon-*.html
+2026-*_*.html
+
+# Images sources non servies par le site (le site référence les .webp)
+*.jfif
