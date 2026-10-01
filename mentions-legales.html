@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <link rel="icon" type="image/png" sizes="32x32" href="Assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="Assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="Assets/apple-touch-icon.png">
+
   <title>Mentions légales | Steven Therapy</title>
   <meta name="description" content="Mentions légales du site steventherapy.fr — Steven Therapy, massage sportif et deep tissue.">
   <meta name="robots" content="noindex, follow">
@@ -314,8 +318,12 @@
 
     .footer-links a:hover { color: var(--or); }
 
-    @media (max-width: 768px) {
+    /* Footer mobile : aligne sur index.html */
+    @media (max-width: 640px) {
       .footer-inner { flex-direction: column; text-align: center; }
+      .footer-logo { width: 100%; text-align: center; }
+      .footer-links { flex-wrap: wrap; justify-content: center; gap: 12px 24px; }
+      .footer-links a { white-space: nowrap; }
     }
   </style>
 </head>
@@ -380,11 +388,14 @@
     <div class="container">
       <div class="footer-inner">
         <div class="footer-logo">STEVEN <span>THERAPY</span></div>
-        <ul class="footer-links">
-          <li><a href="index.html#apropos">À propos</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-          <li><a href="blog.html">Blog</a></li>
-        </ul>
+          <ul class="footer-links">
+            <li><a href="index.html#prestations">Prestations</a></li>
+            <li><a href="index.html#apropos">À propos</a></li>
+            <li><a href="index.html#avis">Avis</a></li>
+            <li><a href="index.html#tarifs">Tarifs</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
         <p class="footer-copy">© 2026 Steven Therapy · Paris & Île-de-France</p>
       </div>
       <div class="footer-legal">

@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <link rel="icon" type="image/png" sizes="32x32" href="Assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="Assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="Assets/apple-touch-icon.png">
+
   <title>Conditions générales de vente | Steven Therapy</title>
   <meta name="description" content="Conditions générales de vente des prestations de massage sportif et deep tissue proposées par Steven Therapy.">
   <meta name="robots" content="noindex, follow">
@@ -314,8 +318,12 @@
 
     .footer-links a:hover { color: var(--or); }
 
-    @media (max-width: 768px) {
+    /* Footer mobile : aligne sur index.html */
+    @media (max-width: 640px) {
       .footer-inner { flex-direction: column; text-align: center; }
+      .footer-logo { width: 100%; text-align: center; }
+      .footer-links { flex-wrap: wrap; justify-content: center; gap: 12px 24px; }
+      .footer-links a { white-space: nowrap; }
     }
   </style>
 </head>
@@ -383,7 +391,7 @@
         <p>Les données transmises lors d'une réservation sont traitées conformément à la <a href="confidentialite.html">politique de confidentialité</a> du site.</p>
 
         <h2>8. Réclamation et médiation</h2>
-        <p>Pour toute réclamation, le client peut contacter Steven Therapy à <a href="mailto:contact@steventherapy.fr">contact@steventherapy.fr</a>. Si le litige n'est pas résolu directement, le client peut recourir gratuitement au service du Médiateur de la consommation de l'ANM Conso (Association Nationale des Médiateurs), dont les coordonnées et les modalités de saisine sont disponibles sur <a href="https://www.anm-conso.com" target="_blank" rel="noopener">www.anm-conso.com</a>.</p>
+        <p>Pour toute réclamation, le client peut contacter Steven Therapy à <a href="mailto:contact@steventherapy.fr">contact@steventherapy.fr</a>. Si le litige n'est pas résolu directement, le client dispose du droit de recourir gratuitement à un médiateur de la consommation. Les coordonnées du médiateur désigné par Steven Therapy seront indiquées ici dès leur attribution.</p>
 
         <h2>9. Droit applicable</h2>
         <p>Les présentes conditions générales de vente sont soumises au droit français. En cas de litige non résolu à l'amiable, les tribunaux français compétents seront saisis.</p>
@@ -396,11 +404,14 @@
     <div class="container">
       <div class="footer-inner">
         <div class="footer-logo">STEVEN <span>THERAPY</span></div>
-        <ul class="footer-links">
-          <li><a href="index.html#apropos">À propos</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-          <li><a href="blog.html">Blog</a></li>
-        </ul>
+          <ul class="footer-links">
+            <li><a href="index.html#prestations">Prestations</a></li>
+            <li><a href="index.html#apropos">À propos</a></li>
+            <li><a href="index.html#avis">Avis</a></li>
+            <li><a href="index.html#tarifs">Tarifs</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
         <p class="footer-copy">© 2026 Steven Therapy · Paris & Île-de-France</p>
       </div>
       <div class="footer-legal">

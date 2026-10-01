@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <link rel="icon" type="image/png" sizes="32x32" href="Assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="Assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="Assets/apple-touch-icon.png">
+
   <!-- Preload hero image (LCP) -->
   <link rel="preload" as="image" href="Assets/steven-masseur-sportif-deep-tissue-paris-idf-heroes.webp" fetchpriority="high">
 
@@ -39,7 +43,7 @@
 
   <!-- SEO -->
   <title>Massage Sportif & Deep Tissue | Steven Therapy | Paris & Île-de-France</title>
-  <meta name="description" content="Massage sportif et deep tissue à domicile ou en cabinet à Paris & Île-de-France. Formé par Marius Malarme, champion d'Europe. 42 avis 5 étoiles. Récupération, mobilité, performance.">
+  <meta name="description" content="Massage sportif et deep tissue à domicile ou en cabinet à Paris & Île-de-France. Formé par Marius Malarme, champion d'Europe. 44 avis 5 étoiles. Récupération, mobilité, performance.">
   <meta name="keywords" content="massage sportif Paris, deep tissue Paris, masseur sportif Île-de-France, massage à domicile Paris, récupération musculaire">
   <link rel="canonical" href="https://steventherapy.fr/">
 
@@ -78,7 +82,7 @@
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "5",
-      "reviewCount": "41"
+      "reviewCount": "44"
     },
     "openingHours": "Mo-Su 00:00-24:00",
     "sameAs": ["https://www.instagram.com/steven_therapy"]
@@ -408,6 +412,7 @@
       margin-top: 16px;
       margin-bottom: 28px;
     }
+    .cred-court { display: none; }
 
     .hero-actions {
       display: flex;
@@ -459,6 +464,18 @@
       border-color: var(--or);
       color: var(--or);
     }
+
+    /* Offre découverte : ancien prix barré puis prix remisé, format identique sur tous les boutons */
+    .btn-offre-ancien {
+      font-weight: 400;
+      text-decoration: line-through;
+      opacity: 0.55;
+    }
+    .btn-offre-prix {
+      font-weight: 700;
+    }
+    .btn-secondary .btn-offre-prix { color: var(--or); }
+    .btn-secondary:hover .btn-offre-prix { color: var(--or-clair); }
 
     .hero-stats {
       display: flex;
@@ -1671,7 +1688,10 @@
       .hero-visual::before { background: linear-gradient(to top, rgba(10,10,8,0.70) 12%, rgba(10,10,8,0.48) 48%, rgba(10,10,8,0.43) 100%); }
       .hero-left { padding: 80px 20px 48px; }
       .hero-badge span { font-size: 10px; letter-spacing: 0.1em; }
-      .hero-cred { font-size: 12px; letter-spacing: 0.08em; padding: 8px 14px; }
+      /* Bandeau médaille : libellé raccourci en mobile pour tenir sur une ligne en plus grand */
+      .hero-cred { font-size: 17px; letter-spacing: 0.08em; padding: 8px 14px; }
+      .cred-long { display: none; }
+      .cred-court { display: inline; }
       .hero-title { font-size: clamp(52px, 15vw, 80px); }
       .hero-discipline { font-size: 15px; margin-top: 14px; margin-bottom: 18px; }
       .hero-tagline { font-size: clamp(22px, 7.5vw, 36px); }
@@ -1679,6 +1699,7 @@
       .hero-actions { flex-direction: column; margin-bottom: 36px; }
       .hero-actions .btn-primary,
       .hero-actions .btn-secondary { width: 100%; justify-content: center; }
+      .btn-offre { white-space: nowrap; letter-spacing: 0.05em; padding-left: 20px; padding-right: 20px; }
       .hero-stats { gap: 28px; }
       /* Bénéfices : carousel swipeable */
       .benefices-grid {
@@ -1809,12 +1830,12 @@
           <span class="hero-title-accent">Sportif</span>
         </h1>
 <p class="hero-tagline">Mieux <span style="color:var(--or)">récupérer</span><br>pour mieux <span style="color:var(--or)">performer</span></p>
-        <p class="hero-cred">🥇 Technique médaillée d'or au Championnat d'Europe 2025</p>
+        <p class="hero-cred"><span class="cred-long">🥇 Technique médaillée d'or au Championnat d'Europe 2025</span><span class="cred-court">🥇 Technique médaillée d'or · Europe 2025</span></p>
         <p class="hero-subtitle">Paris · Île-de-France</p>
         <p class="hero-subtitle-light">À domicile · En cabinet · En salle de sport</p>
         <div class="hero-stats">
           <div>
-            <div class="hero-stat-value">42</div>
+            <div class="hero-stat-value">44</div>
             <div class="hero-stat-label">Avis 5 étoiles</div>
           </div>
           <div>
@@ -1824,11 +1845,11 @@
         </div>
         <br>
         <div class="hero-actions">
-          <button type="button" class="btn-primary" onclick="openBookingChat();">
-            Prendre rendez-vous
+          <button type="button" class="btn-primary btn-offre" onclick="openBookingChat('decouverte');">
+            Offre découverte <span class="btn-offre-ancien">80€</span> <span class="btn-offre-prix">49€</span>
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
-          <a href="#prestations" class="btn-secondary">Découvrir les prestations</a>
+          <button type="button" class="btn-secondary" onclick="openBookingChat();">Prendre rendez-vous</button>
         </div>
         
       </div>
@@ -1982,6 +2003,13 @@
         <span></span>
         <span></span>
       </div>
+
+      <div style="text-align: center; margin-top: 40px;">
+        <button type="button" class="btn-primary btn-offre" onclick="openBookingChat('decouverte');">
+          Offre découverte <span class="btn-offre-ancien">80€</span> <span class="btn-offre-prix">49€</span>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
     </div>
   </section>
 
@@ -2012,7 +2040,7 @@
               </div>
               <div class="credential">
                 <div class="credential-icon">⭐</div>
-                <div class="credential-text"><strong>42 avis 5 étoiles</strong><br>Sur Google Business</div>
+                <div class="credential-text"><strong>44 avis 5 étoiles</strong><br>Sur Google Business</div>
               </div>
             </div>
           </div>
@@ -2027,13 +2055,13 @@
       <div class="avis-header">
         <div>
           <div class="section-label">Ce qu'ils disent</div>
-          <h2 class="section-title"><span class="count-up" data-target="42">42</span> avis <span>5 étoiles.</span></h2>
+          <h2 class="section-title"><span class="count-up" data-target="44">44</span> avis <span>5 étoiles.</span></h2>
         </div>
         <div class="avis-score">
           <div class="avis-score-value">5.0</div>
           <div>
             <div class="avis-stars">★★★★★</div>
-            <div class="avis-count">42 avis Google vérifiés</div>
+            <div class="avis-count">44 avis Google vérifiés</div>
           </div>
         </div>
       </div>
@@ -2209,6 +2237,13 @@
         </div>
 
       </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+          <button type="button" class="btn-primary btn-offre" onclick="openBookingChat('decouverte');">
+            Offre découverte <span class="btn-offre-ancien">80€</span> <span class="btn-offre-prix">49€</span>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
     </div>
   </section>
 
@@ -2231,7 +2266,7 @@
         </details>
         <details class="faq-teaser-item">
           <summary>Es-tu certifié ?<span class="faq-teaser-icon"></span></summary>
-          <p class="faq-teaser-answer">Oui, formé par Marius Malarme, champion d'Europe de massage 2022 et 2025. En activité depuis janvier 2026, avec 42 avis 5 étoiles sur Google.</p>
+          <p class="faq-teaser-answer">Oui, formé par Marius Malarme, champion d'Europe de massage 2022 et 2025. En activité depuis janvier 2026, avec 44 avis 5 étoiles sur Google.</p>
         </details>
         <details class="faq-teaser-item">
           <summary>Le deep tissue, ça fait mal ?<span class="faq-teaser-icon"></span></summary>
@@ -2329,8 +2364,8 @@
           <p class="contact-cta-desc">
             Profite de l'offre découverte : 1 heure de massage deep tissue ou sportif à 49€ au lieu de 80€.
           </p>
-          <button type="button" class="btn-primary" onclick="openBookingChat('decouverte');">
-            Offre découverte — 49€
+          <button type="button" class="btn-primary btn-offre" onclick="openBookingChat('decouverte');">
+            Offre découverte <span class="btn-offre-ancien">80€</span> <span class="btn-offre-prix">49€</span>
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
           <button type="button" class="btn-secondary" onclick="openBookingChat();">

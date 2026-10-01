@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <link rel="icon" type="image/png" sizes="32x32" href="Assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="Assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="Assets/apple-touch-icon.png">
+
   <!-- CSS critique du bouton chat (evite un flash non stylise le temps que chatbot.css charge en async) -->
   <style>
     #chatbot-btn {
@@ -454,7 +458,14 @@
       .article-card { padding: 32px 24px; }
       .cta-band-inner { flex-direction: column; text-align: center; }
     }
-  </style>
+      /* Footer mobile : aligne sur index.html */
+    @media (max-width: 640px) {
+      .footer-inner { flex-direction: column; text-align: center; }
+      .footer-logo { width: 100%; text-align: center; }
+      .footer-links { flex-wrap: wrap; justify-content: center; gap: 12px 24px; }
+      .footer-links a { white-space: nowrap; }
+    }
+</style>
 </head>
 
 <body>

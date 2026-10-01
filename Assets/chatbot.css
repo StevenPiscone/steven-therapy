@@ -148,11 +148,22 @@
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
 }
+/* Bouton retour : icone seule, toujours poussee a droite de la rangee de choix. */
+.chat-back-btn {
+  margin-left: auto;
+  padding: 8px 13px;
+  line-height: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
 .chat-btn:hover { background: var(--or); color: var(--noir); }
 .chat-input-row {
   display: flex;
   gap: 8px;
   width: 100%;
+  /* Le bouton reste cale en bas quand la zone de saisie grandit sur plusieurs lignes. */
+  align-items: flex-end;
 }
 .chat-input {
   flex: 1;
@@ -165,6 +176,16 @@
   padding: 8px 14px;
   outline: none;
   min-width: 0;
+}
+/* Zone de saisie multiligne pour les questions : hauteur auto, plafonnee en JS a 96px. */
+.chat-textarea {
+  resize: none;
+  line-height: 1.45;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 16px;
+  max-height: 96px;
+  overflow-y: auto;
 }
 .chat-input:focus { border-color: var(--or); }
 .chat-input::placeholder { color: var(--gris-texte); }

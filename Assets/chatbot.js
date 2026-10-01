@@ -7,6 +7,10 @@
 let chatOpen = false;
 let chatSel = {};
 let lastAskAt = 0;
+// Pile des etapes traversees, pour le bouton retour. Les sous-etapes du choix de
+// creneau (periode, creneau) n'y figurent pas : elles ont leur propre retour interne.
+let chatHistory = [];
+let chatCurrentStep = null;
 const ASK_COOLDOWN_MS = 8000;
 
 // Fait toujours defiler jusqu'en bas (messages + boutons), quelle que soit la fonction
@@ -120,6 +124,8 @@ function resetAndOpenChat() {
   document.getElementById('chatbot-window').classList.add('open');
   document.getElementById('chatNotif').style.display = 'none';
   chatSel = {};
+  chatHistory = [];
+  chatCurrentStep = null;
   document.getElementById('chatMessages').innerHTML = '';
   document.getElementById('chatChoices').innerHTML = '';
 }
@@ -162,6 +168,24 @@ function userMsg(text) {
   document.getElementById('chatMessages').appendChild(el);
 }
 
+// Revient a l'etape precedente reellement traversee. La pile gere seule les
+// branchements (offre decouverte qui saute la duree, domicile/cabinet/salle).
+function goBack() {
+  const prev = chatHistory.pop();
+  if (prev) showStep(prev, undefined, true);
+}
+
+function appendBackButton(el) {
+  if (!chatHistory.length) return;
+  const back = document.createElement('button');
+  back.className = 'chat-btn chat-back-btn';
+  back.innerHTML = '<svg width="15" height="15" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M13 7H1M6 2 1 7l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  back.title = 'Retour';
+  back.setAttribute('aria-label', 'Retour');
+  back.onclick = goBack;
+  el.appendChild(back);
+}
+
 function setChoices(choices) {
   const el = document.getElementById('chatChoices');
   el.innerHTML = '';
@@ -172,12 +196,15 @@ function setChoices(choices) {
     btn.onclick = () => pick(c);
     el.appendChild(btn);
   });
+  appendBackButton(el);
 }
 
-function showStep(key, overrideMsg) {
+function showStep(key, overrideMsg, isBack) {
   if (key === 'confirm') { showConfirm(); return; }
   const step = flow[key];
   if (!step) return;
+  if (!isBack && chatCurrentStep && chatCurrentStep !== key) chatHistory.push(chatCurrentStep);
+  chatCurrentStep = key;
   setTimeout(() => {
     botMsg(overrideMsg || step.msg);
     if (step.isFreeText) renderFaqInputUI();
@@ -194,30 +221,47 @@ function renderFaqInputUI() {
   const row = document.createElement('div');
   row.className = 'chat-input-row';
 
-  const input = document.createElement('input');
-  input.type = 'text';
-  input.className = 'chat-input';
+  // Zone multiligne : une question tient rarement sur une ligne, et l'utilisateur
+  // doit pouvoir relire ce qu'il ecrit avant d'envoyer.
+  const input = document.createElement('textarea');
+  input.className = 'chat-input chat-textarea';
   input.placeholder = 'Ta question...';
   input.maxLength = 300;
+  input.rows = 2;
 
   const sendBtn = document.createElement('button');
   sendBtn.className = 'chat-send-btn';
   sendBtn.textContent = 'Envoyer';
   sendBtn.onclick = () => askFaq(input.value, sendBtn, input);
 
+  // Entree envoie, Maj+Entree passe a la ligne : convention des messageries.
   input.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') askFaq(input.value, sendBtn, input);
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      askFaq(input.value, sendBtn, input);
+    }
+  });
+
+  // Le champ grandit avec le texte jusqu'a la limite posee en CSS.
+  input.addEventListener('input', () => {
+    input.style.height = 'auto';
+    input.style.height = Math.min(input.scrollHeight, 96) + 'px';
   });
 
   row.appendChild(input);
   row.appendChild(sendBtn);
   el.appendChild(row);
 
-  const menuBtn = document.createElement('button');
-  menuBtn.className = 'chat-btn';
-  menuBtn.textContent = '🏠 Menu principal';
-  menuBtn.onclick = () => { el.innerHTML = ''; showStep('entry'); };
-  el.appendChild(menuBtn);
+  // Le prompt systeme invite le bot a renvoyer vers la reservation : le bouton
+  // doit donc exister sur cet ecran, pas seulement sur l'accueil du chat.
+  const reserverBtn = document.createElement('button');
+  reserverBtn.className = 'chat-btn';
+  reserverBtn.textContent = '📅 Réserver une séance';
+  reserverBtn.onclick = () => { el.innerHTML = ''; showStep('start'); };
+  el.appendChild(reserverBtn);
+
+  // Pas de bouton retour ici, choix de Steven : sur l'ecran de questions la seule
+  // action proposee est la reservation.
 
   input.focus();
 }
@@ -247,6 +291,7 @@ function renderTextInputUI(step) {
   row.appendChild(input);
   row.appendChild(sendBtn);
   el.appendChild(row);
+  appendBackButton(el);
   input.focus();
 }
 
@@ -324,9 +369,11 @@ function renderDateInputUI() {
   el.appendChild(row);
 
   const back = document.createElement('button');
-  back.className = 'chat-btn';
-  back.textContent = '⬅️ Retour';
-  back.onclick = () => showStep('duree');
+  back.className = 'chat-btn chat-back-btn';
+  back.innerHTML = '<svg width="15" height="15" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M13 7H1M6 2 1 7l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  back.title = 'Retour';
+  back.setAttribute('aria-label', 'Retour');
+  back.onclick = goBack;
   el.appendChild(back);
 }
 
@@ -384,8 +431,10 @@ function renderPeriodeChoices() {
     }
   });
   const back = document.createElement('button');
-  back.className = 'chat-btn';
-  back.textContent = '⬅️ Retour';
+  back.className = 'chat-btn chat-back-btn';
+  back.innerHTML = '<svg width="15" height="15" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M13 7H1M6 2 1 7l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  back.title = 'Retour';
+  back.setAttribute('aria-label', 'Retour');
   back.onclick = () => renderDateInputUI();
   el.appendChild(back);
 }
@@ -405,8 +454,10 @@ function renderCreneauxPeriode(cle) {
       el.appendChild(btn);
     });
     const back = document.createElement('button');
-    back.className = 'chat-btn';
-    back.textContent = '⬅️ Retour';
+    back.className = 'chat-btn chat-back-btn';
+    back.innerHTML = '<svg width="15" height="15" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M13 7H1M6 2 1 7l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    back.title = 'Retour';
+    back.setAttribute('aria-label', 'Retour');
     back.onclick = () => renderPeriodeChoices();
     el.appendChild(back);
   }, 300);
@@ -441,9 +492,11 @@ function renderDateIndisponible(data) {
     autreDate.onclick = () => renderDateInputUI();
     el.appendChild(autreDate);
     const back = document.createElement('button');
-    back.className = 'chat-btn';
-    back.textContent = '⬅️ Retour';
-    back.onclick = () => showStep('duree');
+    back.className = 'chat-btn chat-back-btn';
+    back.innerHTML = '<svg width="15" height="15" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M13 7H1M6 2 1 7l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    back.title = 'Retour';
+    back.setAttribute('aria-label', 'Retour');
+    back.onclick = goBack;
     el.appendChild(back);
   }, 300);
 }
@@ -476,6 +529,16 @@ function pick(choice) {
       );
       waLink("Contacter sur WhatsApp", waMsg);
     }, 300);
+    return;
+  }
+
+  // L'offre decouverte est fixee a 1h a 49E : on saute l'etape duree plutot que
+  // d'afficher la grille de tarifs pleins, qui contredirait le prix annonce a
+  // l'ouverture du chat (49E promis, 80E affiche trois ecrans plus loin).
+  if (choice.next === 'duree' && chatSel.offre === 'decouverte') {
+    chatSel.duree = '1h';
+    chatSel.dureeMinutes = 60;
+    showStep('date_domicile', "Ta séance découverte dure 1h. Quelle date tu souhaites ?");
     return;
   }
 
