@@ -68,8 +68,10 @@
     "email": "contact@steventherapy.fr",
     "address": {
       "@type": "PostalAddress",
+      "streetAddress": "10 Avenue Victor Hugo",
       "addressLocality": "Choisy-le-Roi",
       "postalCode": "94600",
+      "addressRegion": "Île-de-France",
       "addressCountry": "FR"
     },
     "geo": {
@@ -79,13 +81,90 @@
     },
     "areaServed": "Île-de-France",
     "priceRange": "€€",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "Espèces, Carte bancaire, Virement",
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "5",
       "reviewCount": "44"
     },
-    "openingHours": "Mo-Su 00:00-24:00",
-    "sameAs": ["https://www.instagram.com/steven_therapy"]
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Wednesday"],
+        "opens": "09:00",
+        "closes": "19:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Tuesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "09:00",
+        "closes": "22:00"
+      }
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Prestations de massage sportif et deep tissue",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "name": "Offre découverte",
+          "price": "49",
+          "priceCurrency": "EUR",
+          "description": "1 heure de massage deep tissue ou sportif à 49€ au lieu de 80€, réservée à la toute première séance. Hors frais de déplacement.",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Massage deep tissue ou sportif 1h — première séance",
+            "serviceType": "Massage sportif",
+            "provider": { "@type": "LocalBusiness", "name": "Steven Therapy" }
+          }
+        },
+        {
+          "@type": "Offer",
+          "name": "Séance 30 minutes",
+          "price": "40",
+          "priceCurrency": "EUR",
+          "description": "Une seule zone du corps, en cabinet uniquement.",
+          "itemOffered": { "@type": "Service", "name": "Massage ciblé 30 min", "serviceType": "Massage sportif" }
+        },
+        {
+          "@type": "Offer",
+          "name": "Séance 45 minutes",
+          "price": "60",
+          "priceCurrency": "EUR",
+          "description": "Une seule zone du corps, avec un travail plus poussé sur les tensions qu'en 30 minutes.",
+          "itemOffered": { "@type": "Service", "name": "Massage ciblé 45 min", "serviceType": "Massage sportif" }
+        },
+        {
+          "@type": "Offer",
+          "name": "Séance 1 heure",
+          "price": "80",
+          "priceCurrency": "EUR",
+          "description": "Corps entier.",
+          "itemOffered": { "@type": "Service", "name": "Massage deep tissue ou sportif 1h", "serviceType": "Massage sportif" }
+        },
+        {
+          "@type": "Offer",
+          "name": "Séance 1h30",
+          "price": "120",
+          "priceCurrency": "EUR",
+          "description": "Corps entier, le format le plus choisi.",
+          "itemOffered": { "@type": "Service", "name": "Massage deep tissue ou sportif 1h30", "serviceType": "Massage sportif" }
+        },
+        {
+          "@type": "Offer",
+          "name": "Séance 2 heures",
+          "price": "150",
+          "priceCurrency": "EUR",
+          "description": "Corps entier, avec le plus de temps passé sur les zones de tension.",
+          "itemOffered": { "@type": "Service", "name": "Massage deep tissue ou sportif 2h", "serviceType": "Massage sportif" }
+        }
+      ]
+    },
+    "sameAs": [
+      "https://www.instagram.com/steven_therapy",
+      "https://www.google.com/maps?cid=818222348436398723"
+    ]
   }
   </script>
 
