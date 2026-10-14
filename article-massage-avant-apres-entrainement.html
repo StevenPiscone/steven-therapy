@@ -1,0 +1,875 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="Assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="Assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="Assets/apple-touch-icon.png">
+
+  <!-- CSS critique du bouton chat (evite un flash non stylise le temps que chatbot.css charge en async) -->
+  <style>
+    #chatbot-btn {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #D4AF37;
+      color: #0a0a08;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 300;
+      box-shadow: 0 4px 24px rgba(212,175,55,0.45);
+      border: none;
+    }
+  </style>
+
+  <!-- GA4 + Meta Pixel : charges apres consentement, voir Assets/cookie-consent.js -->
+  <!-- legal.css/chatbot.css en chargement async (preload + swap) : non critiques pour le rendu au-dessus de la ligne de flottaison -->
+  <link rel="preload" href="Assets/legal.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="Assets/chatbot.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="Assets/legal.css">
+    <link rel="stylesheet" href="Assets/chatbot.css">
+  </noscript>
+
+  <title>Massage sportif avant ou après l'entraînement ? | Steven Therapy</title>
+  <meta name="description" content="Massage sportif avant ou après l'entraînement : le bon timing, la bonne fréquence, ce que dit la science. Par un masseur sportif à Paris &amp; Île-de-France.">
+  <link rel="canonical" href="https://steventherapy.fr/article-massage-avant-apres-entrainement">
+
+  <meta property="og:title" content="Massage sportif avant ou après l'entraînement ? | Steven Therapy">
+  <meta property="og:description" content="Massage sportif avant ou après l'entraînement : le bon timing, la bonne fréquence, ce que dit la science. Par un masseur sportif à Paris &amp; Île-de-France.">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="fr_FR">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Massage sportif avant ou après l'entraînement ?",
+    "description": "Massage sportif avant ou après l'entraînement : le bon timing, la bonne fréquence, ce que dit la science. Par un masseur sportif à Paris & Île-de-France.",
+    "datePublished": "2026-10-14",
+    "inLanguage": "fr-FR",
+    "author": {
+      "@type": "Person",
+      "name": "Steven Piscone",
+      "jobTitle": "Masseur sportif",
+      "url": "https://steventherapy.fr"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Steven Therapy",
+      "url": "https://steventherapy.fr"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://steventherapy.fr/article-massage-avant-apres-entrainement"
+    },
+    "citation": [
+      {
+        "@type": "ScholarlyArticle",
+        "name": "Effect of sports massage on performance and recovery: a systematic review and meta-analysis",
+        "author": "Davis HL, Alabed S, Chico TJA",
+        "datePublished": "2020",
+        "sameAs": "https://doi.org/10.1136/bmjsem-2019-000614",
+        "isPartOf": { "@type": "Periodical", "name": "BMJ Open Sport & Exercise Medicine" }
+      },
+      {
+        "@type": "ScholarlyArticle",
+        "name": "Acute effects of pre-event lower limb massage on explosive and high speed motor capacities and flexibility",
+        "author": "Arabaci R",
+        "datePublished": "2008",
+        "isPartOf": { "@type": "Periodical", "name": "Journal of Sports Science & Medicine" }
+      },
+      {
+        "@type": "ScholarlyArticle",
+        "name": "An Evidence-Based Approach for Choosing Post-exercise Recovery Techniques to Reduce Markers of Muscle Damage, Soreness, Fatigue, and Inflammation: A Systematic Review With Meta-Analysis",
+        "author": "Dupuy O, Douzi W, Theurot D, Bosquet L, Dugué B",
+        "datePublished": "2018",
+        "sameAs": "https://doi.org/10.3389/fphys.2018.00403",
+        "isPartOf": { "@type": "Periodical", "name": "Frontiers in Physiology" }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --noir: #0a0a08;
+      --or: #D4AF37;
+      --or-clair: #e8c94a;
+      --blanc: #FDFCF8;
+      --gris: #1a1a18;
+      --gris-texte: #8a8a7a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--noir);
+      color: var(--blanc);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.04em;
+      line-height: 1.1;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 20px 0;
+      transition: background 0.3s, padding 0.3s;
+    }
+
+    nav.scrolled {
+      background: rgba(10, 10, 8, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+    }
+
+    nav .container {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-logo img { height: 36px; width: auto; display: block; }
+
+    .nav-logo .logo-pc { display: none; }
+
+    @media (max-width: 640px) {
+      .nav-logo .logo-desktop { display: none; }
+      .nav-logo .logo-pc { display: block; height: 40px; width: 40px; }
+    }
+
+    .nav-links { display: flex; gap: 36px; list-style: none; margin-left: auto; }
+
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(253,252,248,0.7);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--or); }
+    .nav-links a.active { color: var(--or); border-bottom: 2px solid var(--or); padding-bottom: 2px; }
+
+    @keyframes cta-shimmer {
+      0%   { left: -100%; }
+      30%  { left: 140%; }
+      100% { left: 140%; }
+    }
+
+    .nav-cta {
+      background: var(--or);
+      color: var(--noir) !important;
+      padding: 10px 22px;
+      font-weight: 700 !important;
+      margin-left: 36px;
+      transition: background 0.2s !important;
+      position: relative;
+      overflow: hidden;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: inherit;
+    }
+
+    .nav-cta::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 60%; height: 100%;
+      background: linear-gradient(105deg, transparent 20%, rgba(255,255,255,0.45) 50%, transparent 80%);
+      animation: cta-shimmer 4s ease-in-out infinite 1.5s;
+    }
+
+    .nav-cta:hover { background: var(--or-clair) !important; color: var(--noir) !important; }
+    .nav-cta:hover::after { animation: none; }
+
+    .nav-mobile-cta {
+      display: none;
+      background: var(--or);
+      color: var(--noir) !important;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 9px 16px;
+      white-space: nowrap;
+      transition: background 0.2s;
+      position: relative;
+      overflow: hidden;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .nav-mobile-cta::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 60%; height: 100%;
+      background: linear-gradient(105deg, transparent 20%, rgba(255,255,255,0.45) 50%, transparent 80%);
+      animation: cta-shimmer 4s ease-in-out infinite 1.5s;
+    }
+
+    .nav-mobile-cta:hover { background: var(--or-clair); }
+    .nav-mobile-cta:hover::after { animation: none; }
+
+    .nav-burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .nav-burger span { width: 24px; height: 2px; background: var(--blanc); transition: 0.3s; }
+
+    /* ─── ARTICLE HERO ─── */
+    .article-hero {
+      padding: 140px 0 64px;
+      border-bottom: 1px solid rgba(212,175,55,0.1);
+    }
+
+    .article-hero-inner { max-width: 760px; }
+
+    .article-breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 32px;
+      font-size: 12px;
+      color: rgba(253,252,248,0.55);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .article-breadcrumb a { transition: color 0.2s; }
+    .article-breadcrumb a:hover { color: var(--or); }
+    .article-breadcrumb span { color: rgba(253,252,248,0.55); }
+
+    .article-cat {
+      display: inline-block;
+      background: rgba(212,175,55,0.1);
+      color: var(--or);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      margin-bottom: 20px;
+    }
+
+    .article-hero h1 {
+      font-size: clamp(36px, 5vw, 64px);
+      color: var(--blanc);
+      margin-bottom: 24px;
+    }
+
+    .article-hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 12px;
+      color: rgba(253,252,248,0.55);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .article-hero-meta-sep {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: rgba(212,175,55,0.4);
+    }
+
+    /* ─── ARTICLE BODY ─── */
+    .article-layout {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 80px;
+      padding: 80px 0 120px;
+      align-items: start;
+    }
+
+    .article-body { max-width: 680px; }
+
+    .article-body p {
+      font-size: 15px;
+      color: rgba(253,252,248,0.75);
+      line-height: 1.9;
+      margin-bottom: 20px;
+    }
+
+    .article-body h2 {
+      font-size: clamp(24px, 3vw, 34px);
+      color: var(--blanc);
+      margin-top: 56px;
+      margin-bottom: 16px;
+    }
+
+    .article-body h3 {
+      font-size: clamp(18px, 2.2vw, 26px);
+      color: rgba(253,252,248,0.9);
+      margin-top: 40px;
+      margin-bottom: 12px;
+    }
+
+    .article-body hr {
+      border: none;
+      border-top: 1px solid rgba(212,175,55,0.15);
+      margin: 48px 0;
+    }
+
+    .article-intro {
+      font-size: 17px !important;
+      color: rgba(253,252,248,0.85) !important;
+      line-height: 2 !important;
+      font-weight: 500;
+    }
+
+    /* ─── TABLEAU COMPARATIF ─── */
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin: 32px 0;
+    }
+
+    .compare-col {
+      background: var(--gris);
+      padding: 28px 24px;
+    }
+
+    .compare-col-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      margin-bottom: 16px;
+    }
+
+    .compare-col-title.or { color: var(--or); }
+    .compare-col-title.blanc { color: rgba(253,252,248,0.5); }
+
+    .compare-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .compare-list li {
+      font-size: 13px;
+      color: rgba(253,252,248,0.65);
+      line-height: 1.6;
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .compare-list li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--or);
+      font-size: 10px;
+    }
+
+    /* ─── BLOC DIFFERENCES ─── */
+    .diff-block {
+      background: var(--gris);
+      padding: 32px 28px;
+      margin: 12px 0;
+      border-left: 3px solid rgba(212,175,55,0.3);
+    }
+
+    .diff-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 13px;
+      color: var(--or);
+      letter-spacing: 0.2em;
+      margin-bottom: 8px;
+    }
+
+    .diff-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      color: var(--blanc);
+      margin-bottom: 10px;
+    }
+
+    .diff-block p {
+      font-size: 13px;
+      color: rgba(253,252,248,0.6);
+      line-height: 1.7;
+      margin-bottom: 10px;
+    }
+
+    .diff-block p:last-child { margin-bottom: 0; }
+
+    .diff-label {
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+
+    .article-cta-inline {
+      margin-top: 48px;
+      padding: 32px;
+      background: var(--gris);
+      border-left: 3px solid var(--or);
+    }
+
+    .article-cta-inline p {
+      margin-bottom: 16px;
+      color: rgba(253,252,248,0.7);
+      font-size: 14px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--or);
+      color: var(--noir);
+      padding: 14px 28px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-primary:hover { background: var(--or-clair); transform: translateY(-1px); }
+
+    /* ─── SIDEBAR ─── */
+    .article-sidebar {
+      position: sticky;
+      top: 100px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .sidebar-card {
+      background: var(--gris);
+      padding: 28px 24px;
+    }
+
+    .sidebar-card-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      color: var(--blanc);
+      margin-bottom: 12px;
+    }
+
+    .sidebar-card p {
+      font-size: 13px;
+      color: rgba(253,252,248,0.5);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .sidebar-btn-primary {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--or);
+      color: var(--noir);
+      padding: 12px 20px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .sidebar-btn-primary:hover { background: var(--or-clair); transform: translateY(-1px); }
+
+    .sidebar-other-article {
+      display: block;
+      padding: 16px;
+      background: var(--gris);
+      border: 1px solid rgba(212,175,55,0.12);
+      transition: border-color 0.2s;
+    }
+
+    .sidebar-other-article:hover { border-color: rgba(212,175,55,0.4); }
+
+    .sidebar-other-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--or);
+      margin-bottom: 8px;
+    }
+
+    .sidebar-other-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      color: var(--blanc);
+      line-height: 1.2;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #050504;
+      padding: 48px 0;
+      border-top: 1px solid rgba(212,175,55,0.1);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.08em; }
+    .footer-logo span { color: var(--or); }
+    .footer-links { display: flex; gap: 28px; list-style: none; }
+    .footer-links a { font-size: 12px; color: rgba(253,252,248,0.55); letter-spacing: 0.08em; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--or); }
+    .footer-copy { font-size: 12px; color: rgba(253,252,248,0.55); }
+
+    /* ─── MOBILE ─── */
+    @media (max-width: 960px) {
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .nav-links.nav-open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%; left: 0; right: 0;
+        background: rgba(10,10,8,0.97);
+        padding: 24px;
+        gap: 20px;
+        border-top: 1px solid rgba(212,175,55,0.15);
+        z-index: 99;
+      }
+      .nav-burger { display: flex; }
+      .nav-mobile-cta { display: block; margin-left: auto; margin-right: 16px; }
+    }
+
+    @media (max-width: 860px) {
+      .article-layout { grid-template-columns: 1fr; gap: 48px; }
+      .article-sidebar { position: static; }
+      .sidebar-card { display: none; }
+    }
+
+    @media (max-width: 640px) {
+      .article-hero { padding: 120px 0 48px; }
+      .article-body p { font-size: 14px; }
+      .compare-grid { grid-template-columns: 1fr; }
+    }
+      /* Footer mobile : aligne sur index.html */
+    @media (max-width: 640px) {
+      .footer-inner { flex-direction: column; text-align: center; }
+      .footer-logo { width: 100%; text-align: center; }
+      .footer-links { flex-wrap: wrap; justify-content: center; gap: 12px 24px; }
+      .footer-links a { white-space: nowrap; }
+    }
+</style>
+</head>
+
+<body>
+
+  <!-- ─── NAV ─── -->
+  <nav id="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <img class="logo-desktop" src="Assets/logo.png" alt="Steven Therapy">
+        <img class="logo-pc" src="Assets/logo-split.png" alt="Steven Therapy">
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html#prestations">Prestations</a></li>
+        <li><a href="index.html#apropos">À propos</a></li>
+        <li><a href="index.html#avis">Avis</a></li>
+        <li><a href="index.html#tarifs">Tarifs</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="blog.html" class="active">Blog</a></li>
+      </ul>
+      <button type="button" class="nav-cta" onclick="openBookingChat();">Prendre RDV</button>
+      <button type="button" class="nav-mobile-cta" onclick="openBookingChat();">Réserver</button>
+      <div class="nav-burger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ─── ARTICLE HERO ─── -->
+  <header class="article-hero">
+    <div class="container">
+      <div class="article-hero-inner">
+        <div class="article-breadcrumb">
+          <a href="index.html">Accueil</a>
+          <span>›</span>
+          <a href="blog.html">Blog</a>
+          <span>›</span>
+          <span style="color: rgba(253,252,248,0.55)">Récupération</span>
+        </div>
+        <div class="article-cat">Récupération</div>
+        <h1>Massage sportif avant ou après l'entraînement ?</h1>
+        <div class="article-hero-meta">
+          <span>14 octobre 2026</span>
+          <div class="article-hero-meta-sep"></div>
+          <span>5 min de lecture</span>
+          <div class="article-hero-meta-sep"></div>
+          <span>Steven Therapy</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ─── ARTICLE BODY ─── -->
+  <div class="container">
+    <div class="article-layout">
+
+      <article class="article-body">
+
+        <p class="article-intro">Tu sors d'une séance de muscu, tu viens de boucler un WOD Hyrox, tu enchaînes les sparrings de grappling ou de JJB : faut-il placer ton massage avant ou après ?</p>
+
+        <p>La question revient sans arrêt, et voici ma réponse selon mon expérience, pour que tu profites à fond de ton massage sans perdre une séance d'entraînement.</p>
+
+        <hr>
+
+        <h2>Juste avant l'entraînement : rarement une bonne idée</h2>
+
+        <p>Un travail en profondeur juste avant un entraînement se retourne souvent contre toi. Les études relèvent qu'un massage profond réalisé immédiatement avant l'effort n'apporte aucun gain de force ni de vitesse. Exactement l'inverse de ce que tu cherches quand tu veux soulever lourd ou tout donner sur un WOD.</p>
+
+        <p>Dans l'heure qui précède ta séance, mieux vaut un échauffement actif : mobilité articulaire, activation musculaire, montée progressive en intensité.</p>
+
+        <hr>
+
+        <h2>24 à 48h avant : la bonne fenêtre pour arriver au top</h2>
+
+        <p>La bonne fenêtre se situe <strong>entre 24 et 48h avant ton entraînement</strong>. Je traite les zones de tension et ce travail sollicite le muscle en profondeur sur le moment. Ces 24 à 48h lui laissent le temps de récupérer du massage, pour que tu arrives à ta séance au top de ta forme.</p>
+
+        <p><strong>Avant une compétition, il faut prendre encore plus de précaution.</strong> Pour la même raison : tu ne veux pas arriver sur la ligne de départ avec des muscles encore occupés à encaisser le massage. Si tu as une compétition, écris-moi et on cale la date ensemble.</p>
+
+        <hr>
+
+        <h2>Après l'entraînement : la vraie fenêtre de récupération</h2>
+
+        <p>C'est là que le massage sportif est le plus utile. Une méta-analyse publiée dans <em>Frontiers in Physiology</em> (Dupuy et al., 2018), qui compare les principales techniques de récupération (étirements, cryothérapie, compression, récupération active), identifie le massage comme la plus efficace pour réduire les courbatures et la fatigue perçue après l'effort.</p>
+
+        <p>Concrètement, une séance bien menée aide à :</p>
+
+        <div class="compare-grid">
+          <div class="compare-col">
+            <div class="compare-col-title or">Sur le moment</div>
+            <ul class="compare-list">
+              <li>Relancer la circulation</li>
+              <li>Évacuer les tensions accumulées</li>
+              <li>Redonner de l'amplitude aux zones sollicitées</li>
+            </ul>
+          </div>
+          <div class="compare-col">
+            <div class="compare-col-title blanc">Les jours suivants</div>
+            <ul class="compare-list">
+              <li>Moins de courbatures et de raideur</li>
+              <li>Des points de tension traités avant qu'ils ne deviennent chroniques</li>
+              <li>Une meilleure capacité à enchaîner les séances</li>
+            </ul>
+          </div>
+        </div>
+
+        <p><strong>Le bon créneau : entre 2h et 48h après l'effort.</strong> Juste après une grosse séance, le muscle est encore congestionné et très sensible. Y mettre une pression profonde dans la foulée fait mal pour rien. Deux heures suffisent à le laisser se calmer.</p>
+
+        <p>Ce que ça change concrètement : tu enchaînes les séances sans traîner les courbatures de la précédente, et tu évites que les tensions s'installent.</p>
+
+        <hr>
+
+        <h2>Le bon rythme selon ta fréquence d'entraînement</h2>
+
+        <p>Abordons maintenant le rythme dont ton corps a besoin selon la fréquence de tes entraînements. Plus tu t'entraînes souvent, plus les tensions s'accumulent vite, et plus le massage doit être fréquent.</p>
+
+        <div class="diff-block">
+          <div class="diff-num">01</div>
+          <div class="diff-title">Entraînement occasionnel, 1 à 2 fois par semaine</div>
+          <p><span class="diff-label" style="color: var(--or);">Une séance par mois suffit.</span> On est davantage sur de la détente et de la prévention que sur la gestion d'une charge d'entraînement élevée.</p>
+        </div>
+
+        <div class="diff-block">
+          <div class="diff-num">02</div>
+          <div class="diff-title">Entraînement régulier, 3 à 4 fois par semaine</div>
+          <p><span class="diff-label" style="color: var(--or);">Toutes les 2 à 3 semaines.</span> En ciblant les zones que ta pratique sollicite le plus : dos et jambes en muscu, ischios et mollets en running, épaules et avant-bras en grappling ou JJB, corps entier en Hyrox.</p>
+        </div>
+
+        <div class="diff-block">
+          <div class="diff-num">03</div>
+          <div class="diff-title">Entraînement intensif ou quotidien, 5 à 7 fois par semaine</div>
+          <p><span class="diff-label" style="color: var(--or);">Toutes les 1 à 2 semaines.</span> À ce rythme, les tensions ne se dissipent plus seules entre deux séances, et le risque de blessure de surcharge grimpe si rien n'est fait.</p>
+        </div>
+
+        <p>Dans tous les cas, écoute ton corps. Une tension qui ne part pas après quelques jours de repos est <a href="article-5-signes-deep-tissue.html">un signal à ne pas ignorer</a>, et un bon moment pour avancer ton prochain rendez-vous.</p>
+
+        <hr>
+
+        <h2>Ce que je propose chez Steven Therapy</h2>
+
+        <p>Massage sportif et deep tissue, <a href="index.html#prestations">à domicile, en cabinet à Choisy-le-Roi ou en salle de sport</a>, partout à Paris &amp; Île-de-France. Formé par Marius Malarme, champion d'Europe de massage 2022 et 2025. 44 avis 5 étoiles sur Google.</p>
+
+        <p>Si tu hésites entre les deux techniques, j'ai écrit <a href="article-deep-tissue-vs-relaxant.html">une comparaison détaillée du deep tissue et du massage relaxant</a>.</p>
+
+        <div class="article-cta-inline">
+          <p>Envie de voir ce que ça donne sur ton corps ? Réserve ta première séance à <span style="color: var(--or); font-weight: 600;">49€ au lieu de <span style="text-decoration: line-through;">80€</span></span>.</p>
+          <button type="button" class="btn-primary" onclick="openBookingChat('decouverte');">
+            Prendre rendez-vous
+            <svg width="14" height="14" viewbox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+
+        <hr>
+
+        <h3>Sources</h3>
+
+        <p style="font-size: 0.86rem; opacity: 0.7;">
+          Davis HL, Alabed S, Chico TJA. <em>Effect of sports massage on performance and recovery: a systematic review and meta-analysis.</em> BMJ Open Sport &amp; Exercise Medicine, 2020.<br>
+          Arabaci R. <em>Acute effects of pre-event lower limb massage on explosive and high speed motor capacities and flexibility.</em> Journal of Sports Science &amp; Medicine, 2008.<br>
+          Dupuy O, Douzi W, Theurot D, Bosquet L, Dugué B. <em>An Evidence-Based Approach for Choosing Post-exercise Recovery Techniques to Reduce Markers of Muscle Damage, Soreness, Fatigue, and Inflammation: A Systematic Review With Meta-Analysis.</em> Frontiers in Physiology, 2018.
+        </p>
+
+      </article>
+
+      <!-- ─── SIDEBAR ─── -->
+      <aside class="article-sidebar">
+
+        <div class="sidebar-card">
+          <div class="sidebar-card-title">Offre découverte</div>
+          <p>Première séance deep tissue ou sportif à 49€ au lieu de 80€.</p>
+          <button type="button" class="sidebar-btn-primary" onclick="openBookingChat('decouverte');">
+            Réserver — 49€
+          </button>
+        </div>
+
+        <a href="article-deep-tissue-vs-relaxant.html" class="sidebar-other-article">
+          <div class="sidebar-other-label">À lire aussi</div>
+          <div class="sidebar-other-title">Deep tissue vs massage relaxant : les vraies différences</div>
+        </a>
+
+      </aside>
+
+    </div>
+  </div>
+
+  <!-- ─── FOOTER ─── -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">STEVEN <span>THERAPY</span></div>
+        <ul class="footer-links">
+          <li><a href="index.html#prestations">Prestations</a></li>
+          <li><a href="index.html#apropos">À propos</a></li>
+          <li><a href="index.html#avis">Avis</a></li>
+          <li><a href="index.html#tarifs">Tarifs</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+        <p class="footer-copy">© 2026 Steven Therapy · Paris & Île-de-France</p>
+      </div>
+      <div class="footer-legal">
+        <a href="mentions-legales.html">Mentions légales</a>
+        <a href="cgv.html">CGV</a>
+        <a href="confidentialite.html">Confidentialité</a>
+        <button type="button" onclick="window.steventherapyResetCookieConsent && window.steventherapyResetCookieConsent()">Gérer les cookies</button>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    function toggleMenu() {
+      document.querySelector('.nav-links').classList.toggle('nav-open');
+    }
+    document.addEventListener('click', e => {
+      if (!e.target.closest('nav')) {
+        document.querySelector('.nav-links').classList.remove('nav-open');
+      }
+    });
+
+    // Bouton magnétique
+    (function() {
+      document.querySelectorAll('.btn-primary, .sidebar-btn-primary').forEach(btn => {
+        btn.addEventListener('mousemove', e => {
+          const r = btn.getBoundingClientRect();
+          const x = (e.clientX - r.left - r.width  / 2) * 0.3;
+          const y = (e.clientY - r.top  - r.height / 2) * 0.3;
+          btn.style.transform = `translate(${x}px, ${y}px)`;
+        });
+        btn.addEventListener('mouseleave', () => {
+          btn.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+          btn.style.transform = '';
+          setTimeout(() => btn.style.transition = '', 500);
+        });
+      });
+    })();
+  </script>
+
+  <!-- ─── CHATBOT ─── -->
+  <button id="chatbot-btn" onclick="toggleChat()" aria-label="Réserver une séance">
+    <svg width="26" height="26" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+    </svg>
+    <div class="chatbot-notif" id="chatNotif"></div>
+  </button>
+
+  <div id="chatbot-window">
+    <div class="chatbot-header">
+      <div class="chatbot-avatar">ST</div>
+      <div class="chatbot-header-info">
+        <div class="chatbot-header-name">Steven Therapy</div>
+        <div class="chatbot-header-status">Répond en moins d'1h ⚡</div>
+      </div>
+      <button class="chatbot-close" onclick="toggleChat()">✕</button>
+    </div>
+    <div class="chatbot-body" id="chatBody">
+      <div class="chatbot-messages" id="chatMessages"></div>
+      <div class="chatbot-choices" id="chatChoices"></div>
+    </div>
+  </div>
+
+  <script src="Assets/chatbot.js"></script>
+  <!-- ─── FIN CHATBOT ─── -->
+
+  <script src="Assets/cookie-consent.js" defer></script>
+</body>
+</html>
