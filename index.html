@@ -91,31 +91,69 @@
     "review": [
       {
         "@type": "Review",
-        "author": {"@type": "Person", "name": "Nasser Abouzedi"},
-        "datePublished": "2026-09-01",
+        "author": {"@type": "Person", "name": "Hassan B."},
         "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
-        "reviewBody": "Super expérience ! Je suis coach sportif et j'ai fait appel à Steven pour un massage à domicile. Très professionnel, à l'écoute et vraiment efficace. Il a fait du très bon travail, je me suis senti beaucoup mieux après la séance. Je recommande vivement !"
+        "reviewBody": "Excellent massage sportif, parfaitement adapté à la pratique du Jiu-Jitsu Brésilien. Après des séances intenses de JJB, j'avais des tensions au niveau du dos, des épaules et des hanches, et le massage a vraiment fait la différence."
       },
       {
         "@type": "Review",
-        "author": {"@type": "Person", "name": "Sandy R"},
-        "datePublished": "2026-09-16",
+        "author": {"@type": "Person", "name": "Samira J."},
         "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
-        "reviewBody": "Une superbe expérience avec ce massage Deep ! Un véritable moment de détente et de lâcher-prise. Je suis ressortie tellement légère et détendue, sur un petit nuage. Un grand merci pour ce merveilleux moment. Je recommande vivement !"
+        "reviewBody": "Massage deep tissue excellent. Très professionnel et très à l'écoute. En tant que femme, j'ai apprécié le respect de l'intimité : seule la zone massée est découverte, ce qui met vraiment en confiance. Je recommande sans hésiter."
       },
       {
         "@type": "Review",
-        "author": {"@type": "Person", "name": "Christine Bruneaud"},
-        "datePublished": "2026-10-19",
+        "author": {"@type": "Person", "name": "Amr M."},
         "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
-        "reviewBody": "Super massage à l'issue de la Traverseine. Les tensions accumulées au fil de la course (et pas que...) ont disparu grâce à l'expertise de Steven. Bravo et merci !"
+        "reviewBody": "Je fais du football en club et du futsal. J'ai eu match 2 jours après le massage, je me suis senti beaucoup mieux sur mes appuis et mes muscles ont récupéré plus vite que d'habitude. Je conseille fortement."
       },
       {
         "@type": "Review",
-        "author": {"@type": "Person", "name": "Fahde Shimi"},
-        "datePublished": "2026-10-24",
+        "author": {"@type": "Person", "name": "Alex D."},
         "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
-        "reviewBody": "Superbe expérience ! Je recommande vivement Steven pour son professionnalisme, son savoir-faire et la qualité de sa prestation. Une expérience à renouveler sans hésiter !"
+        "reviewBody": "Excellente session pour un massage deep tissue très complet — j'ai tout simplement perdu tous mes nœuds. Je suis pratiquant de musculation intensive et sa technique m'a vraiment aidé."
+      },
+      {
+        "@type": "Review",
+        "author": {"@type": "Person", "name": "Sab B."},
+        "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+        "reviewBody": "Excellente prestation, massage de qualité et correspondant aux attentes. Douceur et pression, le combo parfait. Je sais déjà que je referai appel au service de Steven. Je recommande++++"
+      },
+      {
+        "@type": "Review",
+        "author": {"@type": "Person", "name": "Haissam M."},
+        "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+        "reviewBody": "En tant qu'ancien sportif de haut niveau, je peux assurer que Steven sait parfaitement masser et cibler les tensions. Je conseille fortement à quiconque veut un vrai massage sportif."
+      },
+      {
+        "@type": "Review",
+        "author": {"@type": "Person", "name": "James N."},
+        "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+        "reviewBody": "Steven est très pro dans son métier de masseur sportif. Il a effectué un gros travail sur mes tensions, trapèzes et jambes particulièrement. Je me sens déjà plus léger lors de mes entraînements."
+      },
+      {
+        "@type": "Review",
+        "author": {"@type": "Person", "name": "Yassine M."},
+        "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+        "reviewBody": "Efficace et ponctuel, Steven m'a fait un massage sportif, il m'a bien étiré et personnalisé la séance en fonction de mes besoins et points de tensions."
+      },
+      {
+        "@type": "Review",
+        "author": {"@type": "Person", "name": "Thomas L."},
+        "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+        "reviewBody": "DU GRAND PROFESSIONNALISME. Steven a des mains magiques ! À l'écoute des besoins demandés. JE RECOMMANDE À 200%"
+      },
+      {
+        "@type": "Review",
+        "author": {"@type": "Person", "name": "S. A."},
+        "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+        "reviewBody": "Steven demonstrated an incredible understanding of the body — exactly where the tension was held and how to release it. The technique was intentional, precise, and deeply therapeutic. I felt lighter, aligned, and completely reset."
+      },
+      {
+        "@type": "Review",
+        "author": {"@type": "Person", "name": "Eli"},
+        "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+        "reviewBody": "Un massage à la fois relaxant et très technique, qui cible chaque muscle avec précision. Steven est à l'écoute, a un contact naturel et a su parfaitement s'adapter à mes besoins. Je recommande vivement."
       }
     ],
     "openingHoursSpecification": [
@@ -1289,7 +1327,7 @@
     }
 
     .blog-dots {
-      display: none;
+      display: flex;
       justify-content: center;
       gap: 8px;
       margin-top: 20px;
@@ -1298,14 +1336,26 @@
       width: 6px; height: 6px;
       border-radius: 50%;
       background: rgba(212,175,55,0.3);
+      cursor: pointer;
+      transition: all 0.25s ease;
     }
     .blog-dots span.active { background: var(--or); width: 20px; border-radius: 3px; }
 
     .blog-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      display: flex;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
       gap: 2px;
       margin-top: 48px;
+    }
+    .blog-grid::-webkit-scrollbar { display: none; }
+    .blog-grid .article-card {
+      flex: 0 0 calc(50% - 1px);
+      min-width: 0;
+      scroll-snap-align: start;
     }
 
     .article-card {
@@ -1716,19 +1766,11 @@
       }
       .prestations-dots { display: flex; margin-top: 20px; }
       .blog-grid {
-        display: flex;
-        overflow-x: auto;
-        overflow-y: hidden;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
         gap: 12px;
         padding: 0 20px 16px;
-        grid-template-columns: unset;
         margin-top: 0;
         margin-bottom: 0;
       }
-      .blog-grid::-webkit-scrollbar { display: none; }
-      .blog-grid { scrollbar-width: none; }
       .blog-grid .article-card {
         flex: 0 0 85vw;
         scroll-snap-align: start;
@@ -2401,6 +2443,15 @@
         <p class="section-desc">Des articles écrits par un praticien certifié, pour mieux comprendre ton corps.</p>
       </div>
       <div class="blog-grid">
+        <a href="article-massage-avant-apres-entrainement.html" class="article-card">
+          <div class="article-cat">Récupération</div>
+          <h3 class="article-title">Massage sportif avant ou après l'entraînement ?</h3>
+          <p class="article-excerpt">Avant la séance, le travail en profondeur peut te coûter de la force. Après, c'est la technique de récupération la plus efficace selon la recherche. Le bon timing, la bonne fréquence, sources à l'appui.</p>
+          <div class="article-meta">
+            <div class="article-meta-info">14 octobre 2026 · 5 min</div>
+            <div class="article-link">Lire l'article <svg width="14" height="14" viewbox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          </div>
+        </a>
         <a href="article-5-signes-deep-tissue.html" class="article-card">
           <div class="article-cat">Deep Tissue</div>
           <h3 class="article-title">5 signes que tu as besoin d'un massage deep tissue</h3>
@@ -2422,6 +2473,7 @@
       </div>
       <div class="blog-dots" id="blogDots">
         <span class="active"></span>
+        <span></span>
         <span></span>
       </div>
       <div style="text-align:center; margin-top: 40px;">
