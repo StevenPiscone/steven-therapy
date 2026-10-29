@@ -13,6 +13,13 @@ let chatHistory = [];
 let chatCurrentStep = null;
 const ASK_COOLDOWN_MS = 8000;
 
+// Evenements GA4 du chatbot, pour suivre le parcours visiteur -> ouverture du
+// chat -> envoi WhatsApp. N'envoie rien si le consentement cookies n'a pas
+// ete donne (gtag n'existe alors pas, voir Assets/cookie-consent.js).
+function trackChatEvent(name, params) {
+  if (typeof gtag === 'function') gtag('event', name, params || {});
+}
+
 // Fait toujours defiler jusqu'en bas (messages + boutons), quelle que soit la fonction
 // qui vient de modifier la conversation, plutot que de rappeler un scroll a la main
 // dans chaque fonction d'affichage (risque d'en oublier une).
@@ -109,6 +116,7 @@ function toggleChat() {
   if (chatOpen) {
     document.getElementById('chatNotif').style.display = 'none';
     if (!document.getElementById('chatMessages').children.length) startChat();
+    trackChatEvent('chatbot_open', { entry_point: 'bubble' });
   }
 }
 
@@ -128,6 +136,7 @@ function resetAndOpenChat() {
   chatCurrentStep = null;
   document.getElementById('chatMessages').innerHTML = '';
   document.getElementById('chatChoices').innerHTML = '';
+  trackChatEvent('chatbot_open', { entry_point: 'shortcut' });
 }
 
 // Raccourci pour tous les boutons "rendez-vous" du site (header, hero, bloc
@@ -511,6 +520,10 @@ function waLink(text, msgEncoded) {
   a.target = '_blank';
   a.className = 'chat-wa-btn';
   a.innerHTML = WA_SVG + ' ' + text;
+  // Evenement de conversion : clic reel sur le bouton, pas juste son affichage.
+  // chatCurrentStep donne le point du parcours d'ou vient la demande (question
+  // libre, reservation confirmee, evenement en salle...).
+  a.addEventListener('click', () => trackChatEvent('chatbot_whatsapp_click', { step: chatCurrentStep || 'unknown' }));
   document.getElementById('chatChoices').innerHTML = '';
   document.getElementById('chatChoices').appendChild(a);
 }
