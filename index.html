@@ -252,6 +252,7 @@
       --blanc: #FDFCF8;
       --gris: #1a1a18;
       --gris-texte: #8a8a7a;
+      --violet: #9B7FD4;
     }
 
     html {
@@ -307,7 +308,8 @@
       background: rgba(10, 10, 8, 0.95);
       backdrop-filter: blur(10px);
       padding: 14px 0;
-      border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+      border-bottom: 1px solid rgba(155, 127, 212, 0.3);
+      box-shadow: 0 4px 24px rgba(155, 127, 212, 0.25);
     }
 
     nav .container {
@@ -714,6 +716,7 @@
       letter-spacing: 0.06em;
       margin-bottom: 6px;
       line-height: 1;
+      text-align: center;
     }
 
     .sport-gender {
@@ -785,12 +788,14 @@
     .benefice-icon {
       font-size: 28px;
       margin-bottom: 16px;
+      text-align: center;
     }
 
     .benefice-title {
       font-size: 20px;
       color: var(--blanc);
       margin-bottom: 10px;
+      text-align: center;
     }
 
     .benefice-text {
@@ -800,6 +805,42 @@
     }
 
     .benefices-dots { display: none; }
+
+    /* ─── COMMENT ÇA SE PASSE ─── */
+    #etapes { padding: 60px 0; }
+
+    .etapes-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(212,175,55,0.1);
+      margin-top: 64px;
+    }
+
+    .etape-item {
+      background: var(--noir);
+      padding: 40px 32px;
+      transition: background 0.2s;
+    }
+
+    .etape-item:hover { background: var(--gris); }
+
+    .etape-icon { font-size: 28px; margin-bottom: 16px; text-align: center; }
+
+    .etape-title {
+      font-size: 20px;
+      color: var(--blanc);
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .etape-text {
+      font-size: 13px;
+      color: rgba(253,252,248,0.55);
+      line-height: 1.7;
+    }
+
+    .etapes-dots { display: none; }
 
     /* ─── PRESTATIONS ─── */
     #prestations {
@@ -1385,8 +1426,8 @@
 
     .article-cat {
       display: inline-block;
-      background: rgba(212,175,55,0.1);
-      color: var(--or);
+      background: rgba(155,127,212,0.12);
+      color: #9B7FD4;
       font-size: 10px;
       font-weight: 700;
       letter-spacing: 0.2em;
@@ -1695,6 +1736,7 @@
       /* Autres sections */
       .sports-grid { grid-template-columns: repeat(2, 1fr); }
       .benefices-grid { grid-template-columns: repeat(2, 1fr); margin-top: 48px; }
+      .etapes-grid { grid-template-columns: repeat(2, 1fr); margin-top: 48px; }
     }
 
     @media (min-width: 641px) and (max-width: 1024px) {
@@ -1889,6 +1931,43 @@
         width: 20px;
         border-radius: 3px;
       }
+      /* Étapes : carousel swipeable */
+      .etapes-grid {
+        display: flex;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 12px;
+        padding: 0 20px 16px;
+        background: transparent;
+        margin-top: 40px;
+        grid-template-columns: unset;
+      }
+      .etapes-grid::-webkit-scrollbar { display: none; }
+      .etape-item {
+        flex: 0 0 80vw;
+        scroll-snap-align: start;
+        background: var(--gris);
+        border: 1px solid rgba(212,175,55,0.12);
+      }
+      .etapes-dots {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 20px;
+      }
+      .etapes-dots span {
+        width: 6px; height: 6px;
+        border-radius: 50%;
+        background: rgba(212,175,55,0.3);
+        transition: all 0.25s ease;
+      }
+      .etapes-dots span.active {
+        background: var(--or);
+        width: 20px;
+        border-radius: 3px;
+      }
       .tarif-block { padding: 32px 24px; }
       .prestation-card { padding: 32px 24px; }
     }
@@ -1986,12 +2065,16 @@
         <p class="hero-subtitle-light">À domicile · En cabinet · En salle de sport</p>
         <div class="hero-stats">
           <div>
-            <div class="hero-stat-value">47</div>
+            <div class="hero-stat-value"><span class="count-up" data-target="47">47</span></div>
             <div class="hero-stat-label">Avis 5 étoiles</div>
           </div>
           <div>
-            <div class="hero-stat-value">7j/7</div>
-            <div class="hero-stat-label">Disponibilité</div>
+            <div class="hero-stat-value"><span class="count-up" data-target="100">100</span>+</div>
+            <div class="hero-stat-label">Patients accompagnés</div>
+          </div>
+          <div>
+            <div class="hero-stat-value"><span class="count-up" data-target="130">130</span>+</div>
+            <div class="hero-stat-label">Heures de massage</div>
           </div>
         </div>
         <br>
@@ -2061,7 +2144,7 @@
         <div class="format-card">
           <div class="format-icon">🛋️</div>
           <div class="format-name">EN CABINET</div>
-          <p class="format-desc">Dans mon salon en région parisienne.</p>
+          <p class="format-desc">Dans mon salon à Choisy-le-Roi (94).</p>
         </div>
         <div class="format-card">
           <div class="format-icon">🏋️</div>
@@ -2149,6 +2232,45 @@
         </div>
       </div>
       <div class="benefices-dots" id="beneficesDots">
+        <span class="active"></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── COMMENT ÇA SE PASSE ─── -->
+  <section id="etapes">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Le déroulé</p>
+        <h2 class="section-title">Comment <span>ça se passe</span> ?</h2>
+        <p class="section-desc">Du premier message au massage, voici exactement à quoi t'attendre.</p>
+      </div>
+      <div class="etapes-grid">
+        <div class="etape-item">
+          <div class="etape-icon">💬</div>
+          <div class="etape-title">RÉSERVATION EN LIGNE</div>
+          <p class="etape-text">Tu réserves sur le site via le chatbot, je confirme le créneau, tu paies un acompte de 10€ pour réserver ta séance.</p>
+        </div>
+        <div class="etape-item">
+          <div class="etape-icon">📍</div>
+          <div class="etape-title">JE ME DÉPLACE OU TU VIENS</div>
+          <p class="etape-text">Je me déplace chez toi avec le matériel nécessaire ou tu viens à mon cabinet à Choisy-le-Roi (94).</p>
+        </div>
+        <div class="etape-item">
+          <div class="etape-icon">🗣️</div>
+          <div class="etape-title">AVANT DE COMMENCER</div>
+          <p class="etape-text">On fait le point sur ta pratique sportive, tes douleurs et tes objectifs, pour une séance qui te correspond.</p>
+        </div>
+        <div class="etape-item">
+          <div class="etape-icon">💪</div>
+          <div class="etape-title">LE MASSAGE</div>
+          <p class="etape-text">Deep tissue ou sportif, adapté à tes besoins, pour repartir plus léger et mieux performer.</p>
+        </div>
+      </div>
+      <div class="etapes-dots" id="etapesDots">
         <span class="active"></span>
         <span></span>
         <span></span>
@@ -2402,8 +2524,8 @@
   <section id="faq-teaser">
     <div class="container">
       <div class="section-header">
-        <p class="section-label">Questions fréquentes</p>
-        <h2 class="section-title">Avant de <span>réserver</span></h2>
+        <p class="section-label">Avant de réserver</p>
+        <h2 class="section-title">Questions <span>fréquentes</span></h2>
         <p class="section-desc">Les questions qu'on me pose le plus souvent avant une première séance.</p>
       </div>
       <div class="faq-teaser-list">
@@ -2508,14 +2630,21 @@
                 <div class="contact-method-value">@steven_therapy</div>
               </div>
             </a>
+            <a href="https://www.google.com/maps/search/?api=1&query=10+Avenue+Victor+Hugo+94600+Choisy-le-Roi" target="_blank" class="contact-method">
+              <div class="contact-method-icon">📍</div>
+              <div>
+                <div class="contact-method-label">Cabinet</div>
+                <div class="contact-method-value">10 Av. Victor Hugo, Choisy-le-Roi</div>
+              </div>
+            </a>
           </div>
 
           <div class="contact-zone">
             <div class="contact-zone-title">ZONE D'INTERVENTION</div>
             <p class="contact-zone-text">
-              Cabinet en région parisienne (sur RDV).<br>
-              Déplacements : <strong style="color: var(--blanc)">Paris & Île-de-France</strong>.<br>
-              Événements en salle : <strong style="color: var(--blanc)">On Air (La Ville-du-Bois, 91 & Ivry-sur-Seine, 94)</strong> et <strong style="color: var(--blanc)">Keepcool (Savigny)</strong>.
+              <strong style="color: var(--or)">Cabinet</strong> au 10 Avenue Victor Hugo, <strong style="color: var(--blanc)">94600 Choisy-le-Roi</strong>.<br>
+              <strong style="color: var(--or)">Déplacements</strong> : <strong style="color: var(--blanc)">Paris & Île-de-France</strong>.<br>
+              <strong style="color: var(--or)">Événements en salle</strong> : <strong style="color: var(--blanc)">On Air (La Ville-du-Bois, 91 & Ivry-sur-Seine, 94)</strong> et <strong style="color: var(--blanc)">Keepcool (Savigny)</strong>.
             </p>
           </div>
         </div>
@@ -2655,6 +2784,31 @@
       }, { passive: true });
     }
 
+    // Carousel étapes : dots
+    const etapesGrid = document.querySelector('.etapes-grid');
+    const etapesDots = document.querySelectorAll('#etapesDots span');
+    if (etapesGrid && etapesDots.length) {
+      let etapesItemWidth = 0;
+      const updateEtapesItemWidth = () => {
+        const item = etapesGrid.querySelector('.etape-item');
+        if (item) etapesItemWidth = item.offsetWidth + 12;
+      };
+      updateEtapesItemWidth();
+      window.addEventListener('resize', updateEtapesItemWidth, { passive: true });
+      let etapesTicking = false;
+      etapesGrid.addEventListener('scroll', () => {
+        if (etapesTicking) return;
+        etapesTicking = true;
+        requestAnimationFrame(() => {
+          if (etapesItemWidth) {
+            const active = Math.min(Math.round(etapesGrid.scrollLeft / etapesItemWidth), etapesDots.length - 1);
+            etapesDots.forEach((d, i) => d.classList.toggle('active', i === active));
+          }
+          etapesTicking = false;
+        });
+      }, { passive: true });
+    }
+
     // Carousel prestations : dots
     const prestationsGrid = document.querySelector('.prestations-grid');
     const prestationsDots = document.querySelectorAll('#prestationsDots span');
@@ -2784,7 +2938,7 @@
     // Fade-up au scroll
     (function() {
       ['.section-header', '.apropos-b-clearfix',
-       '.sport-card', '.benefice-item', '.prestation-card', '.tarif-card',
+       '.sport-card', '.benefice-item', '.etape-item', '.prestation-card', '.tarif-card',
        '.avis-card', '.contact-info', '.contact-form-wrap'].forEach(sel => {
         document.querySelectorAll(sel).forEach(el => el.classList.add('fade-up'));
       });

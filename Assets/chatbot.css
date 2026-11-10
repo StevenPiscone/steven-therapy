@@ -36,8 +36,8 @@
   top: 3px; right: 3px;
   width: 14px; height: 14px;
   border-radius: 50%;
-  background: #e53e3e;
-  border: 2px solid var(--noir);
+  background: #6B4FA8;
+  border: 2px solid #6B4FA8;
 }
 #chatbot-window {
   position: fixed;
