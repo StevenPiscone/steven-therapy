@@ -84,9 +84,15 @@
       top: 0; left: 0; right: 0;
       z-index: 100;
       padding: 20px 0;
+      transition: background 0.3s, padding 0.3s;
+    }
+
+    nav.scrolled {
       background: rgba(10, 10, 8, 0.95);
       backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(155, 127, 212, 0.3);
+      box-shadow: 0 4px 24px rgba(155, 127, 212, 0.25);
     }
 
     nav .container {
@@ -330,7 +336,7 @@
 <body>
 
   <!-- ─── NAV ─── -->
-  <nav>
+  <nav id="navbar">
     <div class="container">
       <a href="index.html" class="nav-logo">
         <img class="logo-desktop" src="Assets/logo.png" alt="Steven Therapy">
@@ -368,7 +374,7 @@
           <li>Offre découverte : 49€ la première séance d'1h (au lieu de 80€), non renouvelable</li>
           <li>Pack fidélité : tarif dégressif à partir de 3 séances, sur les formats 1h, 1h30 et 2h, réservé aux clients ayant déjà eu une séance</li>
         </ul>
-        <p>Frais de déplacement (prestations à domicile ou en dehors du lieu habituel) : +5€ (moins de 10km), +10€ (moins de 25km), +20€ (moins de 50km), +30€ (moins de 75km), +40€ (moins de 100km). Frais de stationnement facturés au réel en sus si applicable.</p>
+        <p>Frais de déplacement (prestations à domicile ou en dehors du lieu habituel) : offert (moins de 10km), +5€ (moins de 25km), +10€ (moins de 50km), +15€ (moins de 75km), +20€ (moins de 100km). Frais de stationnement facturés au réel en sus si applicable.</p>
 
         <h2>3. Réservation et acompte</h2>
         <p>Toute réservation est confirmée par le versement d'un acompte de 10€ par virement bancaire. Sans cet acompte, la réservation n'est pas garantie.</p>
@@ -456,5 +462,11 @@
   <!-- ─── FIN CHATBOT ─── -->
 
   <script src="Assets/cookie-consent.js" defer></script>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+  </script>
 </body>
 </html>
